@@ -9,9 +9,14 @@
     @include('include.style')
 </head>
 <body>
-    @include('include.sidebar')
-    @yield('admin')
+    @include('include.admin.sidebar')
+
+    <div class="p-6 sm:ml-64 mt-4">
+        @yield('admin')
+    </div>
     
     @include('include.script')
+
+    @yield('script')
 </body>
 </html>
