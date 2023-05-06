@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -14,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        $category = Category::get();
+        return view('admin.category.index', compact('category'));
     }
 
     /**
