@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 
 
 class CategoryController extends Controller
@@ -19,9 +20,32 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::get();
+        if (request()->ajax()) {
+            $query = Category::query();
 
-        return view('admin.category.index', compact('category'));
+            return DataTables::of($query)
+                ->addColumn('action', function ($item) {
+                    return '
+                    <td class="w-32 py-4 px-6">
+                        <div class="flex items-center space-x-2">
+                            <a href="/admin/category/' . $item->id . '/edit"
+                                class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600">
+                                <i class="fa-solid fa-edit"></i>
+                            </a>
+                            <button class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" onclick="deleteData(\'' . $item->id . '\')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                ';
+                })
+                ->editColumn('image', function ($item) {
+                    return $item->image ? '<img src="' . Storage::url($item->image) . '" style="max-height: 40px;"/>' : '';
+                })
+                ->rawColumns(['action', 'image'])
+                ->make();
+        }
+        return view('admin.category.index');
     }
 
     /**
