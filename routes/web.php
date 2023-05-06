@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,7 @@ Route::prefix('admin')->group(function() {
         return view('admin.dashboard.index');
     });
     
-    // Kategori
-    Route::get('/category', function () {
-        return view('admin.category.index');
-    });
-    Route::get('/category/create', function () {
-        return view('admin.category.add');
-    });
-    Route::get('/category/edit', function () {
-        return view('admin.category.edit');
-    });
+    Route::resource('/category', CategoryController::class);
 
     // Produk
     Route::get('/product', function () {
