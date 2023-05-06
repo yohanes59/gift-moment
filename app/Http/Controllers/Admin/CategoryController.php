@@ -20,6 +20,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::get();
+
         return view('admin.category.index', compact('category'));
     }
 
@@ -30,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.category.form');
     }
 
     /**
@@ -41,7 +42,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        if ($request->file('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+            $data['image'] = $request->file('image')->storeAs('assets/category', $newName, 'public');
+        }
+
+        Category::create($data);
+
+        return redirect('admin/category')->with('toast_success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -63,7 +74,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        
+        $item = Category::findOrFail($id);
+        return view('admin.category.form', compact('item'));
     }
 
     /**
@@ -75,7 +87,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $item = Category::findOrFail($id);
+
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        if ($request->file('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+
+            $data['image'] = $request->file('image')->storeAs('assets/category', $newName, 'public');
+            Storage::delete('public/' . $item->image);
+        }
+
+        $item->update($data);
+
+        return redirect('/admin/category')->with('toast_success', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -86,6 +112,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        
+        $item = Category::findOrFail($id);
+        $item->delete();
+        return back()->with('info', 'Data Berhasil Dihapus!');
     }
 }
