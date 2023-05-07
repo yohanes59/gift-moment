@@ -36,10 +36,11 @@
 
         {{-- Tambah data --}}
         <div class="my-6">
-            <a href="{{ url('admin/category/create') }}"
+            {{-- <a href="{{ url('admin/category/create') }}"
                 class="py-3 px-5 rounded-md text-white bg-blue-500 hover:bg-blue-600">
                 <i class="fa-solid fa-plus mr-1"></i> Tambah Kategori
-            </a>
+            </a> --}}
+            <x-link to="{{ url('admin/category/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Kategori" />
         </div>
 
         {{-- Table --}}
