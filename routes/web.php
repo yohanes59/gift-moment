@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +16,40 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::prefix('admin')->group(function() {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard.index');
-    });
-    
-    Route::resource('/category', CategoryController::class);
+Route::controller(AuthController::class)->group(function() {
+    // Route::get('/login', 'login')->middleware('isLogin');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'doLogin')->name('login');
+    Route::get('/register', 'register');
+    Route::post('/register', 'doRegister');
+});
 
-    // Produk
-    Route::get('/product', function () {
-        return view('admin.product.index');
-    });
-    Route::get('/product/create', function () {
-        return view('admin.product.add');
-    });
-    Route::get('/product/edit', function () {
-        return view('admin.product.edit');
-    });
+Route::middleware('auth')->group(function() {
+    Route::prefix('admin')->group(function() {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard.index');
+        });
+        
+        Route::resource('/category', CategoryController::class);
 
-    Route::get('/transaction', function () {
-        return view('admin.transaction.index');
-    });
+        // Produk
+        Route::get('/product', function () {
+            return view('admin.product.index');
+        });
+        Route::get('/product/create', function () {
+            return view('admin.product.add');
+        });
+        Route::get('/product/edit', function () {
+            return view('admin.product.edit');
+        });
 
+        Route::get('/transaction', function () {
+            return view('admin.transaction.index');
+        });
+    });
+});
+
+ // Home
+ Route::get('/', function () {
+    return view('welcome');
 });
