@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
 
@@ -31,17 +32,7 @@ Route::controller(AuthController::class)->group(function() {
         });
         
         Route::resource('/category', CategoryController::class);
-
-        // Produk
-        Route::get('/product', function () {
-            return view('admin.product.index');
-        });
-        Route::get('/product/create', function () {
-            return view('admin.product.add');
-        });
-        Route::get('/product/edit', function () {
-            return view('admin.product.edit');
-        });
+        Route::resource('/product', ProductController::class);
 
         Route::get('/transaction', function () {
             return view('admin.transaction.index');
