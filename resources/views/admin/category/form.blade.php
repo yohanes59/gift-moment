@@ -1,6 +1,6 @@
 @extends('layouts.app-admin')
 
-@section('title', 'Tambah Kategori')
+@section('title', isset($item) ? 'Edit Kategori' : 'Tambah Kategori')
 
 @section('admin')
     <div>
@@ -8,13 +8,15 @@
             {{-- <a href="{{ url('admin/category') }}" class="py-3 px-5 text-white rounded-xl bg-blue-500 hover:bg-blue-600">
                 <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </a> --}}
-            <x-link to="{{ url('admin/category') }}" size="xl" icon="fa-arrow-left mr-1" text="Kembali" padding="py-3 px-5" color="blue" />
+            <x-link to="{{ url('admin/category') }}" size="xl" icon="fa-arrow-left mr-1" text="Kembali" padding="py-3 px-5"
+                color="blue" />
             <div class="text-lg font-medium">Form {{ isset($item) ? 'Edit Kategori' : 'Tambah Kategori' }}</div>
         </div>
 
         <div class="max-w-xl mt-8">
-            <form class="space-y-2" action="{{ isset($item) ? url('/admin/category/' . $item->id) : url('/admin/category') }}"
-                method="POST" enctype="multipart/form-data">
+            <form class="space-y-2"
+                action="{{ isset($item) ? url('/admin/category/' . $item->id) : url('/admin/category') }}" method="POST"
+                enctype="multipart/form-data">
                 @if (isset($item))
                     @method('PUT')
                 @endif
