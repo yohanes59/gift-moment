@@ -64,15 +64,6 @@ class AuthTest extends TestCase
         $response->assertRedirect('/login');
     }
 
-    
-    public function test_if_user_not_login_cannot_access_cashier_order()
-    {
-        // Unit Test Jika Cashier belum login maka tidak boleh aksess halaman order
-        // $response = $this->get('/');
-        // $response->assertStatus(302);
-        // $response->assertRedirect('/login');
-    }
-
    public function testValidationError()
    {
         $response = $this->post('/login', []);
