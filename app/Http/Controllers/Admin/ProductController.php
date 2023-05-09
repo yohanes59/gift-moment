@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -53,7 +55,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.form');
+        $category = Category::get();
+        return view('admin.product.form', compact('category'));
     }
 
     /**
@@ -62,7 +65,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
@@ -97,7 +100,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $item = Product::findOrFail($id);
-        return view('admin.product.form', compact('item'));
+        $category = Category::get();
+        return view('admin.product.form', compact(['item', 'category']));
     }
 
     /**
@@ -107,7 +111,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $item = Product::findOrFail($id);
 
