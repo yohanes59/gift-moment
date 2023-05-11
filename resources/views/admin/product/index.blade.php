@@ -112,7 +112,12 @@
                     data: 'price',
                     name: 'price',
                     className: 'py-4 px-6',
-                    width: '20%'
+                    width: '20%',
+                    render: function(data, type, row) {
+                        return 'Rp ' + new Intl.NumberFormat('id-ID', {
+                            minimumFractionDigits: 0
+                        }).format(data);
+                    }
                 },
                 {
                     data: 'action',
