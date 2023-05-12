@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('price')->unsigned()->default(0);
+            $table->integer('capital_price')->unsigned()->default(0);
             $table->text('description');
             $table->integer('weight')->unsigned();
+            $table->integer('stock_amount')->unsigned()->default(0);
             $table->string('slug');
             $table->softDeletes();
             $table->timestamps();
