@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthLoginRequest;
+use App\Http\Requests\AuthRegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,14 +21,8 @@ class AuthController extends Controller
         return view('auth.register',['users' => $user]);
     }
 
-    public function doRegister(Request $request)
+    public function doRegister(AuthRegisterRequest $request)
 	{
-		Validator::make($request->all(), [
-			'name' => 'required|string',
-			'email' => 'required|email|unique:users',
-			'password' => 'required|confirmed'
-		])->validate();
-
 		User::create([
 			'name' => $request->name,
 			'email' => $request->email,
@@ -39,17 +35,11 @@ class AuthController extends Controller
 
     public function login()
     {
-        return view('auth.login');
+        return view('auth.loginUser');
     }
 
-    public function doLogin(Request $request)
+    public function doLogin(AuthLoginRequest $request)
     {
-        Validator::make(
-            $request->all(), [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
-
             if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
                 throw ValidationException::withMessages([
                     'email' => trans('auth.failed')
@@ -58,7 +48,11 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/admin/dashboard');
+        if (Auth::user()->name == 'admin') {
+			return redirect('admin/dashboard');
+		} else {
+			return redirect('/');
+		}
     }
 
     public function editUserAccount()
