@@ -22,15 +22,11 @@ class CategorySeeder extends Seeder
         $data = [
             [
                 'name' => 'Souvenir',
-                'image' => 'https://cdn4.iconfinder.com/data/icons/hotel-and-hotel-services-2/85/gift_box_present_shopping_souvenir_shop-64.png',
-            ],
-            [
-                'name' => 'Bucket',
-                'image' => 'https://cdn4.iconfinder.com/data/icons/hotel-and-hotel-services-2/85/gift_box_present_shopping_souvenir_shop-64.png',
+                'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683812608/capstone-gits/souvenir_twffhz.jpg',
             ],
             [
                 'name' => 'Hantaran',
-                'image' => 'https://cdn4.iconfinder.com/data/icons/hotel-and-hotel-services-2/85/gift_box_present_shopping_souvenir_shop-64.png',
+                'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683812732/capstone-gits/mahar_ifvuvs.jpg',
             ],
         ];
 
