@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_data', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('users_id');
             $table->foreign('users_id')->references('id')->on('users')->cascadeOnDelete();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_data');
+        Schema::dropIfExists('user_details');
     }
 };
