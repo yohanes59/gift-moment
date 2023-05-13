@@ -31,7 +31,8 @@ class ProductRequest extends FormRequest
             'capital_price' => ['required', 'numeric', 'min_digits:4'],
             'description' => ['required', 'string', 'max:1000'],
             'weight' => ['required', 'numeric', 'min_digits:2'],
-            'stock_amount' => ['required', 'numeric']
+            'stock_amount' => ['required', 'numeric'],
+            'minimum_order' => ['required', 'numeric']
         ];
     }
 }

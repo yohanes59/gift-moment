@@ -44,7 +44,8 @@ KETENTUAN ORDER:
 - Minimal Order 20 pcs.
                 '),
                 'weight' => '20',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 20
             ],
             [
                 'categories_id' => $souvenir->id,
@@ -61,7 +62,8 @@ Detail produk :
 - Berat produk 55 gram/pcs
                 '),
                 'weight' => '55',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 20
             ],
             [
                 'categories_id' => $souvenir->id,
@@ -81,7 +83,8 @@ Souvenir Talenan kayu
 - Berat produk 75 gram/pcs
                 '),
                 'weight' => '75',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 20
             ],
             [
                 'categories_id' => $souvenir->id,
@@ -103,7 +106,8 @@ KETENTUAN ORDER:
 - Berat produk 18 gram/pcs
                 '),
                 'weight' => '18',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 50
             ],
             [
                 'categories_id' => $souvenir->id,
@@ -124,7 +128,8 @@ Catatan :
 Semua barang sebelum packing dan pengiriman di sortir dan dicek terlebih dahulu, semua dalam keadaan baik tidak ada yang rusak dan pecah.
                 '),
                 'weight' => '120',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 20
             ],
             [
                 'categories_id' => $souvenir->id,
@@ -148,7 +153,8 @@ KETENTUAN ORDER:
 - Berat produk 15gram
                 '),
                 'weight' => '15',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 50
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -179,7 +185,8 @@ KELEBIHAN:
 MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
                 '),
                 'weight' => '2000',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 0
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -212,7 +219,8 @@ KELEBIHAN:
 - Terdapat gantungan bingkai untuk digantung.
                 '),
                 'weight' => '1500',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 0
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -244,7 +252,8 @@ KELEBIHAN:
 - Menggunakan bunga palsu bahan kain jadi Awet & Everlasting.
                 '),
                 'weight' => '1000',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 0
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -275,7 +284,8 @@ KELEBIHAN:
 - Menggunakan bunga palsu bahan kain jadi Awet & Everlasting.
                 '),
                 'weight' => '3000',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 0
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -306,7 +316,8 @@ KELEBIHAN:
 - Menggunakan bunga palsu bahan kain jadi Awet & Everlasting.
                 '),
                 'weight' => '2000',
-                'stock_amount' => '0',
+                'stock_amount' => 0,
+                'minimum_order' => 0
             ],
         ];
 
@@ -329,6 +340,7 @@ KELEBIHAN:
                 'description' => $item['description'],
                 'weight' => $item['weight'],
                 'stock_amount' => $item['stock_amount'],
+                'minimum_order' => $item['minimum_order'],
                 'slug' => $item['name'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
