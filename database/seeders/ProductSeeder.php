@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Cermin Gagang Bulat Emas',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813079/capstone-gits/KACA_OVAL_wsh5ny.jpg',
                 'price' => '2000',
-                'capital_price' => '0',
+                'capital_price' => '1500',
                 'description' => trim('
 HARGA TERTERA UNTUK 1 PCS KACA OVAL
 - Bahan : Kaca
@@ -52,7 +52,7 @@ KETENTUAN ORDER:
                 'name' => 'Gunting Kuku Kecil',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813169/capstone-gits/gunting_kuku_gpzq5e.jpg',
                 'price' => '1800',
-                'capital_price' => '0',
+                'capital_price' => '850',
                 'description' => trim('
 Detail produk :
 - Bahan Stainless
@@ -70,7 +70,7 @@ Detail produk :
                 'name' => 'Talenan',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813193/capstone-gits/talenan_kayu_jhtkwi.jpg',
                 'price' => '3500',
-                'capital_price' => '0',
+                'capital_price' => '1500',
                 'description' => trim('
 Deskripsi :
 Souvenir Talenan kayu
@@ -91,7 +91,7 @@ Souvenir Talenan kayu
                 'name' => 'Sisir set Mika',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813288/capstone-gits/sisir-mika_zv4ved.jpg',
                 'price' => '2500',
-                'capital_price' => '0',
+                'capital_price' => '750',
                 'description' => trim('
 Deskripsi
 Souvenir Pernikahan Sisir
@@ -114,7 +114,7 @@ KETENTUAN ORDER:
                 'name' => 'Gelas',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813225/capstone-gits/gelas_kaca_lcmmlp.jpg',
                 'price' => '4000',
-                'capital_price' => '0',
+                'capital_price' => '3000',
                 'description' => trim('
 Deskripsi produk :
 - Ukuran 8x6cm
@@ -136,7 +136,7 @@ Semua barang sebelum packing dan pengiriman di sortir dan dicek terlebih dahulu,
                 'name' => 'Pisau Kecil Mika',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813317/capstone-gits/pisau_buah_yva3ku.jpg',
                 'price' => '3000',
-                'capital_price' => '0',
+                'capital_price' => '960',
                 'description' => trim('
 Deskripsi Produk
 - pisau kecil kemasan mika motif
@@ -161,7 +161,7 @@ KETENTUAN ORDER:
                 'name' => 'Cutting Acrylic Premium Flower 30x45cm',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813527/capstone-gits/Premium_Flower_kq6py2.jpg',
                 'price' => '480000',
-                'capital_price' => '0',
+                'capital_price' => '350000',
                 'description' => trim('
 Cutting Acrylic Premium Flower 30x45. Format Tulisan:
 (TULIS DI PESAN NOTES SAAT CHECKOUT)
@@ -193,7 +193,7 @@ MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
                 'name' => 'Gift Wedding Jam 25x35cm',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813526/capstone-gits/Gift_Wedding_Jam_epr0dx.jpg',
                 'price' => '150000',
-                'capital_price' => '0',
+                'capital_price' => '100000',
                 'description' => trim('
 Gift Wedding Jam 25x35cm
 Format Tulisan:
@@ -227,7 +227,7 @@ KELEBIHAN:
                 'name' => 'Cutting Acrylic 20x30cm',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813527/capstone-gits/Cutting_Acrylic_20x30_uhwyj2.jpg',
                 'price' => '300000',
-                'capital_price' => '0',
+                'capital_price' => '220000',
                 'description' => trim('
 Cutting Acrylic 20x30cm
 Format Tulisan:
@@ -260,7 +260,7 @@ KELEBIHAN:
                 'name' => 'Cuttingg Acrylic 25x35cm',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813527/capstone-gits/Cuttingg_Acrylic_25x35cm_nkbsgo.jpg',
                 'price' => '350000',
-                'capital_price' => '0',
+                'capital_price' => '300000',
                 'description' => trim('
 Cutting Acrylic 25x35cm
 Format Tulisan:
@@ -292,7 +292,7 @@ KELEBIHAN:
                 'name' => 'Cutting Acrylic 25x35cm',
                 'image' => 'https://res.cloudinary.com/dqxruyist/image/upload/v1683813527/capstone-gits/Cutting_Acrylic_25x35cm_egww08.jpg',
                 'price' => '320000',
-                'capital_price' => '0',
+                'capital_price' => '250000',
                 'description' => trim('
 Cutting Acrylic 25x35cm
 Format Tulisan:
