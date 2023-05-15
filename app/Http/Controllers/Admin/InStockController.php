@@ -6,6 +6,7 @@ use App\Models\Stock;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InStockRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -43,7 +44,7 @@ class InStockController extends Controller
         return view('admin.stock.masuk.form', compact('product'));
     }
 
-    public function store(Request $request)
+    public function store(InStockRequest $request)
     {
         $data = $request->all();
         $data['incoming_stock'] = $request->amount;
