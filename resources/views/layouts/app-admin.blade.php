@@ -11,9 +11,10 @@
 </head>
 
 <body>
+    @include('include.admin.navbar')
     @include('include.admin.sidebar')
 
-    <div class="p-6 sm:ml-64 mt-4">
+    <div class="px-6 pt-20 pb-6 sm:ml-64 bg-slate-100 min-h-screen">
         @yield('admin')
     </div>
 

@@ -34,6 +34,29 @@ Route::controller(AuthController::class)->group(function() {
         Route::resource('/category', CategoryController::class);
         Route::resource('/product', ProductController::class);
 
+        Route::prefix('stock')->group(function() {
+            // Stock Masuk
+            Route::get('/masuk', function() {
+                return view('admin.stock.masuk.index');
+            });
+            Route::get('/masuk/form', function() {
+                return view('admin.stock.masuk.form');
+            });
+            
+            // Stock Keluar
+            Route::get('/keluar', function() {
+                return view('admin.stock.keluar.index');
+            });
+            Route::get('/keluar/form', function() {
+                return view('admin.stock.keluar.form');
+            });
+            
+            // Sisa Stock
+            Route::get('/sisa', function() {
+                return view('admin.stock.sisa.index');
+            });
+        });
+
         Route::get('/transaction', function () {
             return view('admin.transaction.index');
         });
