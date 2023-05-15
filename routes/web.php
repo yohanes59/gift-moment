@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OutStockController;
 
 
 /*
@@ -18,7 +19,7 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::controller(AuthController::class)->group(function() {
+Route::controller(AuthController::class)->group(function () {
     // Route::get('/login', 'login')->middleware('isLogin');
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'doLogin')->name('do.login');
@@ -27,37 +28,35 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 // Route::middleware('auth')->group(function() {
-    Route::prefix('admin')->group(function() {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard.index');
-        });
-        
-        Route::resource('/category', CategoryController::class);
-        Route::resource('/product', ProductController::class);
-        
-        Route::prefix('stock')->group(function() {
-            // Stock Masuk
-            Route::resource('/masuk', InStockController::class);
-            
-            // Stock Keluar
-            Route::get('/keluar', function() {
-                return view('admin.stock.keluar.index');
-            });
-            
-            // Sisa Stock
-            Route::get('/sisa', function() {
-                return view('admin.stock.sisa.index');
-            });
-        });
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard.index');
+    });
 
-        Route::get('/transaction', function () {
-            return view('admin.transaction.index');
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/product', ProductController::class);
+
+    Route::prefix('stock')->group(function () {
+        // Stock Masuk
+        Route::resource('/masuk', InStockController::class);
+
+        // Stock Keluar
+        Route::get('/keluar', [OutStockController::class, 'index']);
+
+        // Sisa Stock
+        Route::get('/sisa', function () {
+            return view('admin.stock.sisa.index');
         });
     });
 
+    Route::get('/transaction', function () {
+        return view('admin.transaction.index');
+    });
+});
+
 // });
 
- // Home
- Route::get('/', function () {
+// Home
+Route::get('/', function () {
     return view('welcome');
 });
