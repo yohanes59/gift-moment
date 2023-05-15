@@ -17,8 +17,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('products_id');
             $table->foreign('products_id')->references('id')->on('products')->cascadeOnDelete();
-            $table->integer('stock_in')->unsigned()->nullable();
-            $table->integer('stock_out')->unsigned()->nullable();
+            $table->integer('incoming_stock')->unsigned()->nullable();
+            $table->integer('outcoming_stock')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

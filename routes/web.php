@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
@@ -33,15 +34,10 @@ Route::controller(AuthController::class)->group(function() {
         
         Route::resource('/category', CategoryController::class);
         Route::resource('/product', ProductController::class);
-
+        
         Route::prefix('stock')->group(function() {
             // Stock Masuk
-            Route::get('/masuk', function() {
-                return view('admin.stock.masuk.index');
-            });
-            Route::get('/masuk/form', function() {
-                return view('admin.stock.masuk.form');
-            });
+            Route::resource('/masuk', InStockController::class);
             
             // Stock Keluar
             Route::get('/keluar', function() {

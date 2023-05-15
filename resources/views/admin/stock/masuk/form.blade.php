@@ -5,38 +5,38 @@
 @section('admin')
     <div class="ml-5 mt-3">
         <div class="flex gap-3 items-center">
-            <x-link to="{{ url('admin/stock/masuk') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali" padding="py-2 px-4"
-                color="blue" />
+            <x-link to="{{ url('admin/stock/masuk') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali"
+                padding="py-2 px-4" color="blue" />
             <div class="text-lg font-medium">Stok Masuk</div>
         </div>
 
         <div class="max-w-2xl mt-3 p-4 bg-white shadow-md rounded-md">
-            <form class="space-y-4" action=""
-                method="POST" enctype="multipart/form-data">
-                
+            <form class="space-y-4" action="{{ url('/admin/stock/masuk') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <div class="space-y-2">
                         <div>
-                            <label for="product_id"
-                                class="block mb-2 text-sm font-medium text-slate-900">Produk</label>
-                            <select name="product_id"
+                            <label for="products_id" class="block mb-2 text-sm font-medium text-slate-900">Produk</label>
+                            <select name="products_id"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                id="product_id" required>
+                                id="products_id" required>
                                 <option disabled selected>Pilih produk</option>
-                                
+                                @foreach ($product as $data)
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->name }}
+                                    </option>
+                                @endforeach
                             </select>
-                            @error('product_id')
+                            @error('products_id')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div>
-                            <label for="stock_in" class="block mb-2 text-sm font-medium text-slate-900">Jumlah Stok</label>
-                            <input type="number" name="stock_in" id="stock_in"
-                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                >
-                            @error('stock_in')
+                            <label for="amount" class="block mb-2 text-sm font-medium text-slate-900">Jumlah Stok</label>
+                            <input type="number" name="amount" id="amount"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5">
+                            @error('amount')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
