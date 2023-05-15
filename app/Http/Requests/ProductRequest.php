@@ -27,11 +27,10 @@ class ProductRequest extends FormRequest
             'name' => ['required', 'string', 'max:50'],
             'categories_id' => ['required'],
             'image' => ['mimes:png,jpg,jpeg', 'max:2048'],
-            'price' => ['required', 'numeric', 'min_digits:4'],
             'capital_price' => ['required', 'numeric', 'min_digits:4'],
+            'price' => ['required', 'numeric', 'min_digits:4'],
             'description' => ['required', 'string', 'max:1000'],
             'weight' => ['required', 'numeric', 'min_digits:2'],
-            'stock_amount' => ['required', 'numeric'],
             'minimum_order' => ['required', 'numeric']
         ];
     }

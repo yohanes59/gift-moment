@@ -69,12 +69,14 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        $data['stock_amount'] = 0;
+        
         if ($request->file('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
             $data['image'] = $request->file('image')->storeAs('assets/product', $newName, 'public');
         }
-
+        
         Product::create($data);
 
         return redirect('admin/product')->with('toast_success', 'Data Berhasil Disimpan!');
@@ -117,6 +119,7 @@ class ProductController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        
         if ($request->file('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->name . '-' . now()->timestamp . '.' . $extension;

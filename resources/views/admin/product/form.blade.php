@@ -33,7 +33,17 @@
                         </div>
 
                         <div>
-                            <label for="price" class="block mb-3 text-sm font-medium text-slate-900">Harga</label>
+                            <label for="capital_price" class="block mb-3 text-sm font-medium text-slate-900">Harga Modal</label>
+                            <input type="number" name="capital_price" id="capital_price"
+                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                value="{{ isset($item) ? $item->capital_price : '' }}">
+                            @error('capital_price')
+                                <span class="text-xs text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="price" class="block mb-3 text-sm font-medium text-slate-900">Harga Jual</label>
                             <input type="number" name="price" id="price"
                                 class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->price : '' }}">
@@ -61,7 +71,8 @@
                                 id="categories_id" required>
                                 <option disabled selected>Pilih kategori</option>
                                 @foreach ($category as $data)
-                                    <option value="{{ $data->id }}" {{ isset($item) ? ($item->categories_id == $data->id ? 'selected' : '') : '' }}>
+                                    <option value="{{ $data->id }}"
+                                        {{ isset($item) ? ($item->categories_id == $data->id ? 'selected' : '') : '' }}>
                                         {{ $data->name }}
                                     </option>
                                 @endforeach
@@ -78,6 +89,17 @@
                                 class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->weight : '' }}">
                             @error('weight')
+                                <span class="text-xs text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="minimum_order" class="block mb-3 text-sm font-medium text-slate-900">Minimum
+                                Order</label>
+                            <input type="number" name="minimum_order" id="minimum_order"
+                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                value="{{ isset($item) ? $item->minimum_order : '' }}">
+                            @error('minimum_order')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
