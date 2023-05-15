@@ -3,7 +3,7 @@
 @section('title', 'Produk')
 
 @section('admin')
-    <div>
+    <div class="mt-3">
 
         <div class="text-xl font-medium mb-8">List Produk</div>
 
@@ -36,19 +36,15 @@
 
         {{-- Tambah data --}}
         <div class="my-6">
-            {{-- <a href="{{ url('admin/product/create') }}"
-                class="py-3 px-5 rounded-md text-white bg-blue-500 hover:bg-blue-600">
-                <i class="fa-solid fa-plus mr-1"></i> Tambah Produk
-            </a> --}}
-            <x-link to="{{ url('admin/product/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Produk" />
+            <x-link to="{{ url('admin/product/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Produk" padding="py-3 px-5" />
         </div>
 
         {{-- Table --}}
-        <div class="overflow-x-auto relative shadow-md sm:rounded-md">
+        <div class="overflow-x-auto relative">
             <table class="w-full text-sm text-left text-gray-500" id="crudTable">
                 <thead class="text-xs text-white uppercase bg-indigo-500">
                     <tr class="divide-x divide-y">
-                        <th scope="col" class="w-16 py-3 px-6">
+                        <th scope="col" class="py-3 px-6">
                             ID
                         </th>
                         <th scope="col" class="py-3 px-6">
@@ -68,7 +64,9 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y"></tbody>
+                <tbody class="bg-white divide-y">
+
+                </tbody>
             </table>
         </div>
     </div>
@@ -87,14 +85,14 @@
             columns: [{
                     data: 'id',
                     name: 'id',
-                    className: 'w-16 py-4 px-6 text-center font-normal text-gray-900 whitespace-nowrap',
+                    className: 'py-4 px-6 text-center whitespace-nowrap',
                     width: '20%'
                 },
                 {
                     data: 'image',
                     name: 'image',
                     className: 'py-4 px-6',
-                    width: '20%'
+                    width: '10%'
                 },
                 {
                     data: 'name',
@@ -106,13 +104,13 @@
                     data: 'category.name',
                     name: 'category.name',
                     className: 'py-4 px-6',
-                    width: '20%'
+                    width: '10%'
                 },
                 {
                     data: 'price',
                     name: 'price',
                     className: 'py-4 px-6',
-                    width: '20%',
+                    width: '15%',
                     render: function(data, type, row) {
                         return 'Rp ' + new Intl.NumberFormat('id-ID', {
                             minimumFractionDigits: 0
@@ -122,9 +120,10 @@
                 {
                     data: 'action',
                     name: 'action',
+                    className: 'py-4 px-6',
                     orderable: false,
                     searchable: false,
-                    width: '15%'
+                    width: '10%'
                 },
             ]
         })
