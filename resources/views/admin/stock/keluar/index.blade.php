@@ -6,11 +6,6 @@
     <div class="mt-3">
         <div class="text-xl font-medium mb-8">List Stok Keluar</div>
 
-        {{-- Tambah data --}}
-        <div class="my-6">
-            <x-link to="{{ url('admin/stock/keluar/form') }}" size="md" icon="fa-edit mr-1" text="Edit Stok" padding="py-3 px-5" />
-        </div>
-
         {{-- Table --}}
         <div class="overflow-x-auto relative">
             <table class="w-full text-sm text-left text-gray-500" id="crudTable">

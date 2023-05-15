@@ -47,9 +47,6 @@ Route::controller(AuthController::class)->group(function() {
             Route::get('/keluar', function() {
                 return view('admin.stock.keluar.index');
             });
-            Route::get('/keluar/form', function() {
-                return view('admin.stock.keluar.form');
-            });
             
             // Sisa Stock
             Route::get('/sisa', function() {
