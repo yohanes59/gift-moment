@@ -8,8 +8,7 @@
 
         {{-- Tambah data --}}
         <div class="my-6">
-            <x-link to="{{ url('admin/faq/create') }}" size="md" icon="fa-plus mr-1" text="Tambah"
-                padding="py-3 px-5" />
+            <x-link to="{{ url('admin/faq/create') }}" size="md" icon="fa-plus mr-1" text="Tambah" padding="py-3 px-5" />
         </div>
 
         {{-- Table --}}
@@ -28,10 +27,75 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y">
-                    
-                </tbody>
+                <tbody class="bg-white divide-y"></tbody>
             </table>
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var datatable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: true,
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [{
+                    data: 'question',
+                    name: 'question',
+                    className: 'py-4 px-6',
+                },
+                {
+                    data: 'answer',
+                    name: 'answer',
+                    className: 'py-4 px-6',
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'py-4 px-6',
+                    orderable: false,
+                    searchable: false,
+                    width: '15%'
+                },
+            ]
+        })
+
+        function deleteData(itemId) {
+            let table = $('#crudTable');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let url = '{{ url('admin/faq') }}/' + itemId;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: {
+                            '_method': 'DELETE',
+                            '_token': '{{ csrf_token() }}'
+                        },
+                        success: function() {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            table.DataTable().ajax.reload()
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+@endpush

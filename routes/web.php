@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -59,12 +60,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // FAQ
-    Route::get('/faq', function () {
-        return view('admin.faq.index');
-    });
-    Route::get('/faq/create', function () {
-        return view('admin.faq.form');
-    });
+    Route::resource('/faq', FaqController::class);
 });
 
 // });

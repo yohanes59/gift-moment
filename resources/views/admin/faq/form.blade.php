@@ -5,13 +5,17 @@
 @section('admin')
     <div class="ml-5 mt-3">
         <div class="flex gap-3 items-center">
-            <x-link to="{{ url('admin/faq') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali"
-                padding="py-2 px-4" color="blue" />
+            <x-link to="{{ url('admin/faq') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali" padding="py-2 px-4"
+                color="blue" />
             <div class="text-lg font-medium">{{ isset($item) ? 'Edit' : 'Tambah' }} Pertanyaan FAQ</div>
         </div>
 
         <div class="max-w-2xl mt-3 p-4 bg-white shadow-md rounded-md">
-            <form class="space-y-4" action="{{ url('/admin/faq') }}" method="POST" enctype="multipart/form-data">
+            <form class="space-y-4" action="{{ isset($item) ? url('/admin/faq/' . $item->id) : url('/admin/faq') }}"
+                method="POST" enctype="multipart/form-data">
+                @if (isset($item))
+                    @method('PUT')
+                @endif
                 @csrf
                 <div>
                     <div class="space-y-2">
