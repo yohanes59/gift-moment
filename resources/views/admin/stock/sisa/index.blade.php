@@ -15,17 +15,56 @@
                             ID
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Produk
+                            Gambar Produk
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Stok
+                            Nama Produk
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Jumlah Stok
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y">
-                    
-                </tbody>
+                <tbody class="bg-white divide-y"></tbody>
             </table>
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        var datatable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: true,
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id',
+                    className: 'w-16 py-4 px-6 text-center font-normal text-gray-900 whitespace-nowrap',
+                    width: '20%',
+                },
+                {
+                    data: 'image',
+                    name: 'image',
+                    className: 'py-4 px-6',
+                    width: '20%'
+                },
+                {
+                    data: 'name',
+                    name: 'name',
+                    className: 'py-4 px-6',
+                    width: '20%'
+                },
+                {
+                    data: 'stock_amount',
+                    name: 'stock_amount',
+                    className: 'py-4 px-6',
+                    width: '20%',
+                },
+            ]
+        })
+    </script>
+@endpush

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
+use App\Http\Controllers\Admin\RemainingStockController;
 
 
 /*
@@ -47,11 +48,9 @@ Route::prefix('admin')->group(function () {
 
         // Stock Keluar
         Route::get('/keluar', [OutStockController::class, 'index']);
-
+        
         // Sisa Stock
-        Route::get('/sisa', function () {
-            return view('admin.stock.sisa.index');
-        });
+        Route::get('/sisa', [RemainingStockController::class, 'index']);
     });
 
     // Transaction
