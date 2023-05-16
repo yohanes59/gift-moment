@@ -53,7 +53,7 @@
             columns: [{
                     data: 'created_at',
                     name: 'created_at',
-                    className: 'w-16 py-4 px-6 text-center font-normal text-gray-900 whitespace-nowrap',
+                    className: 'py-4 px-6 whitespace-nowrap',
                     width: '20%',
                     render: function(data, type, row) {
                         const date = new Date(data);
@@ -85,6 +85,7 @@
                 {
                     data: 'action',
                     name: 'action',
+                    className: 'py-4 px-6',
                     orderable: false,
                     searchable: false,
                     width: '15%'

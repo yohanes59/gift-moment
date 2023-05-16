@@ -41,11 +41,18 @@
                       </li>
                 </ul>
             </li>
-
+            
             <li class="{{ request()->is('admin/transaction') ? 'bg-indigo-100 rounded-lg' : '' }}">
                 <a href="{{ url('admin/transaction') }}" class="flex items-center p-3 text-slate-800 rounded-lg hover:bg-indigo-100">
                     <i class="fa-solid fa-fw fa-money-bills text-indigo-400"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Transaksi</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('admin/faq') ? 'bg-indigo-100 rounded-lg' : '' }}">
+                <a href="{{ url('admin/faq') }}" class="flex items-center p-3 text-slate-800 rounded-lg hover:bg-indigo-100">
+                    <i class="fa-solid fa-fw fa-circle-question text-indigo-400"></i>
+                    <span class="flex-1 ml-3 whitespace-nowrap">FAQ</span>
                 </a>
             </li>
         </ul>

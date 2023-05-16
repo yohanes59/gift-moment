@@ -24,7 +24,7 @@
                 <div>
                     <label for="name" class="block mb-3 text-sm font-medium text-slate-900">Nama Kategori</label>
                     <input type="text" name="name" id="name"
-                        class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                        class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                         value="{{ isset($item) ? $item->name : '' }}">
                     @error('name')
                         <span class="text-xs text-red-500">{{ $message }}</span>
@@ -41,7 +41,7 @@
                 <div>
                     <label class="block mb-2 text-sm font-medium text-slate-900" for="image">Upload gambar</label>
                     <input type="file" name="image"
-                        class="block w-full text-sm text-slate-900 border border-slate-400 rounded-md cursor-pointer bg-slate-50 focus:outline-none"
+                        class="block w-full text-sm text-slate-900 border border-slate-400 rounded-md cursor-pointer bg-slate-100 focus:outline-none"
                         id="image" onchange="previewImage()">
                     @error('image')
                         <span class="text-xs text-red-500">{{ $message }}</span>
