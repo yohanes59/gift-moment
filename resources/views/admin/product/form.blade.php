@@ -22,7 +22,7 @@
                         <div>
                             <label for="name" class="block mb-3 text-sm font-medium text-slate-900">Nama</label>
                             <input type="text" name="name" id="name"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->name : '' }}">
                             @error('name')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
@@ -32,7 +32,7 @@
                         <div>
                             <label for="capital_price" class="block mb-3 text-sm font-medium text-slate-900">Harga Modal</label>
                             <input type="number" name="capital_price" id="capital_price"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->capital_price : '' }}">
                             @error('capital_price')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
@@ -42,7 +42,7 @@
                         <div>
                             <label for="price" class="block mb-3 text-sm font-medium text-slate-900">Harga Jual</label>
                             <input type="number" name="price" id="price"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->price : '' }}">
                             @error('price')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
@@ -52,7 +52,7 @@
                         <div>
                             <label for="description" class="block mb-3 text-sm font-medium text-slate-900">Deskripsi</label>
                             <textarea id="description" name="description" rows="4"
-                                class="block p-2.5 w-full text-sm text-slate-900 bg-slate-50 rounded-md border border-slate-400">{{ isset($item) ? $item->description : '' }}</textarea>
+                                class="block p-2.5 w-full text-sm text-slate-900 bg-slate-100 rounded-md border border-slate-400">{{ isset($item) ? $item->description : '' }}</textarea>
                             @error('description')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -64,7 +64,7 @@
                             <label for="categories_id"
                                 class="block mb-3 text-sm font-medium text-slate-900">Kategori</label>
                             <select name="categories_id"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 id="categories_id" required>
                                 <option disabled selected>Pilih kategori</option>
                                 @foreach ($category as $data)
@@ -83,7 +83,7 @@
                             <label for="weight" class="block mb-3 text-sm font-medium text-slate-900">Berat
                                 (Gram)</label>
                             <input type="number" name="weight" id="weight"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->weight : '' }}">
                             @error('weight')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
@@ -94,7 +94,7 @@
                             <label for="minimum_order" class="block mb-3 text-sm font-medium text-slate-900">Minimum
                                 Order</label>
                             <input type="number" name="minimum_order" id="minimum_order"
-                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->minimum_order : '' }}">
                             @error('minimum_order')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
@@ -112,7 +112,7 @@
                             <label class="block mb-2 text-sm font-medium text-slate-900" for="image">Upload
                                 gambar</label>
                             <input type="file" name="image"
-                                class="block w-full text-sm text-slate-900 border border-slate-400 rounded-md cursor-pointer bg-slate-50 focus:outline-none"
+                                class="block w-full text-sm text-slate-900 border border-slate-400 rounded-md cursor-pointer bg-slate-100 focus:outline-none"
                                 id="image" onchange="previewImage()">
                             @error('image')
                                 <span class="text-xs text-red-500">{{ $message }}</span>

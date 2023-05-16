@@ -29,13 +29,18 @@ Route::controller(AuthController::class)->group(function () {
 
 // Route::middleware('auth')->group(function() {
 Route::prefix('admin')->group(function () {
+    // Dashboard
     Route::get('/dashboard', function () {
         return view('admin.dashboard.index');
     });
 
+    // Category
     Route::resource('/category', CategoryController::class);
+
+    // Product
     Route::resource('/product', ProductController::class);
 
+    // Stock
     Route::prefix('stock')->group(function () {
         // Stock Masuk
         Route::resource('/masuk', InStockController::class);
@@ -49,8 +54,17 @@ Route::prefix('admin')->group(function () {
         });
     });
 
+    // Transaction
     Route::get('/transaction', function () {
         return view('admin.transaction.index');
+    });
+    
+    // FAQ
+    Route::get('/faq', function () {
+        return view('admin.faq.index');
+    });
+    Route::get('/faq/create', function () {
+        return view('admin.faq.form');
     });
 });
 
