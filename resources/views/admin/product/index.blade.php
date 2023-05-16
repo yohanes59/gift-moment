@@ -57,7 +57,10 @@
                             Kategori
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Harga
+                            Harga Modal
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Harga Jual
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Aksi
@@ -105,6 +108,17 @@
                     name: 'category.name',
                     className: 'py-4 px-6',
                     width: '10%'
+                },
+                {
+                    data: 'capital_price',
+                    name: 'capital_price',
+                    className: 'py-4 px-6',
+                    width: '15%',
+                    render: function(data, type, row) {
+                        return 'Rp ' + new Intl.NumberFormat('id-ID', {
+                            minimumFractionDigits: 0
+                        }).format(data);
+                    }
                 },
                 {
                     data: 'price',
