@@ -36,7 +36,8 @@
 
         {{-- Tambah data --}}
         <div class="my-6">
-            <x-link to="{{ url('admin/product/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Produk" padding="py-3 px-5" />
+            <x-link to="{{ url('admin/product/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Produk"
+                padding="py-3 px-5" />
         </div>
 
         {{-- Table --}}
@@ -55,6 +56,9 @@
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Kategori
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Sisa Stok
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Harga Modal
@@ -89,7 +93,10 @@
                     data: 'id',
                     name: 'id',
                     className: 'py-4 px-6 text-center whitespace-nowrap',
-                    width: '20%'
+                    width: '5%',
+                    render: function(data, type, row) {
+                        return data.substr(data.length - 5);
+                    }
                 },
                 {
                     data: 'image',
@@ -106,6 +113,12 @@
                 {
                     data: 'category.name',
                     name: 'category.name',
+                    className: 'py-4 px-6',
+                    width: '10%'
+                },
+                {
+                    data: 'stock_amount',
+                    name: 'stock_amount',
                     className: 'py-4 px-6',
                     width: '10%'
                 },
@@ -137,7 +150,7 @@
                     className: 'py-4 px-6',
                     orderable: false,
                     searchable: false,
-                    width: '10%'
+                    width: '15%'
                 },
             ]
         })
