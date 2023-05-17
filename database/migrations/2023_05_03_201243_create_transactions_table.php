@@ -18,6 +18,8 @@ return new class extends Migration
             $table->uuid('users_id');
             $table->foreign('users_id')->references('id')->on('users');
             $table->integer('total')->unsigned();
+            $table->integer('external_id')->unsigned();
+            $table->enum('payment_status', ['SUCCESS', 'PENDING', 'FAILED']);
             $table->timestamps();
         });
     }
