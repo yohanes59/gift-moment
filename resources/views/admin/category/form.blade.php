@@ -3,7 +3,7 @@
 @section('title', isset($item) ? 'Edit Kategori' : 'Tambah Kategori')
 
 @section('admin')
-    <div class="ml-5 mt-3">
+    <div class="lg:ml-5 mt-3">
         <div class="flex gap-3 items-center">
             {{-- <a href="{{ url('admin/category') }}" class="py-3 px-5 text-white rounded-xl bg-blue-500 hover:bg-blue-600">
                 <i class="fa-solid fa-arrow-left mr-1"></i> Kembali

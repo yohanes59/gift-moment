@@ -3,7 +3,7 @@
 @section('title', 'Stok')
 
 @section('admin')
-    <div class="ml-5 mt-3">
+    <div class="lg:ml-5 mt-3">
         <div class="flex gap-3 items-center">
             <x-link to="{{ url('admin/stock/masuk') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali"
                 padding="py-2 px-4" color="blue" />
