@@ -49,9 +49,6 @@ Route::prefix('admin')->group(function () {
 
         // Stock Keluar
         Route::get('/keluar', [OutStockController::class, 'index']);
-        
-        // Sisa Stock
-        Route::get('/sisa', [RemainingStockController::class, 'index']);
     });
 
     // Transaction

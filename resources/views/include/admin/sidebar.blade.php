@@ -35,10 +35,6 @@
                       <li class="{{ request()->is('admin/stock/keluar') ? 'bg-indigo-100 rounded-lg' : '' }}">
                          <a href="{{ url('admin/stock/keluar') }}" class="flex items-center w-full text-sm p-3 rounded-lg text-slate-800 hover:bg-indigo-100">Stok Keluar</a>
                       </li>
-                      
-                      <li class="{{ request()->is('admin/stock/sisa') ? 'bg-indigo-100 rounded-lg' : '' }}">
-                         <a href="{{ url('admin/stock/sisa') }}" class="flex items-center w-full text-sm p-3 rounded-lg text-slate-800 hover:bg-indigo-100">Sisa Stok</a>
-                      </li>
                 </ul>
             </li>
             
