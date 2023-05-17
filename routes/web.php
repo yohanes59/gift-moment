@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
-use App\Http\Controllers\Admin\RemainingStockController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 /*
@@ -32,9 +32,7 @@ Route::controller(AuthController::class)->group(function () {
 // Route::middleware('auth')->group(function() {
 Route::prefix('admin')->group(function () {
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard.index');
-    });
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // Category
     Route::resource('/category', CategoryController::class);
