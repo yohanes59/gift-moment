@@ -30,7 +30,7 @@ class InStockController extends Controller
                 ';
                 })
                 ->editColumn('image', function ($item) {
-                    return $item->product->image ? '<img src="' . Storage::url($item->product->image) . '" style="max-height: 40px;"/>' : '';
+                    return $item->product->image ? '<img src="' . Storage::url($item->product->image) . '" style="height: 60px; width: 60px;"/>' : '';
                 })
                 ->rawColumns(['action', 'image'])
                 ->make();

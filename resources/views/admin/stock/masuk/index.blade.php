@@ -54,7 +54,7 @@
                     data: 'created_at',
                     name: 'created_at',
                     className: 'py-4 px-6 whitespace-nowrap',
-                    width: '20%',
+                    width: '10%',
                     render: function(data, type, row) {
                         const date = new Date(data);
                         return date.toLocaleDateString('id-ID', {
@@ -68,7 +68,7 @@
                     data: 'image',
                     name: 'image',
                     className: 'py-4 px-6',
-                    width: '20%'
+                    width: '15%'
                 },
                 {
                     data: 'product.name',
@@ -80,7 +80,7 @@
                     data: 'incoming_stock',
                     name: 'incoming_stock',
                     className: 'py-4 px-6',
-                    width: '20%',
+                    width: '10%',
                 },
                 {
                     data: 'action',
@@ -88,7 +88,7 @@
                     className: 'py-4 px-6',
                     orderable: false,
                     searchable: false,
-                    width: '15%'
+                    width: '10%'
                 },
             ]
         })

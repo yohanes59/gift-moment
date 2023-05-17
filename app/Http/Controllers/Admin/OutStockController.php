@@ -17,7 +17,7 @@ class OutStockController extends Controller
 
             return DataTables::of($query)
                 ->editColumn('image', function ($item) {
-                    return $item->product->image ? '<img src="' . Storage::url($item->product->image) . '" style="max-height: 40px;"/>' : '';
+                    return $item->product->image ? '<img src="' . Storage::url($item->product->image) . '" style="height: 60px; width: 60px;"/>' : '';
                 })
                 ->rawColumns(['image'])
                 ->make();
