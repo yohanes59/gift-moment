@@ -39,7 +39,7 @@ class CategoryController extends Controller
                 ';
                 })
                 ->editColumn('image', function ($item) {
-                    return $item->image ? '<img src="' . Storage::url($item->image) . '" style="max-height: 40px;"/>' : '';
+                    return $item->image ? '<img src="' . Storage::url($item->image) . '" style="max-height: 60px; max-width: 60px;"/>' : '';
                 })
                 ->rawColumns(['action', 'image'])
                 ->make();

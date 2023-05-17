@@ -40,7 +40,8 @@
                 class="py-3 px-5 rounded-md text-white bg-blue-500 hover:bg-blue-600">
                 <i class="fa-solid fa-plus mr-1"></i> Tambah Kategori
             </a> --}}
-            <x-link to="{{ url('admin/category/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Kategori" padding="py-3 px-5" />
+            <x-link to="{{ url('admin/category/create') }}" size="md" icon="fa-plus mr-1" text="Tambah Kategori"
+                padding="py-3 px-5" />
         </div>
 
         {{-- Table --}}
@@ -84,7 +85,10 @@
                     data: 'id',
                     name: 'id',
                     className: 'py-4 px-6 text-center whitespace-nowrap',
-                    width: '20%'
+                    width: '10%',
+                    render: function(data, type, row) {
+                        return data.substr(data.length - 5);
+                    }
                 },
                 {
                     data: 'image',
