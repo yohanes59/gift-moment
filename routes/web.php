@@ -33,6 +33,8 @@ Route::controller(AuthController::class)->group(function () {
 Route::prefix('admin')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/profile', [DashboardController::class, 'editProfile']);
+    Route::post('/profile', [DashboardController::class, 'saveProfile']);
 
     // Category
     Route::resource('/category', CategoryController::class);
