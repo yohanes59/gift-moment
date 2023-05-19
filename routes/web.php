@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,42 +27,40 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'doLogin')->name('do.login');
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'doRegister')->name('do.register');
+    Route::get('/logout', 'logout')->name('logout');
 });
 
-// Route::middleware('auth')->group(function() {
-Route::prefix('admin')->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/profile', [DashboardController::class, 'editProfile']);
-    Route::post('/profile', [DashboardController::class, 'saveProfile']);
+Route::middleware('auth')->group(function () {
+    Route::prefix('admin')->group(function () {
+        // Dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index']);
+        Route::get('/profile', [DashboardController::class, 'editProfile']);
+        Route::match(['put', 'post'], '/profile', [DashboardController::class, 'saveProfile'])->name('admin.profile');
 
-    // Category
-    Route::resource('/category', CategoryController::class);
+        // Category
+        Route::resource('/category', CategoryController::class);
 
-    // Product
-    Route::resource('/product', ProductController::class);
+        // Product
+        Route::resource('/product', ProductController::class);
 
-    // Stock
-    Route::prefix('stock')->group(function () {
-        // Stock Masuk
-        Route::resource('/masuk', InStockController::class);
+        // Stock
+        Route::prefix('stock')->group(function () {
+            // Stock Masuk
+            Route::resource('/masuk', InStockController::class);
 
-        // Stock Keluar
-        Route::get('/keluar', [OutStockController::class, 'index']);
+            // Stock Keluar
+            Route::get('/keluar', [OutStockController::class, 'index']);
+        });
+
+        // Transaction
+        Route::get('/transaction', function () {
+            return view('admin.transaction.index');
+        });
+
+        // FAQ
+        Route::resource('/faq', FaqController::class);
     });
-
-    // Transaction
-    Route::get('/transaction', function () {
-        return view('admin.transaction.index');
-    });
-    
-    // FAQ
-    Route::resource('/faq', FaqController::class);
 });
-
-// });
 
 // Home
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);

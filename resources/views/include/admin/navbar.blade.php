@@ -34,10 +34,10 @@
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-slate-900" role="none">
-                                Nama Admin
+                                Nama :  {{ Auth::user()->name }}
                             </p>
                             <p class="text-sm font-medium text-slate-900 truncate" role="none">
-                                email.admin@gmail.com
+                                email : {{ Auth::user()->email }}
                             </p>
                         </div>
                         <ul class="py-3" role="none">
@@ -49,7 +49,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
                                     role="menuitem">
                                     <span><i class="fa-solid fa-sign-out mr-1"></i></span>
                                     Logout
