@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Models\UserDetail;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
@@ -21,6 +23,10 @@ class DashboardController extends Controller
 
     public function editProfile()
     {
+        $item = UserDetail::whereHas('user', function ($query) {
+            $query->where('roles', 'Admin');
+        })->first();
+
         $responseProvince = Http::withHeaders([
             'key' => config('rajaongkir.key')
         ])->get(config('rajaongkir.province_url'));
@@ -31,13 +37,15 @@ class DashboardController extends Controller
 
         $provinces = $responseProvince['rajaongkir']['results'];
         $cities = $responseCity['rajaongkir']['results'];
-        
-        return view('admin.profile.form', compact('provinces', 'cities'));
+
+        return view('admin.profile.form', compact('provinces', 'cities', 'item'));
     }
 
     public function saveProfile(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        $userId = User::where('roles', 'Admin')->first()->id;
+        UserDetail::updateOrCreate(['users_id' => $userId], $data);
+        return back()->with('info', 'Data Berhasil Diperbarui!');
     }
 }

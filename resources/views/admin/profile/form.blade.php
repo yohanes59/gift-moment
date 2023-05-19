@@ -11,15 +11,18 @@
         </div>
 
         <div class="max-w-4xl mt-3 p-4 bg-white shadow-md rounded-md">
-            <form class="space-y-2" action="/admin/profile" method="POST" enctype="multipart/form-data">
+            <form class="space-y-2" action="{{ route('admin.profile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @if (isset($item))
+                    @method('PUT')
+                @endif
                 <div class="grid md:grid-cols-2 md:gap-6">
                     <div class="space-y-2">
                         <div>
                             <label for="address" class="block mb-3 text-sm font-medium text-slate-900">Alamat</label>
                             <input type="text" name="address" id="address"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                value="">
+                                value="{{ isset($item) ? $item->address : '' }}">
                             @error('address')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -30,7 +33,7 @@
                                 Alamat</label>
                             <input type="text" name="address_detail" id="address_detail"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                value="">
+                                value="{{ isset($item) ? $item->address_detail : '' }}">
                             @error('address_detail')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -41,7 +44,7 @@
                                 Telepon</label>
                             <input type="text" name="phone_number" id="phone_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                value="+62">
+                                value="{{ isset($item) ? $item->phone_number : '' }}">
                             @error('phone_number')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -56,7 +59,10 @@
                                 id="provinces_id" required>
                                 <option disabled selected>Pilih provinsi</option>
                                 @foreach ($provinces as $province)
-                                    <option value="{{ $province['province_id'] }}">{{ $province['province'] }}</option>
+                                    <option value="{{ $province['province_id'] }}"
+                                        {{ isset($item) ? ($province['province_id'] == $item->provinces_id ? 'selected' : '') : '' }}>
+                                        {{ $province['province'] }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('provinces_id')
@@ -72,8 +78,13 @@
                                 id="city_id" required onchange="updatePostalCode()">
                                 <option disabled selected>Pilih kabupaten/kota</option>
                                 @foreach ($cities as $city)
+                                    {{-- <option value="{{ $province['province_id'] }}"
+                                        {{ isset($item) ? ($province['province_id'] == $item->provinces_id ? 'selected' : '') : '' }}>
+                                        {{ $province['province'] }}
+                                    </option> --}}
                                     <option value="{{ $city['city_id'] }}" data-postal-code="{{ $city['postal_code'] }}"
-                                        data-province-id="{{ $city['province_id'] }}">
+                                        data-province-id="{{ $city['province_id'] }}"
+                                        {{ isset($item) ? ($city['city_id'] == $item->city_id ? 'selected' : '') : '' }}>
                                         {{ $city['city_name'] }}
                                     </option>
                                 @endforeach
@@ -87,7 +98,7 @@
                             <label for="postal_code" class="block mb-3 text-sm font-medium text-slate-900">Kode Pos</label>
                             <input type="text" name="postal_code" id="postal_code"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
-                                readonly>
+                                readonly value="{{ isset($item) ? $item->postal_code : '' }}">
                             @error('postal_code')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -106,6 +117,7 @@
 @endsection
 
 @push('addon-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const originSelect = document.getElementById("city_id");
         const originProvinceSelect = document.getElementById("provinces_id");
