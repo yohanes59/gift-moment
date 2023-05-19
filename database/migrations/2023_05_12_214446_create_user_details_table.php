@@ -18,7 +18,7 @@ return new class extends Migration
             $table->uuid('users_id');
             $table->foreign('users_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('address');
-            $table->string('address_detail');
+            $table->string('address_detail')->nullable();
             $table->integer('provinces_id')->unsigned();
             $table->integer('city_id')->unsigned();
             $table->integer('postal_code')->unsigned();
