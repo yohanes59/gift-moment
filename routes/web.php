@@ -22,10 +22,9 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::controller(AuthController::class)->group(function () {
-    // Route::get('/login', 'login')->middleware('isLogin');
-    Route::get('/login', 'login')->name('login');
+    Route::get('/login', 'login')->name('login')->middleware('isLogin');
     Route::post('/login', 'doLogin')->name('do.login');
-    Route::get('/register', 'register')->name('register');
+    Route::get('/register', 'register')->name('register')->middleware('isLogin');
     Route::post('/register', 'doRegister')->name('do.register');
     Route::get('/logout', 'logout')->name('logout');
 });
