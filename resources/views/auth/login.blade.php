@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login User')
+@section('title', 'Login')
 
 @section('content') 
 
@@ -38,15 +38,8 @@
                 <input type="password" id="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Password..."/>
             </div>
             <div class="mt-3 flex justify-between items-center">
-                <div>
-                    <input type="checkbox">
-                    <label>Remember Me</label>
-                </div>
-                <div>
-                    {{-- <a href="#" class="text-indigo-800 font-semibold">Forgot Password?</a> --}}
-                </div>
             </div>
-            <div class="mt-5">
+            <div class="mt-3">
                 <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full hover:text-indigo-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
             </div>
             <div class="text-indigo-800 font-semibold mt-3">

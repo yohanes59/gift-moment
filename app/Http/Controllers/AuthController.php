@@ -35,12 +35,12 @@ class AuthController extends Controller
 
     public function login()
     {
-        return view('auth.loginUser');
+        return view('auth.login');
     }
 
     public function doLogin(AuthLoginRequest $request)
     {
-            if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            if (!Auth::attempt($request->only('email', 'password'))) {
                 throw ValidationException::withMessages([
                     'email' => trans('auth.failed')
                 ]);
