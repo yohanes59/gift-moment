@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -115,6 +116,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+        $id = $request->product;
         $item = Product::findOrFail($id);
 
         $data = $request->all();
