@@ -4,3 +4,4 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
 
 <script src="{{ asset('assets/js/imgPreview.js') }}"></script>
+<script src="{{ asset('assets/js/backToTop.js') }}"></script>
