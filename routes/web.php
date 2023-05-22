@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/transaction', function () {
             return view('admin.transaction.index');
         });
+        Route::get('/transaction/{id}/show', function () {
+            return view('admin.transaction.detail');
+        });
 
         // FAQ
         Route::resource('/faq', FaqController::class);

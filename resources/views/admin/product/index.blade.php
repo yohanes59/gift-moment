@@ -72,7 +72,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y">
-
+                    
                 </tbody>
             </table>
         </div>
@@ -92,7 +92,7 @@
             columns: [{
                     data: 'id',
                     name: 'id',
-                    className: 'py-4 px-6 text-center whitespace-nowrap',
+                    className: 'py-3 px-6 text-center whitespace-nowrap',
                     width: '5%',
                     render: function(data, type, row) {
                         return data.substr(data.length - 5);
@@ -101,31 +101,31 @@
                 {
                     data: 'image',
                     name: 'image',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '10%'
                 },
                 {
                     data: 'name',
                     name: 'name',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '20%'
                 },
                 {
                     data: 'category.name',
                     name: 'category.name',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '10%'
                 },
                 {
                     data: 'stock_amount',
                     name: 'stock_amount',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '10%'
                 },
                 {
                     data: 'capital_price',
                     name: 'capital_price',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '15%',
                     render: function(data, type, row) {
                         return 'Rp ' + new Intl.NumberFormat('id-ID', {
@@ -136,7 +136,7 @@
                 {
                     data: 'price',
                     name: 'price',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     width: '15%',
                     render: function(data, type, row) {
                         return 'Rp ' + new Intl.NumberFormat('id-ID', {
@@ -147,7 +147,7 @@
                 {
                     data: 'action',
                     name: 'action',
-                    className: 'py-4 px-6',
+                    className: 'py-3 px-6',
                     orderable: false,
                     searchable: false,
                     width: '15%'
