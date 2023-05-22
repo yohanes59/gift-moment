@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\DetailTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,9 +55,7 @@ Route::middleware('auth')->group(function () {
 
         // Transaction
         Route::get('/transaction', [TransactionController::class, 'index']);
-        Route::get('/transaction/{id}/show', function () {
-            return view('admin.transaction.detail');
-        });
+        Route::get('/transaction/{id}/show', [DetailTransactionController::class, 'show']);
 
         // FAQ
         Route::resource('/faq', FaqController::class);
