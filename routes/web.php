@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,7 @@ Route::middleware('auth')->group(function () {
         });
 
         // Transaction
-        Route::get('/transaction', function () {
-            return view('admin.transaction.index');
-        });
+        Route::get('/transaction', [TransactionController::class, 'index']);
         Route::get('/transaction/{id}/show', function () {
             return view('admin.transaction.detail');
         });

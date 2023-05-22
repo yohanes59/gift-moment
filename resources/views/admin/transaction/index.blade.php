@@ -42,16 +42,16 @@
                             ID
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Nama
+                            Tanggal Transaksi
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Status
+                            Nama
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Total
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Tanggal Transaksi
+                            Status
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Aksi
@@ -59,21 +59,80 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y">
-                    <tr>
-                        <td class="py-3 px-6">####</td>
-                        <td class="py-3 px-6">Nama Customer</td>
-                        <td class="py-3 px-6"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded">Success</span></td>
-                        <td class="py-3 px-6">Rp 420.000</td>
-                        <td class="py-3 px-6">20 Mei 2023</td>
-                        <td class="py-3 px-6">
-                            <a href="/admin/transaction/1/show"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600">
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <tr></tr>
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        var datatable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: true,
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id',
+                    className: 'py-3 px-6 text-center whitespace-nowrap',
+                    width: '5%',
+                    render: function(data, type, row) {
+                        return data.substr(data.length - 8);
+                    }
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                    className: 'py-4 px-6 whitespace-nowrap',
+                    width: '10%',
+                    render: function(data, type, row) {
+                        const date = new Date(data);
+                        const formattedDate = date.toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric',
+                        });
+                        return formattedDate.replace('pukul', '-');
+                    }
+                },
+                {
+                    data: 'user.name',
+                    name: 'user.name',
+                    className: 'py-3 px-6',
+                    width: '20%'
+                },
+                {
+                    data: 'total',
+                    name: 'total',
+                    className: 'py-3 px-6',
+                    width: '15%',
+                    render: function(data, type, row) {
+                        return 'Rp ' + new Intl.NumberFormat('id-ID', {
+                            minimumFractionDigits: 0
+                        }).format(data);
+                    }
+                },
+                {
+                    data: 'payment_status',
+                    name: 'payment_status',
+                    className: 'py-3 px-6',
+                    width: '20%'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'py-3 px-6',
+                    orderable: false,
+                    searchable: false,
+                    width: '15%'
+                },
+            ]
+        })
+    </script>
+@endpush
