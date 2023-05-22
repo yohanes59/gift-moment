@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app-auth')
 
 @section('title', 'Login')
 
 @section('content') 
-    <div class="flex justify-center items-center h-screen bg-indigo-100">
+    <div class="flex justify-center items-center h-screen w-screen bg-indigo-100 px-4 sm:px-0">
         <div class="w-full max-w-md p-8 shadow-lg bg-white rounded-md">
             <h1 class="text-3xl block text-center font-semibold">Login GiftMoment</h1>
             <div class="mt-3 flex justify-center">
