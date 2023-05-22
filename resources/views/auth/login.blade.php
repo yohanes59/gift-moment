@@ -3,24 +3,14 @@
 @section('title', 'Login')
 
 @section('content') 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <div class="flex justify-center items-center h-screen bg-indigo-1000">
-        <div class="w-96 p-6 shadow-lg bg-white rounded-md">
-            <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i>Login</h1>
-            <hr class="mt-3">
-            <div class="mt-3">
-                <form action="{{ route('do.login') }}" method="POST">
-                    @if ($errors->any())
+    <div class="flex justify-center items-center h-screen bg-indigo-100">
+        <div class="w-full max-w-md p-8 shadow-lg bg-white rounded-md">
+            <h1 class="text-3xl block text-center font-semibold">Login GiftMoment</h1>
+            <div class="mt-3 flex justify-center">
+                <div class="w-20 h-0.5 bg-slate-800"></div>
+            </div>
+            <div class="mt-10">
+                @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -28,28 +18,40 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif    
-                @csrf
-                <label for="email" class="block text-base mb-2">Email</label>
-                <input type="email" id="email" name="email" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" value="{{ old('email') }}" placeholder="Enter Email..."/>
+                @endif
+                
+                <form action="{{ route('do.login') }}" method="POST" class="space-y-4">
+                    @csrf
+
+                    <div>
+                        <div class="relative">
+                            <input type="email" id="email" name="email" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-sm border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{ old('email') }}" placeholder=" " />
+
+                            <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Email</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-sm border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+
+                            <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Password</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="mt-4">
+                            <button type="submit" class="py-3 rounded-sm bg-indigo-700 text-white w-full font-semibold">Login</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-sm text-center">
+                            <span>Baru di GiftMoment?</span> <a class="text-indigo-500" href="{{ route('register') }}">Daftar!</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="mt-3">
-                <label for="password" class="block text-base mb-2">Password</label>
-                <input type="password" id="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Password..."/>
-            </div>
-            <div class="mt-3 flex justify-between items-center">
-            </div>
-            <div class="mt-3">
-                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full hover:text-indigo-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
-            </div>
-            <div class="text-indigo-800 font-semibold mt-3">
-                <a class="small" href="{{ route('register') }}">Create an Account!</a>
-            </div>
-        </form>
         </div>
     </div>
-    
-</body>
-</html>
-
 @endsection
