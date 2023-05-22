@@ -57,24 +57,30 @@
                     width: '10%',
                     render: function(data, type, row) {
                         const date = new Date(data);
-                        return date.toLocaleDateString('id-ID', {
+                        const formattedDate = date.toLocaleDateString('id-ID', {
                             day: 'numeric',
                             month: 'long',
-                            year: 'numeric'
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric',
                         });
+                        return formattedDate.replace('pukul', '-');
                     }
                 },
                 {
                     data: 'image',
                     name: 'image',
                     className: 'py-4 px-6',
-                    width: '15%'
+                    width: '15%',
+                    searchable: false,
+                    orderable: false
                 },
                 {
                     data: 'product.name',
                     name: 'product.name',
                     className: 'py-4 px-6',
-                    width: '20%'
+                    width: '20%',
+                    searchable: true
                 },
                 {
                     data: 'incoming_stock',
