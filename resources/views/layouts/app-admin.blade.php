@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') || Admin</title>
 
-    @include('include.style')
+    @include('include.admin.style')
 </head>
 
 <body>
