@@ -50,7 +50,7 @@
                             id="dropdown-user">
                             <ul class="py-3" role="none">
                                 <li>
-                                    <a href="#"
+                                    <a href="/user/profile/{{ Auth::user()->id }}"
                                         class="block px-6 py-3 text-slate-700 hover:bg-slate-100" role="menuitem">
                                         <span><i class="fa-solid fa-gear mr-1"></i></span>
                                         Edit Profil

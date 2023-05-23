@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
@@ -71,4 +72,8 @@ Route::middleware('CheckRole')->group(function () {
 
     // Abous Us
     Route::view('/about/detail', 'customer.about.index');
+
+    // Profile User
+    Route::get('/user/profile/{id}', [ProfileController::class, 'editProfile']);
+    Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
 });
