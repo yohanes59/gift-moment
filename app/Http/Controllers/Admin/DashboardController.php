@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\ProfileRequest;
 
 class DashboardController extends Controller
 {
@@ -41,7 +42,7 @@ class DashboardController extends Controller
         return view('admin.profile.form', compact('provinces', 'cities', 'item'));
     }
 
-    public function saveProfile(Request $request)
+    public function saveProfile(ProfileRequest $request)
     {
         $data = $request->all();
         $userId = User::where('roles', 'Admin')->first()->id;
