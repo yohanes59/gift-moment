@@ -113,6 +113,11 @@
             ]
         })
 
+        $('table').on('draw.dt', function() {
+            $('[data-bs-toggle="tooltip-edit"]').tooltip();
+            $('[data-bs-toggle="tooltip-delete"]').tooltip();
+        })
+
         function deleteData(itemId) {
             let table = $('#crudTable');
             Swal.fire({

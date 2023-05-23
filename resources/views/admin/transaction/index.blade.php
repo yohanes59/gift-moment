@@ -134,5 +134,9 @@
                 },
             ]
         })
+
+        $('table').on('draw.dt', function() {
+            $('[data-bs-toggle="tooltip-detail"]').tooltip();
+        })
     </script>
 @endpush

@@ -64,3 +64,8 @@ Route::middleware('auth')->group(function () {
 
 // Home
 Route::get('/', [HomeController::class, 'index']);
+
+// Abous Us
+Route::get('/about', function() {
+    return view('customer.about.index');
+});
