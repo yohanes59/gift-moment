@@ -64,7 +64,7 @@ Route::middleware('auth','OnlyAdmin')->group(function () {
 });
 
 // Home
-Route::middleware('CheckRole')->group(function () {
+// Route::middleware('CheckRole')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
     Route::get('/detail/{id}', [DetailController::class, 'index']);
@@ -73,4 +73,4 @@ Route::middleware('CheckRole')->group(function () {
     Route::get('/about', function() {
         return view('customer.about.index');
     });
-});
+// });
