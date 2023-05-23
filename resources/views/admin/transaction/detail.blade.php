@@ -14,9 +14,14 @@
             <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Nama Customer :
                 {{ $detailTransaction[0]['transaction']['user']['name'] }}
             </div>
+            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Kurir :
+                {{ $detailTransaction[0]['courier'] }}
+            </div>
+            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Biaya Kirim :
+                {{ number_format($detailTransaction[0]['shipping_costs'], 0, ',', '.') }}
+            </div>
         </div>
-
-        {{-- Table --}}
+        
         <div class="overflow-x-auto relative">
             <table class="w-full text-sm text-left text-gray-500" id="crudTable">
                 <thead class="text-xs text-white uppercase bg-indigo-500">
@@ -61,8 +66,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <p>Kurir : {{ $detailTransaction[0]['courier'] }}</p>
-            <p>Ongkos Kirim : Rp. {{ number_format($detailTransaction[0]['shipping_costs'], 0, ',', '.') }}</p>
+
         </div>
     </div>
 @endsection
