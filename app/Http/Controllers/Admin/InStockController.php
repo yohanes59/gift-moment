@@ -22,7 +22,7 @@ class InStockController extends Controller
                     return '
                     <td class="w-32 py-4 px-6">
                         <div class="flex items-center space-x-2">
-                            <button class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" onclick="deleteData(\'' . $item->id . '\')">
+                            <button class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" onclick="deleteData(\'' . $item->id . '\')" data-bs-toggle="tooltip-delete" data-bs-title="Hapus Stok">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>

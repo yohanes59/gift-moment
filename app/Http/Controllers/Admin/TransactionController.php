@@ -21,7 +21,7 @@ class TransactionController extends Controller
                     <td class="py-3 px-6">
                         <div class="flex items-center space-x-2">
                             <a href="/admin/transaction/' . $item->id . '/show"
-                            class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600">
+                            class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>

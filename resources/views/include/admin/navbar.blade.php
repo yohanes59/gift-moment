@@ -14,9 +14,8 @@
                     </svg>
                 </button>
                 <a href="#" class="flex ml-2 md:mr-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="logo BB Comp" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Admin BB
-                        Comp</span>
+                    <img src="{{ asset('assets/img/logo_GiftMoment_putih.png') }}" class="h-8 mr-3" alt="logo GiftMoment" />
+                    <span class="self-center text-lg font-semibold sm:text-xl whitespace-nowrap text-white">Admin GiftMoment</span>
                 </a>
             </div>
 
@@ -26,15 +25,20 @@
                         <button type="button" class="flex text-sm rounded-full" aria-expanded="false"
                             data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="{{ asset('assets/img/default.png') }}"
-                                alt="user photo">
+                            <div class="flex items-center gap-2">
+                                <div class="hidden sm:block text-white text-base font-medium">Hello, {{ Auth::user()->name }}</div>
+                                <img class="w-8 h-8 rounded-full" src="{{ asset('assets/img/default.png') }}" alt="user photo">
+                                <div class="text-white">
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                            </div>
                         </button>
                     </div>
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-slate-100 rounded shadow"
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
-                            <p class="text-sm text-slate-900" role="none">
-                                Nama :  {{ Auth::user()->name }}
+                            <p class="block sm:hidden text-sm font-medium text-slate-900 truncate" role="none">
+                                name : {{ Auth::user()->name }}
                             </p>
                             <p class="text-sm font-medium text-slate-900 truncate" role="none">
                                 email : {{ Auth::user()->email }}

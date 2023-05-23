@@ -29,10 +29,11 @@ class CategoryController extends Controller
                     <td class="w-32 py-4 px-6">
                         <div class="flex items-center space-x-2">
                             <a href="/admin/category/' . $item->id . '/edit"
-                                class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600">
+                                class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600" 
+                                data-bs-toggle="tooltip-edit" data-bs-title="Edit Kategori">
                                 <i class="fa-solid fa-edit"></i>
                             </a>
-                            <button class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" onclick="deleteData(\'' . $item->id . '\')">
+                            <button class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" onclick="deleteData(\'' . $item->id . '\')" data-bs-toggle="tooltip-delete" data-bs-title="Hapus Kategori">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
