@@ -7,97 +7,47 @@
     @include('components.carousel')
 
     <div class="px-4 lg:px-10 mx-auto w-full max-w-screen-xl">
-        {{-- Kategori --}}
-        <section class="py-4 px-4">
-            <div class="text-xl md:text-2xl font-bold text-slate-900">Kategori</div>
-            <div class="overflow-x-auto flex items-center space-x-3 mt-3">
-                <div class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
-                    <div class="w-7 h-7">
-                        <img src="{{ asset('assets/img/img-kategori.png') }}" alt="">
-                    </div>
-                    <div class="text-slate-900">Semua</div>
+       {{-- Kategori --}}
+       <section class="py-4 px-4">
+        <div class="text-xl md:text-2xl font-bold text-slate-900">Kategori</div>
+        <div class="overflow-x-auto flex items-center space-x-3 mt-3">
+            @foreach ($category as $item)
+            <div class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
+                <div class="w-7 h-7">
+                    @if ($item->image != '')
+                                    <img src="{{ asset(Storage::url($item->image)) }}" class="card-img-top"
+                                    height="200" alt="Gambar Produk {{ $item->name }}">
+                            @else
+                                    <img src="{{ asset('assets/img/img-kategori.png') }}" class="card-img-top" alt="...">
+                        @endif
                 </div>
-
-                {{-- Hapus data statis start --}}
-                <div class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
-                    <div class="w-7 h-7">
-                        <img src="{{ asset('assets/img/img-kategori.png') }}" alt="">
-                    </div>
-                    <div class="text-slate-900">Souvenir</div>
-                </div>
-                <div class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
-                    <div class="w-7 h-7">
-                        <img src="{{ asset('assets/img/img-kategori.png') }}" alt="">
-                    </div>
-                    <div class="text-slate-900">Hantaran</div>
-                </div>
-                {{-- Hapus data statis end --}}
+                <div class="text-slate-900">{{$item->name}}</div>
             </div>
-        </section>
+            @endforeach
+        </div>
+    </section>
 
         {{-- Produk --}}
         <section class="py-4 px-4">
             <div class="text-xl md:text-2xl font-bold text-slate-900">Produk</div>
-
             <div class="flex flex-wrap gap-5 mt-3 mb-8">
+                @foreach ($product as $items)
                 <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
                     <div>
-                        <img src="{{ asset('assets/img/img-product.png') }}" alt="">
+                        @if ($items->image != '')
+                                    <img src="{{ asset(Storage::url($items->image)) }}" class="card-img-top"
+                                    height="200" alt="Gambar Produk {{ $items->name }}">
+                            @else
+                                    <img src="{{ asset('assets/img/img-product.png') }}" class="card-img-top" alt="...">
+                        @endif
                     </div>
                     <div class="flex flex-col p-3">
-                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Souvenir</div>
-                        <div class="text-slate-900 line-clamp-2">Cermin Gagang Bulat Emas</div>
-                        <div class="text-slate-900 font-bold">Rp 2.000</div>
-                        <div class="text-slate-500 line-through">Rp 2.000</div>
+                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">{{$items->category->name}}</div>
+                        <div class="text-slate-900 line-clamp-2">{{$items->name}}</div>
+                        <div class="text-slate-900 font-bold">Rp{{ number_format($items->price, 0, ',', '.') }}</div>
                     </div>
                 </div>
-
-                {{-- Hapus data statis start --}}
-                <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
-                    <div>
-                        <img src="{{ asset('assets/img/img-product.png') }}" alt="">
-                    </div>
-                    <div class="flex flex-col p-3">
-                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Souvenir</div>
-                        <div class="text-slate-900 line-clamp-2">Cermin Gagang Bulat Emas</div>
-                        <div class="text-slate-900 font-bold">Rp 2.000</div>
-                        <div class="text-slate-500 line-through">Rp 2.000</div>
-                    </div>
-                </div>
-                <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
-                    <div>
-                        <img src="{{ asset('assets/img/img-product.png') }}" alt="">
-                    </div>
-                    <div class="flex flex-col p-3">
-                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Souvenir</div>
-                        <div class="text-slate-900 line-clamp-2">Cermin Gagang Bulat Emas</div>
-                        <div class="text-slate-900 font-bold">Rp 2.000</div>
-                        <div class="text-slate-500 line-through">Rp 2.000</div>
-                    </div>
-                </div>
-                <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
-                    <div>
-                        <img src="{{ asset('assets/img/img-product.png') }}" alt="">
-                    </div>
-                    <div class="flex flex-col p-3">
-                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Souvenir</div>
-                        <div class="text-slate-900 line-clamp-2">Cermin Gagang Bulat Emas</div>
-                        <div class="text-slate-900 font-bold">Rp 2.000</div>
-                        <div class="text-slate-500 line-through">Rp 2.000</div>
-                    </div>
-                </div>
-                <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
-                    <div>
-                        <img src="{{ asset('assets/img/img-product.png') }}" alt="">
-                    </div>
-                    <div class="flex flex-col p-3">
-                        <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Souvenir</div>
-                        <div class="text-slate-900 line-clamp-2">Cermin Gagang Bulat Emas</div>
-                        <div class="text-slate-900 font-bold">Rp 2.000</div>
-                        <div class="text-slate-500 line-through">Rp 2.000</div>
-                    </div>
-                </div>
-                {{-- Hapus data statis end --}}
+                @endforeach
             </div>
         </section>
     </div>
