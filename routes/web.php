@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
@@ -65,6 +66,7 @@ Route::middleware('auth')->group(function () {
 // Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
+Route::get('/detail/{id}', [DetailController::class, 'index']);
 
 // Abous Us
 Route::get('/about', function() {

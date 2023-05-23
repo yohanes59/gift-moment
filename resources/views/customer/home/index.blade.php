@@ -40,7 +40,7 @@
             <div class="text-xl md:text-2xl font-bold text-slate-900">Produk</div>
             <div class="flex flex-wrap gap-5 mt-3 mb-8">
                 @foreach ($products as $item)
-                    <div class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
+                    <a href="{{ url('/detail/' . $item->slug) }}" class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
                         <div>
                             @if ($item->image != '')
                                 <img src="{{ asset(Storage::url($item->image)) }}" class="card-img-top" height="200"
@@ -55,7 +55,7 @@
                             <div class="text-slate-900 line-clamp-2">{{ $item->name }}</div>
                             <div class="text-slate-900 font-bold">Rp{{ number_format($item->price, 0, ',', '.') }}</div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </section>
