@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
 // Home
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
 
 // Abous Us
 Route::get('/about', function() {
