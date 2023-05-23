@@ -14,7 +14,7 @@
                     <a href="{{ url('/') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Beranda</a>
                 </li>
                 <li class="{{ request()->is('about') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
-                    <a href="{{ url('about') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
+                    <a href="/about/detail" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
                 </li>
 
                 @guest

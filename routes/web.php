@@ -70,7 +70,5 @@ Route::middleware('CheckRole')->group(function () {
     Route::get('/detail/{id}', [DetailController::class, 'index']);
 
     // Abous Us
-    Route::get('/about', function() {
-        return view('customer.about.index');
-    });
+    Route::view('/about/detail', 'customer.about.index');
 });

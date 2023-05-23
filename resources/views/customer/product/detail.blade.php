@@ -4,4 +4,5 @@
 
 @section('content')
     <div>Detail Produk</div>
+    {{$product}}
 @endsection
