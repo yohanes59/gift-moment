@@ -31,7 +31,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','OnlyAdmin')->group(function () {
     Route::prefix('admin')->group(function () {
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -63,10 +63,13 @@ Route::middleware('auth')->group(function () {
 });
 
 // Home
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
+Route::middleware('CheckRole')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
 
-// Abous Us
-Route::get('/about', function() {
-    return view('customer.about.index');
+    // Abous Us
+    Route::get('/about', function() {
+        return view('customer.about.index');
+    });
+
 });
