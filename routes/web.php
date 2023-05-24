@@ -67,13 +67,13 @@ Route::middleware('auth','OnlyAdmin')->group(function () {
 // Home
 Route::middleware('CheckRole')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/{id}', [HomeController::class, 'showProductByCategory']);
-    Route::get('/detail/{id}', [DetailController::class, 'index']);
+    Route::get('/category/{id}', [HomeController::class, 'showProductByCategory']);
+    Route::get('/product/{id}', [DetailController::class, 'index']);
 
     // Abous Us
-    Route::view('/about/detail', 'customer.about.index');
+    Route::view('/about', 'customer.about.index');
 
     // Profile User
-    Route::get('/user/profile/{id}', [ProfileController::class, 'editProfile']);
+    Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
     Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
 });

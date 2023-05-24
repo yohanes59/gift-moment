@@ -13,13 +13,10 @@
             <div class="overflow-x-auto flex items-center space-x-3 mt-3">
                 <a href="{{ url('/') }}"
                     class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
-                    {{-- <div class="w-7 h-7">
-                        <img src="{{ asset('assets/img/img-kategori.png') }}" alt="">
-                    </div> --}}
                     <div class="text-slate-900">Semua</div>
                 </a>
                 @foreach ($categories as $item)
-                    <a href="{{ url('/' . $item->slug) }}"
+                    <a href="{{ url('/category/' . $item->slug) }}"
                         class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
                         <div class="w-7 h-7">
                             @if ($item->image != '')
@@ -40,7 +37,7 @@
             <div class="text-xl md:text-2xl font-bold text-slate-900">Produk</div>
             <div class="flex flex-wrap gap-5 mt-3 mb-8">
                 @foreach ($products as $item)
-                    <a href="{{ url('/detail/' . $item->slug) }}" class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
+                    <a href="{{ url('/product/' . $item->slug) }}" class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg rounded-md">
                         <div>
                             @if ($item->image != '')
                                 <img src="{{ asset(Storage::url($item->image)) }}" class="card-img-top" height="200"

@@ -14,7 +14,7 @@
                     <a href="{{ url('/') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Beranda</a>
                 </li>
                 <li class="{{ request()->is('about') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
-                    <a href="/about/detail" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
+                    <a href="/about" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
                 </li>
 
                 @guest
@@ -50,7 +50,7 @@
                             id="dropdown-user">
                             <ul class="py-3" role="none">
                                 <li>
-                                    <a href="/user/profile/{{ Auth::user()->id }}"
+                                    <a href="/profile/{{ Auth::user()->id }}"
                                         class="block px-6 py-3 text-slate-700 hover:bg-slate-100" role="menuitem">
                                         <span><i class="fa-solid fa-gear mr-1"></i></span>
                                         Edit Profil
