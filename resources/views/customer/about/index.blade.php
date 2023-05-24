@@ -26,7 +26,7 @@
         </div>
         
         <section class="py-10 md:py-20 px-4 md:px-10">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-12">
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-5 md:gap-12">
                 <div class="w-full max-w-xs">
                     <img src="{{ asset('assets/img/logo_GiftMoment_10.png') }}" alt="">
                 </div>
@@ -34,7 +34,14 @@
                     <div class="flex flex-col gap-3">
                         <div class="w-16 h-1 bg-indigo-500 rounded-full"></div>
                         <div class="text-slate-900 text-justify">
-                            Lorem ipsum dolor sit amet consectetur. Commodo porta pharetra tincidunt rhoncus in semper velit adipiscing volutpat. Pretium amet ipsum integer semper fringilla vestibulum. Lectus scelerisque nibh sit fusce sit in eget a arcu. Tristique turpis vulputate turpis cras. Eget viverra cras et adipiscing orci non. Praesent enim tempor urna sit hendrerit. Amet tempor sed aliquet ullamcorper. Neque risus scelerisque arcu non at nulla sem nibh ut. Rhoncus sed ut lorem felis mauris orci vulputate habitasse. Sit purus ut urna porttitor mattis posuere tortor facilisis. Quis venenatis nibh enim pharetra integer. Facilisi blandit porttitor tincidunt sed nulla arcu fringilla.
+                            <p>Selamat datang di GiftMoment!</p><br/>
+                            <p>Kami adalah toko online yang berdedikasi untuk menyediakan perlengkapan dihari bahagia Anda. Dengan pengalaman kami dalam industri ini, kami mengerti betapa pentingnya momen-momen spesial dalam hidup Anda. Itulah mengapa kami hadir untuk membantu Anda menemukan barang-barang khusus yang akan menjadi kenang-kenangan berharga.</p><br/>
+                            <p>Di GiftMoment, kami menyediakan beragam produk berkualitas tinggi dengan harga terjangkau. Kami mengutamakan keunikan dan keaslian dalam setiap item yang kami tawarkan. Mulai dari souvenir buatan tangan yang unik hingga produk menarik lainnya, kami memiliki pilihan yang sesuai dengan selera dan kebutuhan Anda.</p><br/>
+                            <p>Kami juga menyadari betapa pentingnya momen pernikahan dalam hidup Anda. Oleh karena itu, kami dengan senang hati membantu Anda mencari barang kenang-kenangan yang sempurna untuk orang-orang terkasih yang terlibat dalam momen pernikahan Anda. Dengan kemudahan akses melalui perangkat seluler Anda, Anda dapat menjelajahi koleksi kami dengan mudah. Cukup kunjungi alamat web kami melalui browser ponsel Anda dan temukan berbagai souvenir dan mahar yang Anda cari.</p><br/>
+                            <p>Kami berkomitmen untuk memberikan pengalaman belanja yang menyenangkan dan memuaskan bagi setiap pelanggan kami. Tim kami siap membantu Anda dalam setiap langkah perjalanan belanja Anda di GiftMoment.</p><br/>
+                            <p>Terima kasih telah memilih kami sebagai sahabat momen bahagia Anda. Kami berharap dapat membuat setiap momen spesial dalam hidup Anda menjadi lebih berarti dan tak terlupakan.</p><br/>
+                            <p>Selamat berbelanja di GiftMoment!</p><br/>
+                            <p>Salam,<br/>Tim GiftMoment</p><br/>
                         </div>
                     </div>
                 </div>
