@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OutStockController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\HistoryStockController;
 use App\Http\Controllers\Admin\DetailTransactionController;
 
 /*
@@ -53,6 +54,9 @@ Route::middleware('auth','OnlyAdmin')->group(function () {
 
             // Stock Keluar
             Route::get('/keluar', [OutStockController::class, 'index']);
+            
+            // History Stock
+            Route::get('/stock-history', [HistoryStockController::class, 'index']);
         });
 
         // Transaction
