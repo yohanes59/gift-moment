@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::get();
-        $products = Product::get();
+        $products = Product::paginate(8);
 
         return view('customer.home.index', compact('categories', 'products'));
     }
@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $category = Category::where('slug', $slug)->firstOrFail();
-        $products = Product::where('categories_id', $category->id)->get();
+        $products = Product::where('categories_id', $category->id)->paginate(8);
 
         return view('customer.home.index', compact('categories', 'products'));
     }
