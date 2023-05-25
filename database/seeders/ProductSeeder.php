@@ -186,7 +186,7 @@ MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
                 '),
                 'weight' => '2000',
                 'stock_amount' => 0,
-                'minimum_order' => 0
+                'minimum_order' => 1
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -220,7 +220,7 @@ KELEBIHAN:
                 '),
                 'weight' => '1500',
                 'stock_amount' => 0,
-                'minimum_order' => 0
+                'minimum_order' => 1
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -253,7 +253,7 @@ KELEBIHAN:
                 '),
                 'weight' => '1000',
                 'stock_amount' => 0,
-                'minimum_order' => 0
+                'minimum_order' => 1
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -285,7 +285,7 @@ KELEBIHAN:
                 '),
                 'weight' => '3000',
                 'stock_amount' => 0,
-                'minimum_order' => 0
+                'minimum_order' => 1
             ],
             [
                 'categories_id' => $hantaran->id,
@@ -317,7 +317,7 @@ KELEBIHAN:
                 '),
                 'weight' => '2000',
                 'stock_amount' => 0,
-                'minimum_order' => 0
+                'minimum_order' => 1
             ],
         ];
 
