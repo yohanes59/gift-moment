@@ -69,7 +69,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
+        $data['slug'] = Str::slug($request->name, '-');
         $data['stock_amount'] = 0;
         
         if ($request->file('image')) {

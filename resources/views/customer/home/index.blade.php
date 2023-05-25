@@ -37,13 +37,12 @@
             <div class="text-xl md:text-2xl font-bold text-slate-900">Produk</div>
             <div class="flex flex-wrap gap-5 mt-3 mb-8">
                 @foreach ($products as $item)
-                    <a href="{{ url('/product/' . $item->slug) }}" class="w-full max-w-[150px] lg:max-w-[270px] flex flex-col gap-2 pb-2 shadow-lg overflow-hidden rounded-md">
-                        <div class="w-full h-72">
+                    <a href="{{ url('/product/' . $item->slug) }}" class="w-full max-w-[150px] lg:max-w-[270px] md:max-w-[220px] flex flex-col gap-2 pb-2 shadow-lg overflow-hidden rounded-md">
+                        <div class="w-full h-48 md:h-72 lg:h-80">
                             @if ($item->image != '')
-                                <img src="{{ asset(Storage::url($item->image)) }}" class="object-cover w-full h-72" height="200"
-                                    alt="Gambar Produk {{ $item->name }}">
+                                <img src="{{ asset(Storage::url($item->image)) }}" class="object-cover w-full h-48 md:h-72 lg:h-80" alt="Gambar Produk {{ $item->name }}">
                             @else
-                                <img src="{{ asset('assets/img/img-product.png') }}" class="object-cover w-full h-72" alt="...">
+                                <img src="{{ asset('assets/img/img-product.png') }}" class="object-cover w-full h-48 md:h-72 lg:h-80" alt="...">
                             @endif
                         </div>
                         <div class="flex flex-col p-3">
