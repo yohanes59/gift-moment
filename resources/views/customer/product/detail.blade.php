@@ -33,8 +33,8 @@
         <form action="" method="POST">
             @csrf
             <div class="w-full mt-6 flex gap-10">
-                <div class="w-1/3">
-                    <img class="rounded-xl w-full object-cover" src="{{ asset(Storage::url($product->image)) }}" alt="">
+                <div class="w-1/3 h-96">
+                    <img class="rounded-xl w-full h-full object-cover" src="{{ asset(Storage::url($product->image)) }}" alt="">
                 </div>
                 <div class="w-2/5 flex flex-col py-8 pr-6 divide-y">
                     <div>
