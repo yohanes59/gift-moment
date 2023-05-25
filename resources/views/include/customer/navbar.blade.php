@@ -75,7 +75,7 @@
                     </div>
                 @endauth
                 <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                    <a href="{{ url('cart') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
                         <i class="fa-solid fa-cart-shopping"></i> <span class="md:hidden ml-1 text-slate-900">Keranjang</span>
                     </a>
                 </li>

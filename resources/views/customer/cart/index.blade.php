@@ -4,4 +4,5 @@
 
 @section('content')
     <div>Cart</div>
+    {{ $cart }}
 @endsection

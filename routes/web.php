@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\HistoryStockController;
 use App\Http\Controllers\Admin\DetailTransactionController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,12 +73,17 @@ Route::middleware('auth','OnlyAdmin')->group(function () {
 Route::middleware('CheckRole')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/category/{id}', [HomeController::class, 'showProductByCategory']);
-    Route::get('/product/{id}', [DetailController::class, 'index']);
 
-    // Abous Us
+    Route::get('/product/{id}', [DetailController::class, 'index']);
+    Route::post('/product/add-to-cart/{id}', [DetailController::class, 'add']);
+
+    Route::get('/cart', [CartController::class, 'index']);
+    // About Us
     Route::view('/about', 'customer.about.index');
 
     // Profile User
     Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
     Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
+
+    
 });
