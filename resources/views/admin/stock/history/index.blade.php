@@ -12,13 +12,13 @@
                 <thead class="text-xs text-white uppercase bg-indigo-500">
                     <tr class="divide-x divide-y">
                         <th scope="col" class="py-3 px-6">
-                            Tanggal
-                        </th>
-                        <th scope="col" class="py-3 px-6">
                             Gambar
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Nama Produk
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Tanggal
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Masuk
@@ -44,7 +44,23 @@
             ajax: {
                 url: '{!! url()->current() !!}',
             },
-            columns: [{
+            columns: [
+                {
+                    data: 'image',
+                    name: 'image',
+                    className: 'py-4 px-6',
+                    width: '10%',
+                    searchable: false,
+                    orderable: false
+                },
+                {
+                    data: 'product.name',
+                    name: 'product.name',
+                    className: 'py-4 px-6',
+                    width: '20%',
+                    searchable: true
+                },
+                {
                     data: 'created_at',
                     name: 'created_at',
                     className: 'py-4 px-6 whitespace-nowrap',
@@ -60,21 +76,6 @@
                         });
                         return formattedDate.replace('pukul', '-');
                     }
-                },
-                {
-                    data: 'image',
-                    name: 'image',
-                    className: 'py-4 px-6',
-                    width: '15%',
-                    searchable: false,
-                    orderable: false
-                },
-                {
-                    data: 'product.name',
-                    name: 'product.name',
-                    className: 'py-4 px-6',
-                    width: '20%',
-                    searchable: true
                 },
                 {
                     data: 'incoming_stock',
