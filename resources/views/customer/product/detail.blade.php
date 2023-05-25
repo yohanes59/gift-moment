@@ -47,7 +47,7 @@
             </nav>
         </div>
 
-        <form action="{{ url('/product/add-to-cart') }}" method="POST">
+        <form action="{{ url('/product/add-to-cart/' . $product->id) }}" method="POST">
             @csrf
             <div class="w-full mt-6 flex gap-10">
                 <div class="w-1/3 h-96">
@@ -78,8 +78,8 @@
                         </div>
 
                         <div class="h-full text-2xl flex justify-center items-center">
-                            <input type="text" class="border-none text-center quantity-input" value="1"
-                                min="1" name="qty">
+                            <input type="text" class="border-none text-center quantity-input" value="{{ $product->minimum_order }}"
+                                min="{{ $product->minimum_order }}" name="product_qty">
                         </div>
 
                         <div class="w-full">
@@ -146,7 +146,7 @@
         minusButton.addEventListener('click', function(e) {
             e.preventDefault();
             const currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
+            if (currentValue > {{ $product->minimum_order }}) {
                 quantityInput.value = currentValue - 1;
                 calculateSubtotal();
             }
@@ -160,8 +160,8 @@
             if (quantity > stock) {
                 quantityInput.value = stock;
                 calculateSubtotal();
-            } else if (quantity < 1) {
-                quantityInput.value = 1;
+            } else if (quantity < {{ $product->minimum_order }}) {
+                quantityInput.value = {{ $product->minimum_order }};
                 calculateSubtotal();
             } else {
                 calculateSubtotal();
