@@ -66,7 +66,7 @@
                     </div>
                     <div class="pt-5 px-4">
                         <div class="font-bold text-lg text-indigo-400">Deskripsi Produk</div>
-                        <div class="mt-3">{{ $product->description }}</div>
+                        <div class="mt-3">{!! $product->description !!}</div>
                     </div>
                 </div>
                 <div class="w-1/4 py-8">
