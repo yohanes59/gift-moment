@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('total')->unsigned();
             $table->integer('external_id')->unsigned();
             $table->enum('payment_status', ['SUCCESS', 'PENDING', 'FAILED']);
+            $table->enum('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED']);
             $table->timestamps();
         });
     }
