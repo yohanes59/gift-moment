@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,8 +12,9 @@ class HomeController extends Controller
     {
         $categories = Category::get();
         $products = Product::paginate(8);
+        $faq = Faq::get();
 
-        return view('customer.home.index', compact('categories', 'products'));
+        return view('customer.home.index', compact('categories', 'products','faq'));
     }
 
     public function showProductByCategory(Request $request, $slug)

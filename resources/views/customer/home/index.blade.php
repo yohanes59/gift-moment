@@ -71,15 +71,16 @@
             <div id="faq" data-accordion="collapse">
                 <div class="space-y-3">
                     <div>
+                        @foreach ($faq as $item)
                         {{-- 
                             -> angka di faq-heading-1 & faq-body-1 diganti ID FAQ    
                         --}}
-                        <h2 id="faq-heading-1">
+                        <h2 id="faq-heading-{{ $item->id }}">
                             <button type="button"
                                 class="bg-white flex items-center justify-between w-full p-5 font-medium text-left text-slate-900"
-                                data-accordion-target="#faq-body-1" aria-expanded="false" aria-controls="faq-body-1">
-                                <span class="pr-0.5">Lorem ipsum dolor sit amet consectetur. Egestas pellentesque eget nunc
-                                    tortor?</span>
+                                data-accordion-target="#faq-body-{{ $item->id }}" aria-expanded="false" aria-controls="faq-body-{{ $item->id }}">
+                                <span class="pr-0.5">
+                                    {{ $item->question }}</span>
                                 <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -88,62 +89,12 @@
                                 </svg>
                             </button>
                         </h2>
-                        <div id="faq-body-1" class="hidden" aria-labelledby="faq-heading-1">
+                        <div id="faq-body-{{ $item->id }}" class="hidden" aria-labelledby="faq-heading-{{ $item->id }}">
                             <div class="p-5 bg-white">
-                                <p class="text-slate-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-                                    quisquam? Deleniti, quibusdam impedit! At architecto repellat tempore consectetur
-                                    dolorem fugiat minus a placeat amet! Fuga nesciunt explicabo ad hic assumenda!</p>
+                                <p class="text-slate-900">{{ $item->answer }}</p>
                             </div>
                         </div>
-                    </div>
-
-                    {{-- Hapus data statis start --}}
-                    <div>
-                        <h2 id="faq-heading-2">
-                            <button type="button"
-                                class="bg-white flex items-center justify-between w-full p-5 font-medium text-left text-slate-900"
-                                data-accordion-target="#faq-body-2" aria-expanded="false" aria-controls="faq-body-2">
-                                <span class="pr-0.5">Lorem ipsum dolor sit amet consectetur. Egestas pellentesque eget nunc
-                                    tortor?</span>
-                                <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </h2>
-                        <div id="faq-body-2" class="hidden" aria-labelledby="faq-heading-2">
-                            <div class="p-5 bg-white">
-                                <p class="text-slate-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-                                    quisquam? Deleniti, quibusdam impedit! At architecto repellat tempore consectetur
-                                    dolorem fugiat minus a placeat amet! Fuga nesciunt explicabo ad hic assumenda!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h2 id="faq-heading-3">
-                            <button type="button"
-                                class="bg-white flex items-center justify-between w-full p-5 font-medium text-left text-slate-900"
-                                data-accordion-target="#faq-body-3" aria-expanded="false" aria-controls="faq-body-3">
-                                <span class="pr-0.5">Lorem ipsum dolor sit amet consectetur. Egestas pellentesque eget nunc
-                                    tortor?</span>
-                                <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </h2>
-                        <div id="faq-body-3" class="hidden" aria-labelledby="faq-heading-3">
-                            <div class="p-5 bg-white">
-                                <p class="text-slate-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-                                    quisquam? Deleniti, quibusdam impedit! At architecto repellat tempore consectetur
-                                    dolorem fugiat minus a placeat amet! Fuga nesciunt explicabo ad hic assumenda!</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     {{-- Hapus data statis end --}}
                 </div>
