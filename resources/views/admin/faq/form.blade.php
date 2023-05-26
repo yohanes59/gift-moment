@@ -21,17 +21,15 @@
                     <div class="space-y-2">
                         <div>
                             <label for="question" class="block mb-2 text-sm font-medium text-slate-900">Pertanyaan</label>
-                            <textarea id="question" name="question" rows="4"
-                                class="block p-2.5 w-full text-sm text-slate-900 bg-slate-100 rounded-md border border-slate-400">{{ isset($item) ? $item->question : '' }}</textarea>
+                            <textarea name="question" id="editor1">{{ isset($item) ? $item->question : '' }}</textarea>
                             @error('question')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
 
-                        <div>
+                        <div class="mt-5">
                             <label for="answer" class="block mb-2 text-sm font-medium text-slate-900">Jawaban</label>
-                            <textarea id="answer" name="answer" rows="4"
-                                class="block p-2.5 w-full text-sm text-slate-900 bg-slate-100 rounded-md border border-slate-400">{{ isset($item) ? $item->answer : '' }}</textarea>
+                            <textarea name="answer" id="editor2">{{ isset($item) ? $item->answer : '' }}</textarea>
                             @error('answer')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -48,3 +46,11 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor2');
+    </script>
+@endpush
