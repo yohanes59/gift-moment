@@ -19,24 +19,26 @@ class FaqSeeder extends Seeder
     {
         $data = [
             [
-                'question' => 'Apa nanti bisa di tukar jika barangnya tidak cocok ?',
-                'answer' => 'Mohon maaf barang yang sudah anda pesan tidak bisa di tukar, karena karyawan kami mengirim sesuai pesanan anda',
+                'question' => 'Bagaimana cara melakukan pemesanan ?',
+                'answer' => 'Buka Website GiftMoment dan login ke akun Anda
+                             -> Cari produk yang ingin Anda beli
+                             -> Setelah menemukan produk yang diinginkan, klik "Tambah ke Keranjang" jika Anda ingin melanjutkan belanja, Anda dapat mengakses keranjang belanja Anda untuk melakukan checkout kemudian Anda akan diarahkan ke halaman pembayaran untuk memasukkan alamat pengiriman dan memilih metode pembayaran.',
             ],
             [
-                'question' => 'Untuk pengiriman berapa lama ?',
-                'answer' => 'Jika pengiriman menggunakan J&T sekitar kurang lebih 3 s/d 14 hari',
+                'question' => 'Bagaimana cara melakukan pembayaran ?',
+                'answer' => 'Kami menyediakan berbagai metode pembayaran, termasuk transfer bank, kartu kredit, dan e-wallet.Setelah memilih produk dan alamat pengiriman, Anda dapat memilih metode pembayaran yang diinginkan saat melakukan checkout.',
             ],
             [
-                'question' => 'Jika ingin pesan, bagaimana cara pembayarannya ?',
-                'answer' => 'Untuk pembayaran bisa di transfer ke no rekening yang tertera',
+                'question' => 'Berapa lama waktu pengiriman produk ?',
+                'answer' => 'Waktu pengiriman produk kurang lebih 3 s/d 14 hari tergantung kepada lokasi pengiriman. Anda dapat menemukan perkiraan waktu pengiriman yang ditampilkan di halaman produk atau saat melakukan checkout.',
             ],
             [
-                'question' => 'Batas Transfer sampai kapan ya ?',
-                'answer' => 'Batas transfernya adalah 2 x 24 jam.Apabila lebih dari itu, kami akan membatalkan pesanan Anda secara otomatis',
+                'question' => 'Apakah ada garansi atau kebijakan retur barang jika tidak sesuai dengan pesanan atau rusak ?',
+                'answer' => 'Kami juga memiliki kebijakan Perlindungan Pembeli yang memberikan jaminan bagi pembeli jika barang tidak sesuai atau rusak.Jika Anda menerima barang yang tidak sesuai atau rusak, Anda dapat menghubungi nomer admin yang tertera',
             ],
             [
-                'question' => 'Selama pengiriman nanti boxnya bisa penyok/rusak tidak ya ?',
-                'answer' => 'Untuk pengiriman kita mempacking boxnya bubble 2 lapis, Namun karena ada oknum yang benar-benar kasar, maka boxnya bisa penyok juga. tetapi kemungkinannya hanya 15%.',
+                'question' => 'Bagaimana cara menghubungi customer service jika ada masalah atau pertanyaan terkait produk atau pembelian?',
+                'answer' => 'Kami menyediakan layanan customer service yang siap membantu Anda. Anda dapat menghubungi nomor telepon admin yang tercantum di website. Kami dengan senang hati membantu menjawab pertanyaan atau menyelesaikan masalah yang Anda hadapi.',
             ],
         ];
 
