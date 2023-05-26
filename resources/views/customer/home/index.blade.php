@@ -72,9 +72,6 @@
                 <div class="space-y-3">
                     <div>
                         @foreach ($faq as $item)
-                        {{-- 
-                            -> angka di faq-heading-1 & faq-body-1 diganti ID FAQ    
-                        --}}
                         <h2 id="faq-heading-{{ $item->id }}">
                             <button type="button"
                                 class="bg-white flex items-center justify-between w-full p-5 font-medium text-left text-slate-900"
@@ -96,7 +93,6 @@
                         </div>
                         @endforeach
                     </div>
-                    {{-- Hapus data statis end --}}
                 </div>
             </div>
         </div>

@@ -22,8 +22,9 @@ class HomeController extends Controller
         $categories = Category::all();
         $category = Category::where('slug', $slug)->firstOrFail();
         $products = Product::where('categories_id', $category->id)->paginate(8);
+        $faq = Faq::get();
 
-        return view('customer.home.index', compact('categories', 'products'));
+        return view('customer.home.index', compact('categories', 'products','faq'));
     }
     
 }
