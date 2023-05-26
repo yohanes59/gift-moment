@@ -93,7 +93,6 @@
                         </div>
                         @endforeach
                     </div>
-                    {{-- Hapus data statis end --}}
                 </div>
             </div>
         </div>
