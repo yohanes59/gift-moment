@@ -40,7 +40,8 @@ HARGA TERTERA UNTUK 1 PCS KACA OVAL
 - 1 pack berisi 20 Kaca Gagang
 - Setiap kaca sudah di bungkus plastik dan di ikat kawat emas
 - Berat Produk : 20 gram/pcs
-KETENTUAN ORDER:
+
+KETENTUAN ORDER :
 - Minimal Order 20 pcs.
                 '),
                 'weight' => '20',
@@ -54,12 +55,13 @@ KETENTUAN ORDER:
                 'price' => '1800',
                 'capital_price' => '850',
                 'description' => trim('
-Detail produk :
-- Bahan Stainless
-- Harga tertera untuk 1 pcs
-- Kemasan plastic dan di ikat kawat emas
-- Minimal order 20 pcs. 
-- Berat produk 55 gram/pcs
+HARGA TERTERA UNTUK 1 PCS GUNTING KUKU KECIL
+- Bahan : Stainless
+- Kemasan : Plastik dan di ikat kawat emas
+- Berat produk : 55 gram/pcs
+
+KETENTUAN ORDER:
+- Minimal Order 20 pcs.
                 '),
                 'weight' => '55',
                 'stock_amount' => 0,
@@ -72,15 +74,17 @@ Detail produk :
                 'price' => '3500',
                 'capital_price' => '1500',
                 'description' => trim('
-Deskripsi :
-Souvenir Talenan kayu
+HARGA TERTERA UNTUK 1 PCS TALENAN
+- Bahan : Kayu
+- Kemasan : Plastik, Kartu ucapan dan Pita 
+- Ukuran di kemas P x L x T : 12 x 24 x 1 cm 
+- Berat produk : 75 gram/pcs
 
--Bahan Kayu
--Ukuran 12 x 24 x 1 cm
--Harga sdh termasuk sablon / cetak nama (gambar suka2)
--Kemas plastik, kartu ucapan dan pita
--Minimal order 20pcs
-- Berat produk 75 gram/pcs
+KETENTUAN ORDER :
+- Minimal Order 20 pcs.
+
+Catatan :
+Harga sudah termasuk sablon,cetak nama dan custom gambar.
                 '),
                 'weight' => '75',
                 'stock_amount' => 0,
@@ -93,17 +97,17 @@ Souvenir Talenan kayu
                 'price' => '2500',
                 'capital_price' => '750',
                 'description' => trim('
-Deskripsi
-Souvenir Pernikahan Sisir
-- Kemas mika motif
+HARGA TERTERA UNTUK 1 PCS SISIR SET MIKA
+- Bahan : plastik
+- Kemasan : Mika printing
+- Ukuran : 20 cm
+- Berat produk : 18 gram/pcs
 
-KETENTUAN ORDER:
-- Minimal 50pcs
-- Bahan sisir dari plastik
-- Kemasan mika printing
-- Ukuran 20cm
-- Warna random atau campuran
-- Berat produk 18 gram/pcs
+KETENTUAN ORDER :
+- Minimal Order 50 pcs.
+
+Catatan :
+Untuk warna bisa request satu warna atau campuran.
                 '),
                 'weight' => '18',
                 'stock_amount' => 0,
@@ -116,16 +120,16 @@ KETENTUAN ORDER:
                 'price' => '4000',
                 'capital_price' => '3000',
                 'description' => trim('
-Deskripsi produk :
-- Ukuran 8x6cm
-- Desain mengikuti kemauan customer atau mengikuti buku katalog desain
-- Sablon satu tinta
-- Dilengkapi bungkus plastik dan ikat kawat emas
-- Bahan kaca
-- Berat 120 gram
+HARGA TERTERA UNTUK 1 GELAS 
+- Bahan : Kaca
+- Kemasan : Plastik dan ikat kawat emas
+- Ukuran : 8x6cm
+- Berat : 120 gram
+- Sablon : Satu tinta
 
 Catatan :
-Semua barang sebelum packing dan pengiriman di sortir dan dicek terlebih dahulu, semua dalam keadaan baik tidak ada yang rusak dan pecah.
+- Semua barang sebelum packing dan pengiriman di sortir dan dicek terlebih dahulu, semua dalam keadaan baik tidak ada yang rusak dan pecah.
+- Desain bisa custom atau mengikuti buku katalog desain.
                 '),
                 'weight' => '120',
                 'stock_amount' => 0,
@@ -138,19 +142,18 @@ Semua barang sebelum packing dan pengiriman di sortir dan dicek terlebih dahulu,
                 'price' => '3000',
                 'capital_price' => '960',
                 'description' => trim('
-Deskripsi Produk
-- pisau kecil kemasan mika motif
-- setiap pisau sudah di kemas mika motif 1/1
-- warna tangkai pisau sudah warna warni dan tidak bisa regues warna
-- bahan pisau dari besi stenlisteel gagang nya dari bahan p[lastik
-- ukuran panjang pisau 15cm
-- setiap pisau sudah dikemas mika satu persatu
+HARGA TERTERA UNTUK 1 PISAU KECIL MIKA
+- Bahan : besi stenlisteel
+- Kemasan : Mika motif
+- Ukuran : 15 cm
+- Berat produk : 15 gram
 
-KETENTUAN ORDER:
-- Harga tertera untuk 1 pcs
-- Minimal order 50 pcs
-- Warna Gagang pisau mikanya akan di kirimkan secara random mengikuti stok yang tersedia
-- Berat produk 15gram
+KETENTUAN ORDER :
+- Minimal Order 50 pcs.
+
+Catatan : 
+- warna tangkai pisau sudah warna warni dan tidak bisa request warna
+- setiap pisau sudah dikemas mika satu persatu
                 '),
                 'weight' => '15',
                 'stock_amount' => 0,
@@ -163,26 +166,28 @@ KETENTUAN ORDER:
                 'price' => '480000',
                 'capital_price' => '350000',
                 'description' => trim('
-Cutting Acrylic Premium Flower 30x45. Format Tulisan:
-(TULIS DI PESAN NOTES SAAT CHECKOUT)
+HARGA TERTERA UNTUK Cutting Acrylic Premium Flower 
+- Ukuran luar : 30x45cm
+- Berat : 2 kg
+
+Format Tulisan :
+(TULIS DI NOTES SAAT CHECKOUT)
 - Nama pasangan
 - Tanggal
 - Tulisan ayat / kata kata lainnya
-- (The Wedding Of) otomatis ditulis sesuai foto produk)
+- The Wedding Of (otomatis ditulis sesuai foto produk)
 CONTOH :
-Kholis & Nina 13 Februari 2023
-Ayat Ar Rum 21 Bahasa Indonesia
+- Kholis & Nina 13 Februari 2023, Ayat Ar Rum 21 Bahasa Indonesia
 
-SUDAH TERMASUK:
+SUDAH TERMASUK :
 - Uang Kertas Mainan maksimal 20 gulung, karena space terbatas.
-- Bingkai ukuran luar 30x45cm dgn Kaca Akrilik, jadi lebih aman saat pengiriman.
+- Bingkai dengan Kaca Akrilik, jadi lebih aman saat pengiriman.
 - Dekor Bunga Kain 
-- Berat produk 2 kg
 
-KELEBIHAN:
-- Bingkai mudah dibuka, bukaan di sisi belakang seperti biasa.
+KELEBIHAN :
+- Bingkai mudah dibuka, bukaan di sisi belakang.
 - Terdapat gantungan bingkai untuk digantung.
-MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
+- MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
                 '),
                 'weight' => '2000',
                 'stock_amount' => 0,
@@ -195,9 +200,12 @@ MENGGUNAKAN BUNGA PALSU BAHAN KAIN & BUNGA KERING ASLI, JADI AWET & EVERLASTING.
                 'price' => '150000',
                 'capital_price' => '100000',
                 'description' => trim('
-Gift Wedding Jam 25x35cm
-Format Tulisan:
-(TULIS DI PESAN NOTES SAAT CHECKOUT) 
+HARGA TERTERA UNTUK Gift Wedding Jam 
+- Ukuran : 25x35cm
+- Berat : 1,5kg
+
+Format Tulisan :
+(TULIS DI NOTES SAAT CHECKOUT) 
 - Nama pasangan
 - Tanggal
 - Jam
@@ -205,16 +213,14 @@ Format Tulisan:
 - Foto Pasangan
 - Bouquet kecil
 - Hiasan kupu-kupu
-(Happy Wedding) otomatis ditulis sesuai foto produk)
+- Happy Wedding (otomatis ditulis sesuai foto produk)
 CONTOH :
-Ghoji & Mahda 27.04.2023
-Ayat Ar Rum 21 Bahasa Indonesia
+Ghoji & Mahda 27.04.2023, Ayat Ar Rum 21 Bahasa Indonesia
 
-SUDAH TERMASUK:
-- Bingkai ukuran luar 25x35cm dgn Kaca Akrilik, jadi lebih aman saat pengiriman.
-- Berat Produk 1,5kg
+SUDAH TERMASUK :
+- Bingkai Luar dengan Kaca Akrilik, jadi lebih aman saat pengiriman.
 
-KELEBIHAN:
+KELEBIHAN :
 - Bingkai mudah dibuka, bukaan di sisi belakang seperti biasa.
 - Terdapat gantungan bingkai untuk digantung.
                 '),
@@ -229,24 +235,25 @@ KELEBIHAN:
                 'price' => '300000',
                 'capital_price' => '220000',
                 'description' => trim('
-Cutting Acrylic 20x30cm
-Format Tulisan:
+HARGA TERTERA UNTUK Cutting Acrylic 20x30cm
+- Ukuran : 20x30cm
+- Berat : 1 kg
+
+Format Tulisan :
 (TULIS DI PESAN NOTES SAAT CHECKOUT)
 - Nama pasangan
 - Tanggal
-
 CONTOH :
 Aryo & Irna 24 Mei 2023
 
-SUDAH TERMASUK:
--Uang Kertas Mainan maksimal 10 lembar, karena space terbatas.
-- Bingkai ukuran luar 20x30cm dgn Kaca Akrilik, jadi lebih aman saat pengiriman.
+SUDAH TERMASUK :
+- Uang Kertas Mainan maksimal 10 lembar, karena space terbatas.
+- Bingkai Luar dengan Kaca Akrilik, jadi lebih aman saat pengiriman.
 - Dekor Bunga Kain 
 - Uang koin 1.000 jadul 
 - Variasi buku nikah 
-- Berat Produk 1kg
 
-KELEBIHAN:
+KELEBIHAN :
 - Bingkai mudah dibuka, bukaan di sisi belakang seperti biasa.
 - Terdapat gantungan bingkai untuk digantung.
 - Menggunakan bunga palsu bahan kain jadi Awet & Everlasting.
@@ -262,21 +269,22 @@ KELEBIHAN:
                 'price' => '350000',
                 'capital_price' => '300000',
                 'description' => trim('
-Cutting Acrylic 25x35cm
+HARGA TERTERA UNTUK Cutting Acrylic 25x35cm
+- Ukuran : 25x35cm 
+- Berat : 3 kg
+
 Format Tulisan:
 (TULIS DI PESAN NOTES SAAT CHECKOUT)
 - Nama pasangan
 - Tanggal
-
 CONTOH :
 Riyanti & Lisa 15 Maret 2023
 
 SUDAH TERMASUK:
 - Uang Kertas Mainan maksimal 10 gulung, karena space terbatas.
-- Bingkai ukuran luar 25x35cm dgn Kaca Akrilik, jadi lebih aman saat pengiriman.
+- Bingkai Luar dengan Kaca Akrilik, jadi lebih aman saat pengiriman.
 - Dekor Bunga Kain 
 - Variasi buku nikah 
-- Berat produk 3kg
 
 KELEBIHAN:
 - Bingkai mudah dibuka, bukaan di sisi belakang seperti biasa.
@@ -294,21 +302,22 @@ KELEBIHAN:
                 'price' => '320000',
                 'capital_price' => '250000',
                 'description' => trim('
-Cutting Acrylic 25x35cm
+ HARGA TERTERA UNTUK Cutting Acrylic 25x35cm
+ - Ukuran : 25x35cm
+ - Berat : 2 kg
 Format Tulisan:
 (TULIS DI PESAN NOTES SAAT CHECKOUT)
 - Nama pasangan
 - Tanggal
 
 CONTOH :
-Rizki & Cicik 18 Januari 2023
-(Bismillah) otomatis ditulis sesuai foto produk)
+- Rizki & Cicik 18 Januari 2023
+- Bismillah (otomatis ditulis sesuai foto produk)
 
 SUDAH TERMASUK:
 - Uang Kertas Mainan maksimal 10 gulung, karena space terbatas.
-- Bingkai ukuran luar 25x35cm dgn Kaca Akrilik, jadi lebih aman saat pengiriman.
+- Bingkai luar dengan Kaca Akrilik, jadi lebih aman saat pengiriman.
 - Dekor Bunga Kain 
-- Berat produk 2kg
 
 KELEBIHAN:
 - Bingkai mudah dibuka, bukaan di sisi belakang seperti biasa.
