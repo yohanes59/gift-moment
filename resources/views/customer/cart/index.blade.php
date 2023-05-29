@@ -28,8 +28,8 @@
 
             {{-- List produk --}}
             <form action="">
-                <div class="w-full mt-6 pb-12 flex gap-10">
-                    <div class="w-2/3 flex flex-col gap-4">
+                <div class="w-full mt-6 pb-12 flex gap-6">
+                    <div class="w-3/4 flex flex-col gap-4">
                         @foreach ($cart as $item)
                             <div class="bg-white border border-slate-200 shadow-sm">
                                 <div class="flex items-center gap-4 p-4">
@@ -47,7 +47,13 @@
                                         </div>
 
                                         {{-- action --}}
-                                        <div class="flex">
+                                        <div class="flex justify-between gap-3">
+                                            {{-- subtotal --}}
+                                            <div class="flex flex-col justify-start w-28">
+                                                <div class="text-base line-clamp-2">Subtotal</div>
+                                                <div class="text-base font-bold">Rp 1.620.000</div>
+                                            </div>
+                                            
                                             {{-- edit qty --}}
                                             <div class="flex items-center">
                                                 <div class="w-[200px]">
@@ -72,7 +78,7 @@
                                             </div>
         
                                             {{-- action delete --}}
-                                            <div class="flex items-center px-4">
+                                            <div class="flex items-center px-2">
                                                 <form action="" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -88,7 +94,7 @@
                         @endforeach
                     </div>
 
-                    <div class="w-1/3">
+                    <div class="w-1/4">
                         <div class="py-8 px-4 bg-white border border-slate-200 shadow-lg rounded-lg">
                             <div class="text-md font-bold mb-3">Ringkasan</div>
                             <div class="mt-4">
