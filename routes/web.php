@@ -78,6 +78,7 @@ Route::middleware('CheckRole')->group(function () {
     Route::post('/product/add-to-cart/{id}', [DetailController::class, 'add']);
 
     Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/cart/{id}', [CartController::class, 'destroy']);
     // About Us
     Route::view('/about', 'customer.about.index');
 

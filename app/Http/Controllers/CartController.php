@@ -14,8 +14,15 @@ class CartController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        
-        $cart = Cart::where('users_id', auth()->id())->get();
-        return view('customer.cart.index', compact('cart'));
+
+        $cart = Cart::with('product.category')->where('users_id', auth()->id())->get();
+        return view('customer.cart.index2', compact('cart'));
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $cart = Cart::where('users_id', auth()->id())->findOrFail($id);
+        $cart->delete();
+        return back();
     }
 }
