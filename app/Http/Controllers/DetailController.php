@@ -27,19 +27,15 @@ class DetailController extends Controller
         $product = Product::findOrFail($productID);
 
         $data = [
-            'product_name' => $product->name,
-            'product_image' => $product->image,
-            'product_price' => $product->price,
+            'products_id' => $id,
             'users_id' => Auth::user()->id,
             'qty' => $request->product_qty,
-            'weight' => $product->weight,
-            'product_capital_price' => $product->capital_price,
         ];
 
         // dd($data);
 
         // kalau sudah ada data di cart, maka update data
-        $cart = Cart::where('product_name', $product->name)
+        $cart = Cart::where('products_id', $id)
             ->where('users_id', auth()->id())
             ->first();
         // dd($cart);
