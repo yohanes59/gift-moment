@@ -1,6 +1,6 @@
 <nav class="bg-white fixed w-full z-50 top-0 left-0 border-b border-slate-200 shadow-lg">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-4 md:px-10">
-        <a href="#" class="flex items-center">
+        <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ asset('assets/img/logo_GiftMoment.png') }}" class="h-8 mr-3" alt="Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap">GiftMoment</span>
         </a>
