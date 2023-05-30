@@ -9,9 +9,8 @@
     @include('include.style')
 </head>
 <body>
-    @include('include.customer.navbar')
+    @yield('navbar')
     
-    <div class="mt-[73px] md:mt-[66px] lg:mt-16"></div>
     @yield('content')
 
     <!-- Back to Top -->

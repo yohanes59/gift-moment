@@ -2,6 +2,11 @@
 
 @section('title', 'Tentang Kami')
 
+@section('navbar')
+    @include('include.customer.navbar')
+    <div class="mt-[73px] md:mt-[66px] lg:mt-16"></div>
+@endsection
+
 @section('content')
     <div class="px-4 lg:px-10 mx-auto w-full max-w-screen-xl">
         

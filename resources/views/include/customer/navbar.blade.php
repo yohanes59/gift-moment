@@ -52,7 +52,7 @@
                                 <li>
                                     <a href="/profile/{{ Auth::user()->id }}"
                                         class="block px-6 py-3 text-slate-700 hover:bg-slate-100" role="menuitem">
-                                        <span><i class="fa-solid fa-gear mr-1"></i></span>
+                                        <span><i class="fa-solid fa-user"></i></span>
                                         Edit Profil
                                     </a>
                                 </li>
@@ -60,7 +60,7 @@
                                     <a href="#"
                                         class="block px-6 py-3 text-slate-700 hover:bg-slate-100" role="menuitem">
                                         <span><i class="fa-solid fa-receipt mr-1"></i></span>
-                                        Riwayat Transaksi
+                                        Riwayat Pesanan
                                     </a>
                                 </li>
                                 <li>

@@ -79,6 +79,16 @@ Route::middleware('CheckRole')->group(function () {
 
     Route::get('/cart', [CartController::class, 'index']);
     Route::get('/cart/{id}', [CartController::class, 'destroy']);
+
+    // Checkout
+    Route::get('/checkout', function() {
+        return view('customer.cart.checkout');
+    });
+    Route::get('/checkout/courier', function() {
+        return view('customer.cart.courier');
+    });
+    Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
+
     // About Us
     Route::view('/about', 'customer.about.index');
 

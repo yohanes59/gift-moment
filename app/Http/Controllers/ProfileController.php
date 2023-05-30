@@ -9,6 +9,25 @@ use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
+    // numpang dulu buat nampilin data
+    public function address($id)
+    {
+        $data = UserDetail::where('users_id', $id)->first();
+
+        $responseProvince = Http::withHeaders([
+            'key' => config('rajaongkir.key')
+        ])->get(config('rajaongkir.province_url'));
+
+        $responseCity = Http::withHeaders([
+            'key' => config('rajaongkir.key')
+        ])->get(config('rajaongkir.city_url'));
+
+        $provinces = $responseProvince['rajaongkir']['results'];
+        $cities = $responseCity['rajaongkir']['results'];
+
+        return view('customer.cart.address', compact('provinces', 'cities', 'data'));
+    }
+
     public function editProfile($id)
     {
         $data = UserDetail::where('users_id', $id)->first();
