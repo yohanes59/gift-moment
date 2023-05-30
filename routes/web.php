@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
@@ -14,7 +16,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\HistoryStockController;
 use App\Http\Controllers\Admin\DetailTransactionController;
-use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth','OnlyAdmin')->group(function () {
+Route::middleware('auth', 'OnlyAdmin')->group(function () {
     Route::prefix('admin')->group(function () {
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -55,7 +56,7 @@ Route::middleware('auth','OnlyAdmin')->group(function () {
 
             // Stock Keluar
             Route::get('/keluar', [OutStockController::class, 'index']);
-            
+
             // History Stock
             Route::get('/stock-history', [HistoryStockController::class, 'index']);
         });
@@ -81,10 +82,9 @@ Route::middleware('CheckRole')->group(function () {
     Route::get('/cart/{id}', [CartController::class, 'destroy']);
 
     // Checkout
-    Route::get('/checkout', function() {
-        return view('customer.cart.checkout');
-    });
-    Route::get('/checkout/courier', function() {
+    Route::post('/cart/checkout', [CartController::class, 'getCartData']);
+    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::get('/checkout/courier', function () {
         return view('customer.cart.courier');
     });
     Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
@@ -95,6 +95,4 @@ Route::middleware('CheckRole')->group(function () {
     // Profile User
     Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
     Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
-
-    
 });
