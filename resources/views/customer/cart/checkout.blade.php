@@ -23,22 +23,34 @@
                     {{-- Alamat --}}
                     <div class="flex flex-col gap-3 border-b-2 border-indigo-200">
                         <div class="font-bold">Alamat Pengiriman</div>
-
-                        <div class="w-full flex flex-col px-2">
-                            <div class="font-bold">Nama Pembeli</div>
-                            <div class="">08123456789</div>
-                            <div class="text-slate-500">Detail Alamat, Lorem ipsum dolor sit amet consectetur, adipisicing
-                                elit. Aspernatur natus necessitatibus magni eveniet obcaecati voluptatum saepe culpa sed
-                                sunt quod!</div>
-                            <div class="text-slate-500">Provinsi, Kabupaten, Kode Pos</div>
-
-                            <div class="py-8">
-                                <a href="/checkout/address/{{ Auth::user()->id }}"
-                                    class="py-2 px-6 bg-white border-2 border-indigo-200 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white duration-300 rounded-md font-medium text-center">
-                                    <i class="fa-solid fa-location-pin mr-1"></i>Edit Alamat
-                                </a>
+                        @if ($userDetailData == null)
+                            <div class="w-full flex flex-col px-2">
+                                <div class="font-bold">Anda belum membuat informasi alamat pengiriman, silahkan buat
+                                    terlebih dahulu untuk melanjutkan pembayaran</div>
+                                <div class="py-8">
+                                    <a href="/checkout/address/{{ Auth::user()->id }}"
+                                        class="py-2 px-6 bg-white border-2 border-indigo-200 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white duration-300 rounded-md font-medium text-center">
+                                        <i class="fa-solid fa-location-pin mr-1"></i>Tambah Alamat
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="w-full flex flex-col px-2">
+                                <div class="font-bold">{{ auth()->user()->name }}</div>
+                                <div class="">{{ $userDetailData->phone_number }}</div>
+                                <div class="text-slate-500">{{ $userDetailData->address }},
+                                    {{ $userDetailData->address_detail }}</div>
+                                <div class="text-slate-500">Provinsi, Kabupaten, {{ $userDetailData->postal_code }}</div>
+
+                                <div class="py-8">
+                                    <a href="/checkout/address/{{ Auth::user()->id }}"
+                                        class="py-2 px-6 bg-white border-2 border-indigo-200 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white duration-300 rounded-md font-medium text-center">
+                                        <i class="fa-solid fa-location-pin mr-1"></i>Edit Alamat
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
 
                     {{-- Pesanan --}}
@@ -61,6 +73,9 @@
                                         <div class="text-slate-500">{{ $item_data['qty'] }} pcs</div>
                                         <div class="font-semibold">Rp
                                             {{ number_format($item_data['product_price'], 0, ',', '.') }}</div>
+
+                                        <div class="font-semibold">Sub Total: Rp
+                                            {{ number_format($item_data['sub_total'], 0, ',', '.') }}</div>
                                     </div>
                                 </div>
                             @endforeach
@@ -115,7 +130,7 @@
                             <div>
                                 <button onclick="window.location.href='{{ url('/checkout') }}';"
                                     class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full">
-                                    Lanjut Pembayaran??
+                                    Bayar Sekarang
                                 </button>
                             </div>
                         </div>
