@@ -3,6 +3,7 @@
 @section('title', 'Checkout')
 
 @section('content')
+    {{-- {{ var_dump($data) }} --}}
     <div class="px-4 lg:px-10 pb-14 mx-auto w-full max-w-screen-xl">
         @if ($userDetailData == null)
             <div class="flex flex-col pt-24 justify-center items-center gap-4">
@@ -11,7 +12,8 @@
                 </div>
                 <div>
                     <div class="text-xl text-center font-bold">Anda belum menambahkan informasi alamat pengiriman</div>
-                    <div class="text-base text-center text-slate-500">silahkan tambahkan terlebih dahulu untuk melanjutkan pembayaran</div>
+                    <div class="text-base text-center text-slate-500">silahkan tambahkan terlebih dahulu untuk melanjutkan
+                        pembayaran</div>
                 </div>
                 <a href="/checkout/address/{{ Auth::user()->id }}"
                     class="px-8 py-3 text-center text-white font-semibold bg-indigo-500 rounded-md hover:opacity-80 duration-300">
@@ -86,9 +88,11 @@
                                                 </div>
                                             </div>
                                             <div class="flex flex-col justify-center w-full">
-                                                <span class="font-bold text-sm line-clamp-2">{{ $item_data['product_name'] }}</span>
-                                                <span class="text-sm text-slate-500">{{ $item_data['total_weight'] }}gr</span>
-                                                @php $grandtotal_weight += $item_data['total_weight'] @endphp  
+                                                <span
+                                                    class="font-bold text-sm line-clamp-2">{{ $item_data['product_name'] }}</span>
+                                                <span
+                                                    class="text-sm text-slate-500">{{ $item_data['total_weight'] }}gr</span>
+                                                @php $grandtotal_weight += $item_data['total_weight'] @endphp
                                             </div>
                                         </div>
                                         <div class="flex justify-center w-1/5">
@@ -109,7 +113,10 @@
                             <div class="font-bold">Kurir</div>
 
                             <div class="w-full flex flex-col px-2">
-                                <div>Pilihan : <span class="font-bold">Nama Kurir (muncul jika sudah dipilih)</span></div>
+                                <div>
+                                    Pilihan : <span
+                                        class="font-bold">{{ isset($data['shipping']['courier_name']) ? $data['shipping']['courier_name'] . ' - ' . $data['shipping']['service'] . ' (estimasi ' . $data['shipping']['estimated_time'] . ')' : 'Nama Kurir (muncul jika sudah dipilih)' }}</span>
+                                </div>
 
                                 <div class="pt-6 pb-2">
                                     <a href="{{ url('/checkout/courier') }}"
@@ -121,14 +128,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="w-1/4">
                     <div class="px-4 lg:px-6 py-4 border border-indigo-100 rounded-md shadow-lg shadow-indigo-100">
-                        @php
-                            $subtotal = 0;
-                            foreach ($data['checkout_data'] as $product_id => $item_data) {
-                                $subtotal += $item_data['sub_total'];
-                            }
-                        @endphp
+
                         <div class="flex justify-between font-semibold text-lg">
                             <span>Ringkasan</span>
                             <span>{{ count($data['checkout_data']) }} Items</span>
@@ -136,14 +139,16 @@
                         <div class="flex flex-col gap-2 mt-4">
                             <div class="flex justify-between">
                                 <span>Subtotal Produk</span>
-                                <span>Rp {{ number_format($subtotal, 0, ',', '.') }}</span>
+                                <span>Rp {{ number_format($data['total'], 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between mb-4">
                                 <div>
                                     <div>Total Ongkos Kirim</div>
-                                    <div class="text-slate-500">({{ $grandtotal_weight }} gr)</div>
+                                    <div class="text-slate-500">
+                                        {{ isset($data['shipping']) ? '(' . $grandtotal_weight . ' gr)' : '' }}</div>
                                 </div>
-                                <span>Rp -</span>
+                                <span>Rp
+                                    {{ isset($data['shipping']['shipping_costs']) ? number_format($data['shipping']['shipping_costs'], 0, ',', '.') : '-' }}</span>
                             </div>
 
                             <div class="py-4 border-t-2 border-indigo-300 flex flex-col gap-4">

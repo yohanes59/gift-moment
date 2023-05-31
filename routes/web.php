@@ -85,9 +85,10 @@ Route::middleware('CheckRole')->group(function () {
     // Checkout
     Route::post('/cart/checkout', [CartController::class, 'getCartData']);
     Route::get('/checkout', [CheckoutController::class, 'index']);
-    Route::get('/checkout/courier', function () {
-        return view('customer.cart.courier');
-    });
+    Route::get('/checkout/courier', [CheckoutController::class, 'courier']);
+    Route::post('/checkout/courier/cek-ongkir', [CheckoutController::class, 'cekOngkir']);
+    Route::post('/checkout/courier/get-ongkir', [CheckoutController::class, 'getOngkir']);
+    
     Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
 
     // About Us

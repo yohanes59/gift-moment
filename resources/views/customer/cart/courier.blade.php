@@ -17,44 +17,43 @@
             {{-- pilih kurir --}}
             <div class="w-full max-w-sm flex flex-col gap-3">
                 <div class="w-full p-4 border border-indigo-100 bg-white shadow-md shadow-indigo-100 rounded-md">
-                    <h3 class="mb-3 font-medium text-slate-900">Rincian pesanan</h3>
-                    <div class="text-slate-500">
-                        Jumlah barang : 
+                    @php
+                        $grandtotal_weight = 0;
+                        foreach ($data['checkout_data'] as $product_id => $item_data) {
+                            $grandtotal_weight += $item_data['total_weight'];
+                        }
+                    @endphp
+                    <h3 class="mb-3 font-medium text-slate-900">Rincian Berat</h3>
+                    {{-- <div class="text-slate-500">
+                        Jumlah barang :
                         <span class="text-slate-800 font-semibold">21</span>
-                    </div>
+                    </div> --}}
 
                     <div class="text-slate-500">
-                        Berat total : 
-                        <span class="text-slate-800 font-semibold">2400 gr</span>
+                        Berat total :
+                        <span class="text-slate-800 font-semibold">{{ number_format($grandtotal_weight, 0, ',', '.') }}
+                            gr</span>
                     </div>
                 </div>
                 <div class="w-full p-4 border border-indigo-100 bg-white shadow-md shadow-indigo-100 rounded-md">
-                    {{-- <form class="space-y-6" action="{{ route('user.profile', ['id' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data"> --}}
-                    <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">
-                        {{-- @csrf
-                        @if (isset($data))
-                            @method('PUT')
-                        @endif --}}
+                    <form class="space-y-6" action="{{ url('/checkout/courier/cek-ongkir') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
                         <div>
                             <label for="courier" class="block mb-3 font-medium text-slate-900">Kurir</label>
-                            <select name="courier" class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                            <select name="courier"
+                                class="bg-slate-50 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 id="courier" required>
                                 <option disabled selected>Pilih kurir</option>
-                                {{-- @foreach ($category as $data)
-                                    <option value="{{ $data->id }}"
-                                        {{ isset($item) ? ($item->courier == $data->id ? 'selected' : '') : '' }}>
-                                        {{ $data->name }}
-                                    </option>
-                                @endforeach --}}
-                                <option value="">JNE</option>
-                                <option value="">POS</option>
-                                <option value="">TIKI</option>
+                                <option value="jne">JNE</option>
+                                <option value="pos">POS</option>
+                                <option value="tiki">TIKI</option>
                             </select>
                             @error('courier')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
-        
+
                         <button type="submit"
                             class="w-full text-white font-medium rounded-lg text-sm px-5 py-3 text-center bg-blue-500 hover:opacity-80">
                             Pilih jenis kurir
@@ -64,40 +63,54 @@
             </div>
 
             {{-- pilih service --}}
-            <div class="w-full max-w-md p-4 border border-indigo-100 bg-white shadow-md shadow-indigo-100 rounded-md">
-                <form class="space-y-6" action="">
-                    <div>
-                        <h3 class="mb-5 font-medium text-slate-900">Layanan pengiriman</h3>
-                        <ul class="grid w-full gap-6 md:grid-rows-2">
-                            <li>
-                                <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required>
-                                <label for="hosting-small" class="inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-50 hover:text-slate-600 hover:bg-slate-100">                           
-                                    <div class="block">
-                                        <div class="w-full text-lg font-semibold">OKE</div>
-                                        <div class="w-full text-sm">Rp 15.000 (estimasi 3-6 hari)</div>
-                                    </div>
-                                </label>
-                            </li>
+            @if ($ongkir != null)
+                <div class="w-full max-w-md p-4 border border-indigo-100 bg-white shadow-md shadow-indigo-100 rounded-md">
+                    <form class="space-y-6" action="{{ url('/checkout/courier/get-ongkir') }}" method="POST">
+                        @csrf
+                        <div>
+                            <h3 class="mb-5 font-medium text-slate-900">Layanan pengiriman</h3>
+                            <ul class="grid w-full gap-6 md:grid-rows-2">
+                                @foreach ($ongkir['results'] as $item)
+                                    <label for="name">Nama: {{ $item['name'] }}</label>
+                                    <input type="hidden" name="courier_code" value="{{ $item['code'] }}">
+                                    <input type="hidden" name="courier_name" value="{{ $item['name'] }}">
+                                    <p>Service: </p>
 
-                            <li>
-                                <input type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
-                                <label for="hosting-big" class="inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-50 hover:text-slate-600 hover:bg-slate-100">
-                                    <div class="block">
-                                        <div class="w-full text-lg font-semibold">REG</div>
-                                        <div class="w-full text-sm">Rp 20.000 (estimasi 3-6 hari)</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
+                                    @foreach ($item['costs'] as $cost)
+                                        <li>
+                                            <input type="radio" id="{{ $cost['service'] }}" name="service"
+                                                value="{{ $cost['service'] }}" class="hidden peer" required>
+                                            <label for="{{ $cost['service'] }}"
+                                                class="inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-50 hover:text-slate-600 hover:bg-slate-100">
+                                                @foreach ($cost['cost'] as $price)
+                                                    <div class="block">
+                                                        <div class="w-full text-lg font-semibold">{{ $cost['service'] }}
+                                                        </div>
+                                                        <div class="w-full text-sm">Rp
+                                                            {{ number_format($price['value'], 0, ',', '.') }} (estimasi
+                                                            {{ $price['etd'] }} hari)
+                                                            <input type="hidden" name="shipping_costs"
+                                                                value="{{ $price['value'] }}">
+                                                            <input type="hidden" name="estimated_time"
+                                                                value="{{ $price['etd'] }} hari">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                @endforeach
+                            </ul>
+                        </div>
 
-                    <button type="submit"
-                        class="w-full text-white font-medium rounded-lg text-sm px-5 py-3 text-center bg-blue-500 hover:opacity-80">
-                        <i class="fa-solid fa-check mr-1"></i>
-                        Pilih layanan
-                    </button>
-                </form>
-            </div>
+                        <button type="submit"
+                            class="w-full text-white font-medium rounded-lg text-sm px-5 py-3 text-center bg-blue-500 hover:opacity-80">
+                            <i class="fa-solid fa-check mr-1"></i>
+                            Pilih layanan
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
