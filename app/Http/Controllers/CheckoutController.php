@@ -42,6 +42,6 @@ class CheckoutController extends Controller
             }
         }
 
-        return view('customer.cart.checkout2', compact('data', 'userDetailData', 'provinceName', 'cityName'));
+        return view('customer.cart.checkout', compact('data', 'userDetailData', 'provinceName', 'cityName'));
     }
 }
