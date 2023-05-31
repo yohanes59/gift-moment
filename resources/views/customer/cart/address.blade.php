@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="px-4 lg:px-10 mx-auto w-full max-w-screen-xl">
-        <div class="lg:ml-5 mt-8">
+        <div class="mt-8">
             <div>
                 <a href="{{ url('/checkout') }}" class="flex font-semibold text-indigo-600 text-sm mt-10">
                     <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">

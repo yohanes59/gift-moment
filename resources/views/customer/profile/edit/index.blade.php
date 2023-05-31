@@ -4,19 +4,19 @@
 
 @section('navbar')
     @include('include.customer.navbar')
-    <div class="mt-[73px] md:mt-[66px] lg:mt-16"></div>
+    <div class="mt-14 md:mt-[66px] lg:mt-16"></div>
 @endsection
 
 @section('content')
     <div class="px-4 lg:px-10 mx-auto w-full max-w-screen-xl">
         <!-- Breadcrumb -->
         <div class="pt-10">
-            <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-white shadow-md"
+            <nav class="flex px-5 py-3 text-slate-700 border border-indigo-200 rounded-lg bg-white shadow-md shadow-indigo-100"
                 aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
                     <li class="inline-flex items-center">
                         <a href="{{ url('/') }}"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600">
+                            class="inline-flex items-center text-sm font-medium text-slate-700 hover:text-indigo-600">
                             <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -28,32 +28,32 @@
                     </li>
                     <li>
                         <div class="flex items-center">
-                            <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            <svg aria-hidden="true" class="w-6 h-6 text-slate-400" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Akun</span>
+                            <span class="ml-1 text-sm font-medium text-slate-500 md:ml-2">Akun</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex items-center">
-                            <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            <svg aria-hidden="true" class="w-6 h-6 text-slate-400" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Edit Profil</span>
+                            <span class="ml-1 text-sm font-medium text-slate-500 md:ml-2">Edit Profil</span>
                         </div>
                     </li>
                 </ol>
             </nav>
         </div>
 
-        <div class="lg:ml-5 mt-8">
-            <div class="w-full mt-3 p-4 bg-white shadow-md rounded-md">
+        <div class="mt-8">
+            <div class="w-full p-4 bg-white border border-indigo-200 shadow-md shadow-indigo-100 rounded-md">
                 <form class="space-y-6" action="{{ route('user.profile', ['id' => Auth::user()->id]) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf

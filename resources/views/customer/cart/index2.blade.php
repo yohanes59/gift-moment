@@ -30,7 +30,7 @@
                         @csrf
                         @foreach ($cart as $item)
                             <div
-                                class="flex items-center hover:bg-slate-100 py-5 bg-white border border-slate-200 mb-3 shadow-md">
+                                class="flex items-center hover:bg-slate-100 py-5 bg-white border border-indigo-200 mb-3 shadow-md shadow-indigo-100">
                                 <div class="flex w-2/5 gap-3 pl-6">
                                     <!-- product -->
                                     <input type="hidden" value="{{ $item->product->id }}" name="products_id[]">
@@ -87,7 +87,7 @@
                 </div>
 
                 <div id="summary"
-                    class="w-1/4 px-4 lg:px-6 py-10 border border-slate-200 rounded-md shadow-lg fixed right-5">
+                    class="w-1/4 px-4 lg:px-6 py-10 border border-indigo-200 rounded-md shadow-lg shadow-indigo-100 fixed right-5">
                     <h1 class="font-semibold text-2xl border-b pb-8">Ringkasan Pesanan</h1>
 
                     {{-- <div class="border-t mt-8"> --}}

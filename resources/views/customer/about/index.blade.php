@@ -4,7 +4,7 @@
 
 @section('navbar')
     @include('include.customer.navbar')
-    <div class="mt-[73px] md:mt-[66px] lg:mt-16"></div>
+    <div class="mt-14 md:mt-[66px] lg:mt-16"></div>
 @endsection
 
 @section('content')

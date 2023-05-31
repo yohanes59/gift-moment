@@ -57,27 +57,54 @@
                     <div class="flex flex-col gap-3 pb-6 border-b-2 border-indigo-200">
                         <div class="font-bold">Pesanan</div>
 
+                        <div class="flex border-b-2 border-indigo-50 py-5">
+                            <h3 class="font-semibold text-slate-600 text-xs uppercase w-2/5 px-6">Nama Produk</h3>
+                            <h3 class="font-semibold text-center text-slate-600 text-xs uppercase w-1/5 text-center">Quantity
+                            </h3>
+                            <h3 class="font-semibold text-center text-slate-600 text-xs uppercase w-1/5 text-center">Harga</h3>
+                            <h3 class="font-semibold text-center text-slate-600 text-xs uppercase w-1/5 text-center">Subtotal
+                            </h3>
+                        </div>
                         {{-- list produk --}}
                         <div class="flex flex-col gap-3">
                             @foreach ($data['checkout_data'] as $product_id => $item_data)
                                 {{-- {{ var_dump($product_data) }} --}}
-                                <div class="w-full flex gap-3 px-2">
+                                <div class="flex items-center py-5 bg-white">
+                                    <div class="flex w-2/5 gap-3 pl-6">
+                                        <div class="w-fit">
+                                            <div class="w-16 md:w-24 h-16 md:h-24 rounded-md overflow-hidden">
+                                                <img class="w-full h-full object-cover" src="{{ Storage::url($item_data['product_image']) }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col justify-center w-full">
+                                            <span class="font-bold text-sm line-clamp-2">{{ $item_data['product_name'] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center w-1/5">
+                                        <p class="mx-2 text-center w-12">{{ $item_data['qty'] }} pcs</p>
+                                    </div>
+                                    <span class="text-center w-1/5 font-semibold text-sm">Rp
+                                        {{ number_format($item_data['product_price'], 0, ',', '.') }}</span>
+                                    <span class="text-center w-1/5 font-semibold text-sm">Rp
+                                        {{ number_format($item_data['sub_total'], 0, ',', '.') }}</span>
+                                </div>
+                                {{-- <div class="w-full flex gap-3 px-2">
                                     <div class="w-fit">
                                         <div class="w-32 h-32 rounded-md overflow-hidden">
                                             <img class="object-cover" src="{{ Storage::url($item_data['product_image']) }}"
                                                 alt="">
                                         </div>
                                     </div>
-                                    <div class="flex flex-col py-2">
-                                        <div>{{ $item_data['product_name'] }}</div>
+                                    <div class="w-full flex items-center justify-between">
+                                        <div class="w-full max-w-xs border">{{ $item_data['product_name'] }}</div>
                                         <div class="text-slate-500">{{ $item_data['qty'] }} pcs</div>
                                         <div class="font-semibold">Rp
                                             {{ number_format($item_data['product_price'], 0, ',', '.') }}</div>
 
-                                        <div class="font-semibold">Sub Total: Rp
+                                        <div class="font-semibold">Rp
                                             {{ number_format($item_data['sub_total'], 0, ',', '.') }}</div>
                                     </div>
-                                </div>
+                                </div> --}}
                             @endforeach
 
                         </div>
@@ -119,13 +146,13 @@
                         </div>
                         <div class="flex justify-between mb-4">
                             <span>Total Ongkos Kirim</span>
-                            <span>Rp 20.000</span>
+                            <span>Rp -</span>
                         </div>
 
                         <div class="py-4 border-t-2 border-indigo-300 flex flex-col gap-4">
                             <div class="flex justify-between font-bold">
                                 <span>Total Belanja</span>
-                                <span>Rp 220.000</span>
+                                <span>Rp -</span>
                             </div>
                             <div>
                                 <button onclick="window.location.href='{{ url('/checkout') }}';"
