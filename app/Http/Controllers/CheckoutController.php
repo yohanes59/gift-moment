@@ -11,6 +11,6 @@ class CheckoutController extends Controller
     {
         $data = $request->session()->get('checkout_data');
         $userDetailData = UserDetail::where('users_id', auth()->user()->id)->first();
-        return view('customer.cart.checkout', compact('data', 'userDetailData'));
+        return view('customer.cart.checkout2', compact('data', 'userDetailData'));
     }
 }
