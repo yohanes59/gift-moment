@@ -73,6 +73,7 @@ Route::middleware('auth', 'OnlyAdmin')->group(function () {
 // Home
 Route::middleware('CheckRole')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+    Route::get('/search', [HomeController::class, 'search']);
     Route::get('/category/{id}', [HomeController::class, 'showProductByCategory']);
 
     Route::get('/product/{id}', [DetailController::class, 'index']);

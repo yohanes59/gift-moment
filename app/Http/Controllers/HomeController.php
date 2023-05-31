@@ -26,5 +26,17 @@ class HomeController extends Controller
 
         return view('customer.home.index', compact('categories', 'products','faq'));
     }
+
+    public function search(Request $request)
+    {
+        $categories = Category::get();
+        $faq = Faq::get();
+
+        $search = $request->search;
+
+        $products = Product::where('name','LIKE','%'.$search.'%')->paginate(5);
+
+        return view('customer.home.index', compact('categories', 'products','faq'));
+    }
     
 }
