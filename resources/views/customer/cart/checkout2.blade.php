@@ -11,7 +11,8 @@
                 </div>
                 <div>
                     <div class="text-xl text-center font-bold">Anda belum menambahkan informasi alamat pengiriman</div>
-                    <div class="text-base text-center text-slate-500">silahkan tambahkan terlebih dahulu untuk melanjutkan pembayaran</div>
+                    <div class="text-base text-center text-slate-500">silahkan tambahkan terlebih dahulu untuk melanjutkan
+                        pembayaran</div>
                 </div>
                 <a href="/checkout/address/{{ Auth::user()->id }}"
                     class="px-8 py-3 text-center text-white font-semibold bg-indigo-500 rounded-md hover:opacity-80 duration-300">
@@ -51,7 +52,8 @@
                                 <div class="">{{ $userDetailData->phone_number }}</div>
                                 <div class="text-slate-500">{{ $userDetailData->address }},
                                     {{ $userDetailData->address_detail }}</div>
-                                <div class="text-slate-500">Provinsi, Kabupaten, {{ $userDetailData->postal_code }}</div>
+                                <div class="text-slate-500">{{ $provinceName }}, {{ $cityName }},
+                                    {{ $userDetailData->postal_code }}</div>
 
                                 <div class="py-8">
                                     <a href="/checkout/address/{{ Auth::user()->id }}"
