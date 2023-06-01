@@ -78,24 +78,20 @@
 
                                     @foreach ($item['costs'] as $cost)
                                         <li>
-                                            <input type="radio" id="{{ $cost['service'] }}" name="service"
-                                                value="{{ $cost['service'] }}" class="hidden peer" required>
+                                            <input type="radio" id="{{ $cost['service'] }}" name="service[]"
+                                                value="{{ $cost['service'] }}, {{ $cost['cost'][0]['value'] }}, {{ $cost['cost'][0]['etd'] }}"
+                                                class="hidden peer" required>
                                             <label for="{{ $cost['service'] }}"
                                                 class="inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-50 hover:text-slate-600 hover:bg-slate-100">
-                                                @foreach ($cost['cost'] as $price)
-                                                    <div class="block">
-                                                        <div class="w-full text-lg font-semibold">{{ $cost['service'] }}
-                                                        </div>
-                                                        <div class="w-full text-sm">Rp
-                                                            {{ number_format($price['value'], 0, ',', '.') }} (estimasi
-                                                            {{ $price['etd'] }} hari)
-                                                            <input type="hidden" name="shipping_costs"
-                                                                value="{{ $price['value'] }}">
-                                                            <input type="hidden" name="estimated_time"
-                                                                value="{{ $price['etd'] }} hari">
-                                                        </div>
+
+                                                <div class="block">
+                                                    <div class="w-full text-lg font-semibold">{{ $cost['service'] }}
                                                     </div>
-                                                @endforeach
+                                                    <div class="w-full text-sm">Rp
+                                                        {{ number_format($cost['cost'][0]['value'], 0, ',', '.') }} - 
+                                                        (estimasi {{ $cost['cost'][0]['etd'] }} hari)
+                                                    </div>
+                                                </div>
                                             </label>
                                         </li>
                                     @endforeach

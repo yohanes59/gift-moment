@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\FaqController;
@@ -85,10 +86,13 @@ Route::middleware('CheckRole')->group(function () {
     // Checkout
     Route::post('/cart/checkout', [CartController::class, 'getCartData']);
     Route::get('/checkout', [CheckoutController::class, 'index']);
-    Route::get('/checkout/courier', [CheckoutController::class, 'courier']);
-    Route::post('/checkout/courier/cek-ongkir', [CheckoutController::class, 'cekOngkir']);
-    Route::post('/checkout/courier/get-ongkir', [CheckoutController::class, 'getOngkir']);
-    
+    // Route::post('/checkout', [CheckoutController::class, 'payNow']);
+
+    // Courier
+    Route::get('/checkout/courier', [CourierController::class, 'index']);
+    Route::post('/checkout/courier/cek-ongkir', [CourierController::class, 'cekOngkir']);
+    Route::post('/checkout/courier/get-ongkir', [CourierController::class, 'getOngkir']);
+    // Address
     Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
 
     // About Us

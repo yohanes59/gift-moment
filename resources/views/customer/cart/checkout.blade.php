@@ -115,7 +115,7 @@
                             <div class="w-full flex flex-col px-2">
                                 <div>
                                     Pilihan : <span
-                                        class="font-bold">{{ isset($data['shipping']['courier_name']) ? $data['shipping']['courier_name'] . ' - ' . $data['shipping']['service'] . ' (estimasi ' . $data['shipping']['estimated_time'] . ')' : 'Nama Kurir (muncul jika sudah dipilih)' }}</span>
+                                        class="font-bold">{{ isset($data['shipping']['courier_name']) ? $data['shipping']['courier_name'] . ' - ' . $data['shipping']['service'] . ' (estimasi ' . $data['shipping']['estimated_time'] . ' hari)' : 'Nama Kurir (muncul jika sudah dipilih)' }}</span>
                                 </div>
 
                                 <div class="pt-6 pb-2">
@@ -147,18 +147,18 @@
                                     <div class="text-slate-500">
                                         {{ isset($data['shipping']) ? '(' . $grandtotal_weight . ' gr)' : '' }}</div>
                                 </div>
-                                <span>Rp
-                                    {{ isset($data['shipping']['shipping_costs']) ? number_format($data['shipping']['shipping_costs'], 0, ',', '.') : '-' }}</span>
+                                <span>{{ isset($data['shipping']['shipping_costs']) ? 'Rp ' . number_format($data['shipping']['shipping_costs'], 0, ',', '.') : '-' }}</span>
                             </div>
 
                             <div class="py-4 border-t-2 border-indigo-300 flex flex-col gap-4">
                                 <div class="flex justify-between font-bold">
                                     <span>Total Belanja</span>
-                                    <span>Rp -</span>
+                                    <span>Rp
+                                        {{ isset($data['shipping']) ? number_format($data['total'] + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($data['total'], 0, ',', '.') }}</span>
                                 </div>
                                 <div>
-                                    <button onclick="window.location.href='{{ url('/checkout') }}';"
-                                        class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full">
+                                    <button id="pay-button"
+                                        class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
                                         Bayar Sekarang
                                     </button>
                                 </div>
