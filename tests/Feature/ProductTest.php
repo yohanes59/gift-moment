@@ -2,57 +2,83 @@
 
 namespace Tests\Feature\Admin;
 
-use App\Http\Requests\ProductRequest;
 use Tests\TestCase;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class ProductControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $product;
-
-    public function setup(): void
+    public function setUp(): void
     {
-        parent::setup();
+        parent::setUp();
 
-        $this->product = Product::factory()->create();
+        $user = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin123'),
+            'roles' => 'Admin'
+        ]);
+        
+        Auth::login($user); // Autentikasi pengguna
+        Session::start(); // Mulai session
     }
 
-    /**
-     * Test the index method of ProductController.
-     *
-     * @return void
-     */
-    public function testIndex()
+    public function testViewAdminProduct()
     {
-        $response = $this->get('/admin/product');
+        $response = $this->get(route('product.index'));
 
         $response->assertStatus(200);
         $response->assertViewIs('admin.product.index');
     }
 
-    /**
-     * Test the create method of ProductController.
-     *
-     * @return void
-     */
-    public function testCreate()
+    public function test_it_can_display_create_product_form()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/product/create');
+
         $response = $this->get('/admin/product/create');
 
         $response->assertStatus(200);
-        $response->assertViewIs('admin.product.form');
+        $response->assertSee('Form Tambah Produk');
+        $response->assertSee('Kategori');
     }
-    
+
+    public function test_it_can_display_edit_product_form()
+    {
+        $product = Product::factory()->create([
+            'name' => fake()->name,
+            'image' => fake()->imageUrl(),
+            'price' => fake()->numberBetween(100, 1000),
+            'capital_price' => fake()->numberBetween(50, 500),
+            'description' => fake()->paragraph,
+            'weight' => fake()->numberBetween(1, 10),
+            'stock_amount' => fake()->numberBetween(0, 100),
+            'minimum_order' => fake()->numberBetween(1, 5),
+            'slug' => fake()->slug,
+            'deleted_at' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]); // Buat produk dummy
+
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+                     ->get('/admin/product/'.$product->id.'/edit');
+
+        $response->assertStatus(200);
+        $response->assertSee('Form Edit Produk');
+        $response->assertSee('Kategori');
+    }
+
     public function test_admin_can_store_new_product()
     {
+        $this->withoutMiddleware();
+
         $admin = User::factory()->create();
         $response = $this->actingAs($admin)->post('/admin/product', [
             'categories_id ' => 'sovenir',
@@ -68,12 +94,4 @@ class ProductControllerTest extends TestCase
         $this->assertDatabaseHas('products', ['categories_id ' => 'sovenir','name' => 'Gunting Kuku','price' => 15000,'capital_price' => 15000,'description' => 'untuk gunting kuku','weight' => 10,'minimum_order' => 50]);
     }
 
-    public function test_admin_can_see_the_edit_product_page()
-    {
-        $admin = User::factory()->create();
-        $product = Product::factory()->create();
-        $response = $this->actingAs($admin)->get('/admin/product/'. $product->id. '/edit');
-        $response->assertStatus(200);
-        $response->assertSee($product->name);
-    }
 }

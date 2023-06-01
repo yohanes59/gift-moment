@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         $search = $request->search;
 
-        $products = Product::where('name','LIKE','%'.$search.'%')->paginate(5);
+        $products = Product::where('name','LIKE','%'.$search.'%')->paginate(8);
 
         return view('customer.home.index', compact('categories', 'products','faq'));
     }

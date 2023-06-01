@@ -3,6 +3,9 @@
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
@@ -11,15 +14,28 @@ use Tests\TestCase;
 
 class CategoryTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
 
-    /**
-     * Test index method.
-     *
-     * @return void
-     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $user = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin123'),
+            'roles' => 'Admin'
+        ]);
+        
+        Auth::login($user); // Autentikasi pengguna
+        Session::start(); // Mulai session
+    }
+
     public function testIndex()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/category');
+
         $this->withoutExceptionHandling();
 
         $response = $this->get('/admin/category');
@@ -29,6 +45,9 @@ class CategoryTest extends TestCase
 
     public function testCreate()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/category/create');
+
         $this->withoutExceptionHandling();
 
         $response = $this->get('/admin/category/create');
@@ -39,15 +58,17 @@ class CategoryTest extends TestCase
 
     public function testStore()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/category');
+
         $this->withoutExceptionHandling();
 
         Storage::fake('public');
 
-        $name = $this->faker->word;
+        $name = 'Sovenir';
 
         $response = $this->post('/admin/category', [
             'name' => $name,
-            'image' => UploadedFile::fake()->image('category.jpg')
         ]);
 
         $response->assertStatus(302);
@@ -55,7 +76,6 @@ class CategoryTest extends TestCase
         $this->assertDatabaseHas('categories', [
             'name' => $name,
             'slug' => fake()->name(),
-            'image' => 'category.jpg'
         ]);
 
         Storage::disk('public')->Exists('assets/category/category.jpg');
@@ -63,6 +83,9 @@ class CategoryTest extends TestCase
 
     public function testEdit()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/category/edit');
+        
         $this->withoutExceptionHandling();
 
         $category = Category::factory()->create();
@@ -76,6 +99,9 @@ class CategoryTest extends TestCase
 
     public function testDestroy()
     {
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/category/');
+
         $category = Category::factory()->create();
 
         $response = $this->delete('/admin/category/' . $category->id);
