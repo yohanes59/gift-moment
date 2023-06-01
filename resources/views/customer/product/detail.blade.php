@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="h-full text-2xl flex justify-center items-center">
-                            <input type="text" class="border-none text-center quantity-input" value="{{ $product->minimum_order }}"
+                            <input type="number" class="border-none text-center quantity-input" value="{{ $product->minimum_order }}"
                                 min="{{ $product->minimum_order }}" name="product_qty">
                         </div>
 
@@ -113,6 +113,7 @@
 @endsection
 
 @push('addon-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // fungsi spinner, calculate subtotal, dan validasi stok
         // Ambil elemen tombol + dan - serta elemen input

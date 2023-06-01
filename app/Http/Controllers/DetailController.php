@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Auth;
 
 class DetailController extends Controller
@@ -15,16 +16,12 @@ class DetailController extends Controller
         return view('customer.product.detail', compact('product'));
     }
 
-    public function add(Request $request, $id)
+    public function add(OrderRequest $request, $id)
     {
         // kalau belum login, harus login dulu
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
-        // cari product berdasarkan id
-        $productID = $id;
-        $product = Product::findOrFail($productID);
 
         $data = [
             'products_id' => $id,
