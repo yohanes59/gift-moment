@@ -27,8 +27,6 @@ return new class extends Migration
             $table->integer('profit')->unsigned();
             $table->integer('sub_total')->unsigned();
             $table->integer('weight')->unsigned();
-            $table->string('courier');
-            $table->integer('shipping_costs')->unsigned();
             $table->timestamps();
         });
     }
