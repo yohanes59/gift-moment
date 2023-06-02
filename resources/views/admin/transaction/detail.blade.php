@@ -15,10 +15,10 @@
                 {{ $detailTransaction[0]['transaction']['user']['name'] }}
             </div>
             <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Kurir :
-                {{ $detailTransaction[0]['courier'] }}
+                {{ $detailTransaction[0]['transaction']['courier'] }}
             </div>
             <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Biaya Kirim :
-                {{ number_format($detailTransaction[0]['shipping_costs'], 0, ',', '.') }}
+                Rp. {{ number_format($detailTransaction[0]['transaction']['shipping_costs'], 0, ',', '.') }}
             </div>
         </div>
         
