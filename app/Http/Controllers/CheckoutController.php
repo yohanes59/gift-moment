@@ -27,17 +27,21 @@ class CheckoutController extends Controller
         $provinces = $provincesArray['rajaongkir']['results'];
         $cities = $cityArray['rajaongkir']['results'];
 
-        foreach ($provinces as $province) {
-            if ($province['province_id'] == $userDetailData->provinces_id) {
-                $provinceName = $province['province'];
-                break;
+        $provinceName = null;
+        $cityName = null;
+        if ($userDetailData) {
+            foreach ($provinces as $province) {
+                if ($province['province_id'] == $userDetailData->provinces_id) {
+                    $provinceName = $province['province'];
+                    break;
+                }
             }
-        }
 
-        foreach ($cities as $city) {
-            if ($city['city_id'] == $userDetailData->city_id) {
-                $cityName = $city['city_name'];
-                break;
+            foreach ($cities as $city) {
+                if ($city['city_id'] == $userDetailData->city_id) {
+                    $cityName = $city['city_name'];
+                    break;
+                }
             }
         }
 
