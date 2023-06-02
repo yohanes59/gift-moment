@@ -20,9 +20,8 @@ return new class extends Migration
             $table->integer('total')->unsigned();
             $table->string('courier');
             $table->integer('shipping_costs')->unsigned();
-            $table->integer('total_weight')->unsigned();
             $table->enum('payment_status', ['PAID', 'UNPAID']);
-            $table->enum('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED']);
+            $table->enum('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED'])->nullable();
             $table->timestamps();
         });
     }
