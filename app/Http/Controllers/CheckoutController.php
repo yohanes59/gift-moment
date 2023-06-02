@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\UserDetail;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
@@ -46,5 +49,39 @@ class CheckoutController extends Controller
         }
 
         return view('customer.cart.checkout', compact('data', 'userDetailData', 'provinceName', 'cityName'));
+    }
+
+    public function payNow(Request $request)
+    {
+        $data = $request->session()->get('checkout_data');
+
+        $transaction = Transaction::create([
+            'users_id' => auth()->id(),
+            'total' => $data['total'],
+            'courier' => $data['shipping']['courier_code'] . ' - ' . $data['shipping']['service'],
+            'shipping_costs' => $data['shipping']['shipping_costs'],
+            'payment_status' => 'UNPAID',
+            'order_status' => null
+        ]);
+
+        foreach ($data['checkout_data'] as $productID => $productData) {
+            TransactionDetail::create([
+                'transactions_id' => $transaction->id,
+                'products_id' => $productID,
+                'product_name' => $productData['product_name'],
+                'product_image' => $productData['product_image'],
+                'product_price' => $productData['product_price'],
+                'product_capital_price' => $productData['product_capital_price'],
+                'qty' => $productData['qty'],
+                'profit' => $productData['total_profit'],
+                'sub_total' => $productData['sub_total'],
+                'weight' => $productData['total_weight']
+            ]);
+        }
+
+        $cart = Cart::where('users_id', auth()->id());
+        $cart->delete();
+        $request->session()->forget('checkout_data');
+        return redirect('/cart');
     }
 }

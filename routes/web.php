@@ -86,7 +86,7 @@ Route::middleware('CheckRole')->group(function () {
     // Checkout
     Route::post('/cart/checkout', [CartController::class, 'getCartData']);
     Route::get('/checkout', [CheckoutController::class, 'index']);
-    // Route::post('/checkout', [CheckoutController::class, 'payNow']);
+    Route::post('/checkout', [CheckoutController::class, 'payNow']);
 
     // Courier
     Route::get('/checkout/courier', [CourierController::class, 'index']);

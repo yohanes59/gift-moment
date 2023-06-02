@@ -157,10 +157,13 @@
                                         {{ isset($data['shipping']) ? number_format($data['total'] + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($data['total'], 0, ',', '.') }}</span>
                                 </div>
                                 <div>
-                                    <button id="pay-button"
-                                        class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
-                                        Bayar Sekarang
-                                    </button>
+                                    <form action="{{ url('/checkout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
+                                            Bayar Sekarang
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
