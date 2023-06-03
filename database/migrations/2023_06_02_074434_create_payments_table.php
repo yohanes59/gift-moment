@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->uuid('transactions_id');
             $table->foreign('transactions_id')->references('id')->on('transactions')->cascadeOnDelete();
             $table->string('image');
