@@ -15,12 +15,11 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        // $item = Transaction::with('user')->get();
         if (request()->ajax()) {
             $query = Transaction::with('user')->get();
-
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
+                    $payment = Payment::where('transactions_id', $item->id)->first();
                     if ($item->payment_status == 'CANCELLED') {
                         return '
                         <td class="py-3 px-6">
@@ -32,7 +31,26 @@ class TransactionController extends Controller
                             </div>
                         </td>
                     ';
-                    } elseif ($item->payment_status == 'UNPAID') {
+                    } elseif ($item->payment_status == 'UNPAID' && !isset($payment)) {
+                        return '
+                        <td class="py-3 px-6">
+                            <div class="flex items-center space-x-2">
+                                <a href="/admin/transaction/' . $item->id . '/show"
+                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="/admin/transaction/' . $item->id . '/update-status"
+                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="/admin/transaction/' . $item->id . '/cancel-order"
+                                class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"  onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    ';
+                    } elseif ($item->payment_status == 'UNPAID' && isset($payment)) {
                         return '
                         <td class="py-3 px-6">
                             <div class="flex items-center space-x-2">
@@ -150,7 +168,6 @@ class TransactionController extends Controller
     public function getPayment($id)
     {
         $paymentData = Payment::where('transactions_id', $id)->first();
-
         return view('admin.transaction.payment', compact('paymentData'));
     }
 }
