@@ -57,7 +57,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ url('/history') }}"
                                         class="block px-6 py-3 text-slate-700 hover:bg-slate-100" role="menuitem">
                                         <span><i class="fa-solid fa-receipt mr-1"></i></span>
                                         Riwayat Pesanan

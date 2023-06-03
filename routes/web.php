@@ -6,6 +6,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CourierController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\FaqController;
@@ -101,4 +103,11 @@ Route::middleware('CheckRole')->group(function () {
     // Profile User
     Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
     Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
+
+    Route::get('/history', [HistoryController::class, 'index']);
+    Route::get('/history/detail/{id}', [HistoryController::class, 'show']);
+    Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'show']);
+
+    Route::get('/history/upload/{id}', [PaymentController::class, 'index']);
+    Route::post('/history/upload/{id}', [PaymentController::class, 'upload']);
 });
