@@ -82,6 +82,6 @@ class CheckoutController extends Controller
         $cart = Cart::where('users_id', auth()->id());
         $cart->delete();
         $request->session()->forget('checkout_data');
-        return redirect('/cart');
+        return redirect('/success-order');
     }
 }

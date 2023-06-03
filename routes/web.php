@@ -102,6 +102,8 @@ Route::middleware('CheckRole')->group(function () {
 
     // About Us
     Route::view('/about', 'customer.about.index');
+    
+    Route::view('/success-order', 'customer.cart.success-order');
 
     // Profile User
     Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
