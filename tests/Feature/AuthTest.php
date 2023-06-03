@@ -11,14 +11,14 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
     
-    public function testLoginPage()
+    public function test_Login_Page()
     {
         $this->get('/login')->assertSeeText('Login');
     }
 
-    public function testRegisterPage()
+    public function test_Register_Page()
     {
-        $this->get('register')->assertSeeText('Register');
+        $this->get('/register')->assertSeeText('Register');
     }
 
     public function test_Login_success_For_Admin()
@@ -63,7 +63,7 @@ class AuthTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testregisterForUser()
+    public function test_register_For_User()
     {
         // Unit Test Untuk Register 
         $response = $this->post('/register', [

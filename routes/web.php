@@ -87,11 +87,11 @@ Route::middleware('CheckRole')->group(function () {
 
     // Checkout
     Route::post('/cart/checkout', [CartController::class, 'getCartData']);
-    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('Guest');
     Route::post('/checkout', [CheckoutController::class, 'payNow']);
 
     // Courier
-    Route::get('/checkout/courier', [CourierController::class, 'index']);
+    Route::get('/checkout/courier', [CourierController::class, 'index'])->middleware('Guest');
     Route::post('/checkout/courier/cek-ongkir', [CourierController::class, 'cekOngkir']);
     Route::post('/checkout/courier/get-ongkir', [CourierController::class, 'getOngkir']);
     // Address

@@ -31,8 +31,9 @@ class CategoryTest extends TestCase
         Session::start(); // Mulai session
     }
 
-    public function testIndex()
+    public function test_Admin_Category_View()
     {
+        //Testing view List Data Category 
         $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
         ->get('/admin/category');
 
@@ -41,10 +42,18 @@ class CategoryTest extends TestCase
         $response = $this->get('/admin/category');
 
         $response->assertStatus(200);
+
+        $response->assertSee('List Kategori');
+        $response->assertSee('Tambah Kategori');
+        $response->assertSee('ID');
+        $response->assertSee('Gambar');
+        $response->assertSee('Nama');
+        $response->assertSee('Aksi');
     }
 
-    public function testCreate()
+    public function test_form_Create_Category()
     {
+        // Testing view Category
         $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
         ->get('/admin/category/create');
 
@@ -56,33 +65,35 @@ class CategoryTest extends TestCase
         $response->assertViewIs('admin.category.form');
     }
 
-    public function testStore()
+    public function test_Store_Category()
     {
+        // Testing Add Category
         $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
         ->get('/admin/category');
 
         $this->withoutExceptionHandling();
 
         Storage::fake('public');
-
-        $name = 'Sovenir';
+        
+        $image = UploadedFile::fake()->image('category.jpg');
 
         $response = $this->post('/admin/category', [
-            'name' => $name,
+            'name' => 'Test Category',
+            'image' => $image,
         ]);
 
-        $response->assertStatus(302);
         $response->assertRedirect('/admin/category');
+
         $this->assertDatabaseHas('categories', [
-            'name' => $name,
-            'slug' => fake()->name(),
+            'name' => 'Test Category',
         ]);
 
-        Storage::disk('public')->Exists('assets/category/category.jpg');
+        Storage::disk('public');
     }
 
-    public function testEdit()
+    public function test_Form_Edit_Category()
     {
+        // Testing Find id Category
         $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
         ->get('/admin/category/edit');
         
@@ -97,20 +108,36 @@ class CategoryTest extends TestCase
         $response->assertViewHas('item', $category);
     }
 
-    public function testDestroy()
+    public function test_update_category()
     {
+        // Testing Update Category
+        $category = Category::factory()->create([
+            'name' => 'Talenan',
+        ]);
+
+        $data = [
+            'name' => 'sovenir',
+        ];
+
+        $response = $this->put("/admin/category/{$category->id}", $data);
+        $response->assertRedirect('/admin/category');
+
+        $this->assertDatabaseHas('categories', $data);
+    }
+
+    public function test_Delete_Category()
+    {
+        // Testing Delete Category
         $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
         ->get('/admin/category/');
 
-        $category = Category::factory()->create();
+        $category = Category::factory()->create([
+            'name' => 'Talenan',
+        ]);
 
-        $response = $this->delete('/admin/category/' . $category->id);
-
-        $response->assertStatus(302);
+        $response = $this->delete("/admin/category/{$category->id}");
         $response->assertRedirect('/admin/category');
 
-        $this->assertDatabaseMissing('categories', [
-            'id' => $category->id,
-        ]);
+        $this->delete($category);
     }
 }

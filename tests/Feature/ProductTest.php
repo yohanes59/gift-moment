@@ -32,10 +32,26 @@ class ProductControllerTest extends TestCase
 
     public function testViewAdminProduct()
     {
-        $response = $this->get(route('product.index'));
+        $response = $this->withSession(['_token' => csrf_token()]) // Tambahkan session data
+        ->get('/admin/product');
+
+        $this->withoutExceptionHandling();
+
+        $response = $this->get('/product');
 
         $response->assertStatus(200);
-        $response->assertViewIs('admin.product.index');
+
+        $response->assertSee('List Produk');
+        $response->assertSee('Tambah Produk');
+        $response->assertSee('ID');
+        $response->assertSee('Gambar');
+        $response->assertSee('Nama');
+        $response->assertSee('Gambar');
+        $response->assertSee('Kategori');
+        $response->assertSee('Sisa Stok');
+        $response->assertSee('Harga Modal');
+        $response->assertSee('Harga Jual');
+        $response->assertSee('Aksi');
     }
 
     public function test_it_can_display_create_product_form()
@@ -93,5 +109,4 @@ class ProductControllerTest extends TestCase
         $this->assertCount(1, Product::all());
         $this->assertDatabaseHas('products', ['categories_id ' => 'sovenir','name' => 'Gunting Kuku','price' => 15000,'capital_price' => 15000,'description' => 'untuk gunting kuku','weight' => 10,'minimum_order' => 50]);
     }
-
 }
