@@ -51,7 +51,10 @@
                             Total
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Status
+                            Status Pembayaran
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Status Pesanan
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Aksi
@@ -67,6 +70,7 @@
 @endsection
 
 @push('addon-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         var datatable = $('#crudTable').DataTable({
             processing: true,
@@ -122,7 +126,22 @@
                     data: 'payment_status',
                     name: 'payment_status',
                     className: 'py-3 px-6',
-                    width: '20%'
+                    width: '20%',
+                },
+                {
+                    data: 'order_status',
+                    name: 'order_status',
+                    className: 'py-3 px-6',
+                    width: '20%',
+                    render: function(data, type, row) {
+                        if (data === null) {
+                            return 'Menunggu Konfirmasi Pembayaran';
+                        } else if (data === 'CANCELLED') {
+                            return 'Pesanan Tidak Dibayar';
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
                     data: 'action',

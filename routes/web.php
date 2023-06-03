@@ -67,6 +67,9 @@ Route::middleware('auth', 'OnlyAdmin')->group(function () {
         // Transaction
         Route::get('/transaction', [TransactionController::class, 'index']);
         Route::get('/transaction/{id}/show', [DetailTransactionController::class, 'show']);
+        Route::get('/transaction/{id}/show-payment', [TransactionController::class, 'getPayment']);
+        Route::get('/transaction/{id}/update-status', [TransactionController::class, 'updateStatus']);
+        Route::get('/transaction/{id}/cancel-order', [TransactionController::class, 'cancelOrderNotPay']);
 
         // FAQ
         Route::resource('/faq', FaqController::class);
@@ -106,7 +109,7 @@ Route::middleware('CheckRole')->group(function () {
 
     Route::get('/history', [HistoryController::class, 'index']);
     Route::get('/history/detail/{id}', [HistoryController::class, 'show']);
-    Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'show']);
+    // Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'show']);
 
     Route::get('/history/upload/{id}', [PaymentController::class, 'index']);
     Route::post('/history/upload/{id}', [PaymentController::class, 'upload']);
