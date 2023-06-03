@@ -23,4 +23,14 @@ class HistoryController extends Controller
 
         return view('customer.profile.riwayat.detail', compact('data'));
     }
+
+    public function confirmOrderStatus($id)
+    {
+        $data = Transaction::with('user')->where('id', $id)->first();
+        $data->update([
+            'order_status' => 'COMPLETED'
+        ]);
+
+        return back();
+    }
 }

@@ -111,7 +111,7 @@ Route::middleware('CheckRole')->group(function () {
 
     Route::get('/history', [HistoryController::class, 'index']);
     Route::get('/history/detail/{id}', [HistoryController::class, 'show']);
-    // Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'show']);
+    Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'confirmOrderStatus']);
 
     Route::get('/history/upload/{id}', [PaymentController::class, 'index']);
     Route::post('/history/upload/{id}', [PaymentController::class, 'upload']);

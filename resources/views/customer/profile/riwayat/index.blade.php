@@ -18,24 +18,34 @@
         <p>tanggal pesan: {{ $item->created_at }}</p>
         <p>total: {{ $item->total + $item->shipping_costs }}</p>
         <p>status:
+            {{-- @if ($item->payment_status == 'CANCELLED'){
+                Pesanan Dibatalkan
+                } --}}
             @if ($item->payment_status == 'UNPAID')
                 @if ($payment->where('transactions_id', $item->id)->first() !== null)
                     Menunggu Pembayaran Di Konfirmasi
-                @else
-                    Menunggu Pembayaran
                 @endif
             @elseif ($item->payment_status == 'PAID')
-                Pesanan Sedang Dikemas
-                Pesanan Sedang Dikirimkan ke tempatmu
+                @if ($item->order_status == 'NEW_ORDER')
+                    Pesanan Sedang Diproses
+                @elseif ($item->order_status == 'PACKED')
+                    Pesanan Menunggu Jasa Kurir
+                @elseif ($item->order_status == 'SHIPPED')
+                    Pesanan Sedang Dikirimkan ke tempatmu
+                @elseif ($item->order_status == 'COMPLETED')
+                    Pesanan Selesai
+                @else
+                    <a href="">Terima Pesanan</a>
+                @endif
             @endif
-
-            {{-- 
-            
-            Pesanan Sudah di terima --}}
-
         </p>
         <a href="/history/detail/{{ $item->id }}">detail pesanan</a>
-        <a href="/history/upload/{{ $item->id }}">upload bukti pembayaran</a>
+
+        @if ($item->payment_status == 'UNPAID')
+            <a href="/history/upload/{{ $item->id }}">upload bukti pembayaran</a>
+        @elseif ($item->order_status == 'SHIPPED')
+            <a href="/history/confirmOrderStatus/{{ $item->id }}">Konfirmasi Pesanan</a>
+        @endif
         <br><br>
     @endforeach
 @endsection
