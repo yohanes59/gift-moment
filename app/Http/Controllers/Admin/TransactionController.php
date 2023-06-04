@@ -16,7 +16,10 @@ class TransactionController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Transaction::with('user')->get();
+            $query = Transaction::with('user')
+                ->whereNull('order_status')
+                ->orWhereIn('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED', 'COMPLETED'])
+                ->get();
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     $payment = Payment::where('transactions_id', $item->id)->first();
