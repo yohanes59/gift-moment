@@ -35,10 +35,10 @@ class DashboardController extends Controller
             ->whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
             ->sum('profit');
-        $stockAlerts = Product::with('category')->where('stock_amount', '<=', 10)->get();
-        $transactionShortcut = Transaction::whereNull('order_status')
+        $stockAlerts = Product::with('category')->where('stock_amount', '<=', 10)->paginate(5);
+        $transactionShortcut = Transaction::with('user')->whereNull('order_status')
             ->orWhereIn('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED'])
-            ->get();
+            ->paginate(5);
         return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts', 'transactionShortcut'));
     }
 
