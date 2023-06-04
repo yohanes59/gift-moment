@@ -36,8 +36,10 @@ class DashboardController extends Controller
             ->whereYear('created_at', $currentYear)
             ->sum('profit');
         $stockAlerts = Product::with('category')->where('stock_amount', '<=', 10)->get();
-
-        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts'));
+        $transactionShortcut = Transaction::whereNull('order_status')
+            ->orWhereIn('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED'])
+            ->get();
+        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts', 'transactionShortcut'));
     }
 
     public function editProfile()
