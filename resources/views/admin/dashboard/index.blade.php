@@ -11,7 +11,7 @@
                     <i class="fa-solid fa-file-invoice text-4xl"></i>
                 </div>
                 <div class="space-y-2 w-full max-w-[180px]">
-                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Total Transactions</h5>
+                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Monthly Transactions Total</h5>
                     <p class="text-center font-bold text-3xl text-slate-950">{{ $transactions }}</p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-tags text-4xl"></i>
                 </div>
                 <div class="space-y-2 w-full max-w-[180px]">
-                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Total Sales</h5>
+                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Monthly Sales Total</h5>
                     <p class="text-center font-bold text-3xl text-slate-950">Rp. {{ number_format($sales, 0, ',', '.') }}
                     </p>
                 </div>
@@ -32,7 +32,7 @@
                     <i class="fa-solid fa-money-bill-trend-up text-4xl"></i>
                 </div>
                 <div class="space-y-2 w-full max-w-[180px]">
-                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Total Profit</h5>
+                    <h5 class="text-center text-sm uppercase font-bold text-slate-600">Monthly Profit Total</h5>
                     <p class="text-center font-bold text-3xl text-slate-950">Rp. {{ number_format($profits, 0, ',', '.') }}
                     </p>
                 </div>

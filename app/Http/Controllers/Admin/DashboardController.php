@@ -15,9 +15,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::count();
-        $sales = Transaction::sum('total');
-        $profits = TransactionDetail::sum('profit');
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        $transactionsID = Transaction::where('payment_status', 'PAID')
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->pluck('id');
+
+        $transactions = Transaction::where('payment_status', 'PAID')
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->count();
+        $sales = Transaction::where('payment_status', 'PAID')
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->sum('total');
+        $profits = TransactionDetail::whereIn('transactions_id', $transactionsID)
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->sum('profit');
 
         return view('admin.dashboard.index', compact('transactions', 'sales', 'profits'));
     }
