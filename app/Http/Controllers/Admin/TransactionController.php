@@ -44,7 +44,7 @@ class TransactionController extends Controller
                                 </a>
                                 <a href="/admin/transaction/' . $item->id . '/cancel-order"
                                 class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"  onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-xmark"></i>
                                 </a>
                             </div>
                         </td>
@@ -57,24 +57,53 @@ class TransactionController extends Controller
                                 class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
-                                <a href="/admin/transaction/' . $item->id . '/update-status"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
                                 <a href="/admin/transaction/' . $item->id . '/show-payment"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Cek Bukti Pembayaran">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600" data-bs-toggle="tooltip-detail" data-bs-title="Cek Bukti Pembayaran">
+                                <i class="fa-solid fa-receipt"></i>
+                                </a>
+                                <a href="/admin/transaction/' . $item->id . '/update-status"
+                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                                    <i class="fa-solid fa-check"></i>
                                 </a>
                                 <a href="/admin/transaction/' . $item->id . '/cancel-order"
                                 class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"  onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-xmark"></i>
                                 </a>
                             </div>
                         </td>
                     ';
+                    } elseif ($item->order_status == 'NEW_ORDER') {
+                        return '
+                        <td class="py-3 px-6">
+                        <div class="flex items-center space-x-2">
+                            <a href="/admin/transaction/' . $item->id . '/show"
+                            class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="/admin/transaction/' . $item->id . '/update-status"
+                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                                <i class="fa-solid fa-box"></i>
+                            </a>
+                        </div>
+                    </td>
+                    ';
+                    } elseif ($item->order_status == 'PACKED') {
+                        return '
+                        <td class="py-3 px-6">
+                        <div class="flex items-center space-x-2">
+                            <a href="/admin/transaction/' . $item->id . '/show"
+                            class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="/admin/transaction/' . $item->id . '/update-status"
+                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </a>
+                        </div>
+                    </td>
+                    ';
                     } else {
-                        if ($item->order_status == 'SHIPPED' || $item->order_status == 'COMPLETED') {
-                            return '
+                        return '
                             <td class="py-3 px-6">
                             <div class="flex items-center space-x-2">
                                 <a href="/admin/transaction/' . $item->id . '/show"
@@ -84,22 +113,6 @@ class TransactionController extends Controller
                             </div>
                         </td>
                         ';
-                        } else {
-                            return '
-                            <td class="py-3 px-6">
-                            <div class="flex items-center space-x-2">
-                                <a href="/admin/transaction/' . $item->id . '/show"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
-                                <a href="/admin/transaction/' . $item->id . '/update-status"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
-                            </div>
-                        </td>
-                        ';
-                        }
                     }
                 })
                 ->rawColumns(['action'])
