@@ -19,6 +19,10 @@ class CourierController extends Controller
 
     public function cekOngkir(Request $request)
     {
+        $validatedData = $request->validate([
+            'courier' => 'required|in:jne,pos,tiki'
+        ]);
+        
         $data = $request->session()->get('checkout_data');
         $sellerId = User::where('roles', 'Admin')->first()->id;
         $sellerDetailData = UserDetail::where('users_id', $sellerId)->first();
