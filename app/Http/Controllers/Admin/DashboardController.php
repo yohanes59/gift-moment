@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Product;
 use App\Models\UserDetail;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -34,8 +35,9 @@ class DashboardController extends Controller
             ->whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
             ->sum('profit');
+        $stockAlerts = Product::with('category')->where('stock_amount', '<=', 10)->get();
 
-        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits'));
+        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts'));
     }
 
     public function editProfile()

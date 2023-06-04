@@ -38,5 +38,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-5">
+            <div class="text-xl font-medium mb-8">Stock Warning</div>
+            <div class="overflow-x-auto relative">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-white uppercase bg-indigo-500">
+                        <tr class="divide-x divide-y">
+                            <th scope="col" class="py-3 px-6">
+                                No
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Kategori
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Nama Produk
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Sisa Stok
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y">
+                        @foreach ($stockAlerts as $item)
+                            <tr class="divide-x divide-y">
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->category->name }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->name }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->stock_amount }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
