@@ -39,10 +39,6 @@ class TransactionController extends Controller
                                 class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
-                                <a href="/admin/transaction/' . $item->id . '/update-status"
-                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
                                 <a href="/admin/transaction/' . $item->id . '/cancel-order"
                                 class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600" data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"  onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
                                     <i class="fa-solid fa-trash"></i>
