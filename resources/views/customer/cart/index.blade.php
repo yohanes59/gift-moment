@@ -121,11 +121,26 @@
         const totalCartPrices = document.querySelectorAll('.total-cart-price');
         const quantityBtns = document.querySelectorAll('.quantity-btn');
 
-
         for (let i = 0; i < quantities.length; i++) {
             updateSubtotal(i);
             quantities[i].addEventListener('change', function() {
-                updateSubtotal(i);
+                var quantityInput = this;
+                var minimumOrder = this.parentNode.querySelector('#minimum_order');
+                var stock = this.parentNode.querySelector('#stock');
+                var minimumOrderValue = parseInt(minimumOrder.value);
+                var stockValue = parseInt(stock.value);
+
+                // check if the current value is less than the minimum order value or greater than the stock value
+                if (quantityInput.value < minimumOrderValue) {
+                    quantityInput.value = minimumOrderValue;
+                } else if (quantityInput.value > stockValue) {
+                    quantityInput.value = stockValue;
+                }
+
+                // get the index of the corresponding element in the quantities array
+                var index = Array.prototype.indexOf.call(quantities, quantityInput);
+                // call updateSubtotal with the index
+                updateSubtotal(index);
             });
         }
 
@@ -133,13 +148,46 @@
         document.querySelectorAll('.quantity-btn').forEach(function(button) {
             button.addEventListener('click', function() {
                 var quantityInput = this.parentNode.querySelector('.quantity');
+                var minimumOrder = this.parentNode.querySelector('#minimum_order');
+                var stock = this.parentNode.querySelector('#stock');
+                var minimumOrderValue = parseInt(minimumOrder.value);
+                var stockValue = parseInt(stock.value);
+
                 if (this.classList.contains('plus')) {
-                    increaseQty(quantityInput);
+                    increaseQty(quantityInput, stockValue);
                 } else if (this.classList.contains('minus')) {
-                    decreaseQty(quantityInput);
+                    decreaseQty(quantityInput, minimumOrderValue);
                 }
             });
         });
+
+        // fungsi untuk menambah nilai input
+        function increaseQty(input, maxVal) {
+            var value = parseInt(input.value);
+            if (isNaN(value)) {
+                input.value = 0;
+            } else if (value < maxVal) { // tambahkan kondisi ini untuk memeriksa melebihi stok atau tidak
+                input.value = value + 1;
+                // get the index of the corresponding element in the quantities array
+                var index = Array.prototype.indexOf.call(quantities, input);
+                // call updateSubtotal with the index
+                updateSubtotal(index);
+            }
+        }
+
+        // fungsi untuk mengurangi nilai input
+        function decreaseQty(input, minVal) {
+            var value = parseInt(input.value);
+
+            // check if the current value is greater than or equal to the minimum order value before decrementing
+            if (value > minVal) {
+                input.value = isNaN(value) || value <= 1 ? 1 : value - 1;
+                // get the index of the corresponding element in the quantities array
+                var index = Array.prototype.indexOf.call(quantities, input);
+                // call updateSubtotal with the index
+                updateSubtotal(index);
+            }
+        }
 
         function updateSubtotal(i) {
             const quantity = parseInt(quantities[i].value);
@@ -166,26 +214,6 @@
 
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        }
-
-        // fungsi untuk menambah nilai input
-        function increaseQty(input) {
-            var value = parseInt(input.value);
-            input.value = isNaN(value) ? 0 : value + 1;
-            // get the index of the corresponding element in the quantities array
-            var index = Array.prototype.indexOf.call(quantities, input);
-            // call updateSubtotal with the index
-            updateSubtotal(index);
-        }
-
-        // fungsi untuk mengurangi nilai input
-        function decreaseQty(input) {
-            var value = parseInt(input.value);
-            input.value = isNaN(value) || value <= 0 ? 0 : value - 1;
-            // get the index of the corresponding element in the quantities array
-            var index = Array.prototype.indexOf.call(quantities, input);
-            // call updateSubtotal with the index
-            updateSubtotal(index);
         }
     </script>
 @endpush
