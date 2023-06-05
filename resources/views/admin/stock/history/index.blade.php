@@ -7,17 +7,11 @@
         <div class="text-xl font-medium mb-8">List Riwayat Stok</div>
 
         {{-- Filter --}}
-        <div class="flex justify-between mb-6">
-            <div>
-                <label class="inline-flex items-center">
-                    <input type="checkbox" class="form-checkbox" id="stockInFilter">
-                    <span class="ml-2">Stok Masuk</span>
-                </label>
-                <label class="inline-flex items-center ml-4">
-                    <input type="checkbox" class="form-checkbox" id="stockOutFilter">
-                    <span class="ml-2">Stok Keluar</span>
-                </label>
-            </div>
+        <div class="flex items-center mb-4">
+            <label for="start_date" class="mr-2">Tanggal Awal:</label>
+            <input type="date" id="start_date" name="start_date" class="border border-gray-300 rounded px-2 py-1">
+            <label for="end_date" class="ml-4 mr-2">Tanggal Akhir:</label>
+            <input type="date" id="end_date" name="end_date" class="border border-gray-300 rounded px-2 py-1">
         </div>
 
         {{-- Table --}}
@@ -51,17 +45,22 @@
 @push('addon-script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        var datatable;
+
+        function applyDateFilter() {
+            var startDate = $('#start_date').val();
+            var endDate = $('#end_date').val();
+
+            datatable.columns(2).search(startDate + '|' + endDate, true, false).draw(); 
+        }
+
         $(document).ready(function() {
-            var datatable = $('#crudTable').DataTable({
+            datatable = $('#crudTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: true,
                 ajax: {
                     url: '{!! url()->current() !!}',
-                    data: function (data) {
-                        data.incoming_stock = $('#stockInFilter').is(':checked') ? 1 : 0;
-                        data.outcoming_stock = $('#stockOutFilter').is(':checked') ? 1 : 0;
-                    }
                 },
                 columns: [
                     {
@@ -111,21 +110,8 @@
                 ]
             });
 
-            $('#stockInFilter, #stockOutFilter').change(function() {
-                if ($('#stockInFilter').is(':checked') && !$('#stockOutFilter').is(':checked')) {
-                    datatable.column(3).visible(true); 
-                    datatable.column(4).visible(false); 
-                } else if (!$('#stockInFilter').is(':checked') && $('#stockOutFilter').is(':checked')) {
-                    datatable.column(3).visible(false); 
-                    datatable.column(4).visible(true); 
-                } else if ($('#stockInFilter').is(':checked') && $('#stockOutFilter').is(':checked')) {
-                    datatable.column(3).visible(true);
-                    datatable.column(4).visible(true);
-                } else {
-                    datatable.column(3).visible(true); 
-                    datatable.column(4).visible(true);
-                }
-                datatable.ajax.reload(); 
+            $('#start_date, #end_date').change(function() {
+                applyDateFilter();
             });
         });
     </script>
