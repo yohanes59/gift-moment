@@ -83,8 +83,9 @@
                         </div>
 
                         <div class="h-full text-2xl flex justify-center items-center">
-                            <input type="number" class="border-none text-center quantity-input" value="{{ $product->minimum_order }}"
-                                min="{{ $product->minimum_order }}" name="product_qty">
+                            <input type="number" class="border-none text-center quantity-input"
+                                value="{{ $product->stock_amount < $product->minimum_order ? $product->stock_amount : $product->minimum_order }}"
+                                name="product_qty">
                         </div>
 
                         <div class="w-full">
