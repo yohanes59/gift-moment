@@ -106,7 +106,7 @@
         @else
             <div class="flex flex-col pt-24 justify-center items-center gap-4">
                 <div class="flex items-center w-64 h-64 rounded-lg rounded-tr-[60px] rounded-bl-[60px] overflow-hidden">
-                    <img class="object-cover" src="{{ asset('assets/img/empty-cart.png') }}" alt="">
+                    <img class="object-cover" src="{{ asset('assets/img/cart/empty-cart.svg') }}" alt="">
                 </div>
                 <div>
                     <div class="text-xl text-center font-bold">Yah, keranjangmu masih kosong nih</div>
