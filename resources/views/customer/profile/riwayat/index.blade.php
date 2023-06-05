@@ -64,8 +64,9 @@
                         @if ($item->payment_status == 'UNPAID')
                             @if ($payment->where('transactions_id', $item->id)->first() !== null)
                                 <span class="bg-amber-100 text-amber-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Menunggu konfirmasi</span>
+                            @else
+                                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Belum bayar</span>
                             @endif
-                            <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Belum bayar</span>
                             
                         @elseif ($item->payment_status == 'PAID')
                             @if ($item->order_status == 'NEW_ORDER')
@@ -86,17 +87,21 @@
                                 </span>
                             @else
                                 <a href="" class="px-6 py-3 text-white font-bold bg-green-500 hover:opacity-80 duration-300 rounded-md">Terima Pesanan</a>
-                            @endif    
+                            @endif
+                        @elseif ($item->order_status == 'CANCELLED')
+                            <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+                                Pesanan Dibatalkan
+                            </span>
                         @endif
                     </div>
                 </div>
 
                 <div class="mt-10 pb-4 flex flex-col sm:flex-row justify-between">
                     <div>
-                        {{-- <div class="flex gap-2 text-slate-500">
+                        <div class="flex gap-2 text-slate-500">
                             <span>ID Pesanan :</span>
-                            <span class="font-medium">{{ $item->id }}</span>
-                        </div> --}}
+                            <span class="font-medium">{{ substr($item->id, -8) }}</span>
+                        </div>
                         <div>Total</div>
                         <div class="font-bold">Rp {{ number_format($item->total + $item->shipping_costs, 0, ',', '.') }}</div>
                     </div>
