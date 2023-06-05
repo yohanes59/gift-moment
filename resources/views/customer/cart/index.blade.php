@@ -38,41 +38,36 @@
                                         <div class="w-16 md:w-24 h-16 md:h-24 rounded-md overflow-hidden">
                                             <img class="w-full h-full object-cover"
                                                 src="{{ Storage::url($item->product->image) }}" alt="">
-                                            {{-- <input type="hidden" value="{{ $item->product->image }}"
-                                                name="product_image[]"> --}}
                                         </div>
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <span class="font-bold text-sm line-clamp-2">{{ $item->product->name }}</span>
-                                        {{-- <input type="hidden" value="{{ $item->product->name }}" name="product_name[]">
-                                        <input type="hidden" value="{{ $item->product->weight }}" name="weight[]"> --}}
                                         <span class="text-red-500 text-xs">{{ $item->product->category->name }}</span>
                                         <a href="/cart/{{ $item->id }}"
                                             class="font-semibold hover:text-red-500 text-slate-500 text-xs">Hapus</a>
                                     </div>
                                 </div>
                                 <div class="flex justify-center w-1/5">
-                                    {{-- <button>
-                                    <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
-                                        <path
-                                            d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                                    </svg>
-                                </button> --}}
-
-                                    <p class="mx-2 text-center w-12">{{ $item->qty }} pcs</p>
-                                    <input type="hidden" value="{{ $item->qty }}" name="qty[]">
-
-                                    {{-- <button>
-                                    <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
-                                        <path
-                                            d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                                    </svg>
-                                </button> --}}
+                                    <button type="button" class="quantity-btn minus">
+                                        <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
+                                            <path
+                                                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                                        </svg>
+                                    </button>
+                                    <input type="hidden" id="minimum_order" value="{{ $item->product->minimum_order }}">
+                                    <input type="hidden" id="stock" value="{{ $item->product->stock_amount }}">
+                                    <input type="number" name="qty[]" class="mx-2 text-center w-20 quantity"
+                                        value="{{ $item->qty }}">
+                                    <button type="button" class="quantity-btn plus">
+                                        <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
+                                            <path
+                                                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                                        </svg>
+                                    </button>
                                 </div>
-                                <span class="text-center w-1/5 font-semibold text-sm">Rp
+                                <span class="text-center w-1/5 font-semibold text-sm cart-price">Rp
                                     {{ number_format($item->product->price, 0, ',', '.') }}</span>
-                                <span class="text-center w-1/5 font-semibold text-sm">Rp
-                                    {{ number_format($item->qty * $item->product->price, 0, ',', '.') }}</span>
+                                <span class="text-center w-1/5 font-semibold text-sm subtotal-cart-price"></span>
                                 @php $total += $item->qty * $item->product->price @endphp
                             </div>
                         @endforeach
@@ -90,15 +85,12 @@
                     class="w-1/4 px-4 lg:px-6 py-10 border border-indigo-200 rounded-md shadow-lg shadow-indigo-100 fixed right-5">
                     <h1 class="font-semibold text-2xl border-b pb-8">Ringkasan Pesanan</h1>
 
-                    {{-- <div class="border-t mt-8"> --}}
                     <div class="flex font-semibold justify-between py-6 text-sm">
                         <span class="uppercase">Total</span>
-                        <span class="font-bold">Rp {{ number_format($total, 0, ',', '.') }}</span>
-                        <input type="hidden" value="{{ $total }}" name="total">
+                        <span class="font-bold total-cart-price">0</span>
                     </div>
                     <button onclick="window.location.href='{{ url('/checkout') }}';"
                         class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase rounded-md w-full">Checkout</button>
-                    {{-- </div> --}}
                 </div>
                 </form>
 
@@ -119,3 +111,91 @@
         @endif
     </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        // Menampilkan Total Harga
+        const quantities = document.getElementsByClassName('quantity');
+        const prices = document.getElementsByClassName('cart-price');
+        const subtotalCartPrices = document.querySelectorAll('.subtotal-cart-price');
+        const totalCartPrices = document.querySelectorAll('.total-cart-price');
+        const quantityBtns = document.querySelectorAll('.quantity-btn');
+
+
+        for (let i = 0; i < quantities.length; i++) {
+            updateSubtotal(i);
+            quantities[i].addEventListener('change', function() {
+                updateSubtotal(i);
+            });
+        }
+
+        // listener untuk button plus dan minus
+        document.querySelectorAll('.quantity-btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var quantityInput = this.parentNode.querySelector('.quantity');
+                if (this.classList.contains('plus')) {
+                    increaseQty(quantityInput);
+                } else if (this.classList.contains('minus')) {
+                    decreaseQty(quantityInput);
+                }
+            });
+        });
+
+        function updateSubtotal(i) {
+            const quantity = parseInt(quantities[i].value);
+            const price = parseInt(prices[i].textContent.replace(/\D/g, ''));
+            const subtotalPrice = quantity * price;
+            subtotalCartPrices[i].textContent = formatNumber(subtotalPrice);
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = Array.from(subtotalCartPrices).reduce((acc, curr) => {
+                let value = curr.textContent;
+                if (typeof value === 'string') {
+                    value = parseInt(value.replace(/\D/g, ''));
+                }
+                return acc + value;
+            }, 0);
+
+            totalCartPrices.forEach(el => {
+                el.textContent = formatNumber(total);
+            });
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+        }
+
+        // fungsi untuk menambah nilai input
+        function increaseQty(input) {
+            var value = parseInt(input.value);
+            input.value = isNaN(value) ? 0 : value + 1;
+            // get the index of the corresponding element in the quantities array
+            var index = Array.prototype.indexOf.call(quantities, input);
+            // call updateSubtotal with the index
+            updateSubtotal(index);
+        }
+
+        // fungsi untuk mengurangi nilai input
+        function decreaseQty(input) {
+            var value = parseInt(input.value);
+            input.value = isNaN(value) || value <= 0 ? 0 : value - 1;
+            // get the index of the corresponding element in the quantities array
+            var index = Array.prototype.indexOf.call(quantities, input);
+            // call updateSubtotal with the index
+            updateSubtotal(index);
+        }
+    </script>
+@endpush
+
+@push('addon-style')
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+@endpush

@@ -17,7 +17,7 @@ class CartController extends Controller
         }
 
         $cart = Cart::with('product.category')->where('users_id', auth()->id())->get();
-        return view('customer.cart.index2', compact('cart'));
+        return view('customer.cart.index', compact('cart'));
     }
 
     public function destroy(Request $request, $id)
@@ -40,19 +40,24 @@ class CartController extends Controller
         $checkout_data = [];
 
         foreach ($products as $product) {
+            // update data qty di table
+            $cart = Cart::where('products_id', $product->id)->first();
+            $cart->update(['qty' => $products_qty[$product->id]]);
+
             $checkout_data[$product->id] = [
                 'product_name' => $product->name,
                 'product_price' => $product->price,
                 'product_capital_price' => $product->capital_price,
                 'product_image' => $product->image,
-                'qty' => $products_qty[$product->id],
-                'sub_total' => $products_qty[$product->id] * $product->price,
+                'qty' => $cart->qty,
+                'sub_total' => $cart->qty * $product->price,
                 'total_weight' => $products_qty[$product->id] * $product->weight,
                 'total_profit' => ($product->price - $product->capital_price) * $products_qty[$product->id],
             ];
         }
 
         $data['checkout_data'] = $checkout_data;
+
         unset($data['products_id']);
         unset($data['qty']);
         $request->session()->put('checkout_data', $data);

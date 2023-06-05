@@ -75,9 +75,9 @@
                             <div class="flex flex-col gap-3">
                                 @php
                                     $grandtotal_weight = 0;
+                                    $subtotal = 0;
                                 @endphp
                                 @foreach ($data['checkout_data'] as $product_id => $item_data)
-                                    {{-- {{ var_dump($product_data) }} --}}
                                     <div class="flex items-center py-5 bg-white">
                                         <div class="flex w-2/5 gap-3 pl-6">
                                             <div class="w-fit">
@@ -103,6 +103,9 @@
                                         <span class="text-center w-1/5 font-semibold text-sm">Rp
                                             {{ number_format($item_data['sub_total'], 0, ',', '.') }}</span>
                                     </div>
+                                    @php
+                                        $subtotal += $item_data['sub_total'];
+                                    @endphp
                                 @endforeach
 
                             </div>
@@ -139,7 +142,7 @@
                         <div class="flex flex-col gap-2 mt-4">
                             <div class="flex justify-between">
                                 <span>Subtotal Produk</span>
-                                <span>Rp {{ number_format($data['total'], 0, ',', '.') }}</span>
+                                <span>Rp {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between mb-4">
                                 <div>
@@ -154,7 +157,7 @@
                                 <div class="flex justify-between font-bold">
                                     <span>Total Belanja</span>
                                     <span>Rp
-                                        {{ isset($data['shipping']) ? number_format($data['total'] + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($data['total'], 0, ',', '.') }}</span>
+                                        {{ isset($data['shipping']) ? number_format($subtotal + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($subtotal, 0, ',', '.') }}</span>
                                 </div>
                                 <div>
                                     <form action="{{ url('/checkout') }}" method="POST">

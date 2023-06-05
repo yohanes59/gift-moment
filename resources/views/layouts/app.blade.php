@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') || Capstone - Kelompok 11</title>
 
+    @stack('addon-style')
     @include('include.style')
 </head>
 <body>

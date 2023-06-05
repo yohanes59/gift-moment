@@ -93,25 +93,25 @@ Route::middleware('CheckRole')->group(function () {
         Route::post('/cart/checkout', [CartController::class, 'getCartData']);
         Route::get('/checkout', [CheckoutController::class, 'index']);
         Route::post('/checkout', [CheckoutController::class, 'payNow']);
-        
+
         // Courier
         Route::get('/checkout/courier', [CourierController::class, 'index']);
         Route::post('/checkout/courier/cek-ongkir', [CourierController::class, 'cekOngkir']);
         Route::post('/checkout/courier/get-ongkir', [CourierController::class, 'getOngkir']);
-        
+
         // Address
         Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
-        
+
         Route::view('/success-order', 'customer.cart.success-order');
-        
+
         // Profile User
         Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
         Route::match(['put', 'post'], '/user/profile', [ProfileController::class, 'saveProfile'])->name('user.profile');
-    
+
         Route::get('/history', [HistoryController::class, 'index']);
         Route::get('/history/detail/{id}', [HistoryController::class, 'show']);
         Route::get('/history/confirmOrderStatus/{id}', [HistoryController::class, 'confirmOrderStatus']);
-    
+
         Route::get('/history/upload/{id}', [PaymentController::class, 'index']);
         Route::post('/history/upload/{id}', [PaymentController::class, 'upload']);
     });
