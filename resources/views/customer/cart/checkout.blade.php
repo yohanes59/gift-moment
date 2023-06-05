@@ -8,7 +8,7 @@
         @if ($userDetailData == null)
             <div class="flex flex-col pt-24 justify-center items-center gap-4">
                 <div class="flex items-center w-72 h-72">
-                    <img class="object-cover" src="{{ asset('assets/img/no-address.png') }}" alt="">
+                    <img class="object-cover" src="{{ asset('assets/img/cart/no-address.svg') }}" alt="">
                 </div>
                 <div>
                     <div class="text-xl text-center font-bold">Anda belum menambahkan informasi alamat pengiriman</div>

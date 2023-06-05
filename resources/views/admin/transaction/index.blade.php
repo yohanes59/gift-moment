@@ -125,7 +125,7 @@
                 {
                     data: 'payment_status',
                     name: 'payment_status',
-                    className: 'py-3 px-6',
+                    className: 'py-3 px-6 text-center',
                     width: '20%',
                 },
                 {

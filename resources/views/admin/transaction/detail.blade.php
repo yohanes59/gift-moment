@@ -8,17 +8,23 @@
             <x-link to="{{ url('admin/transaction') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali"
                 padding="py-2 px-4" color="blue" />
         </div>
-        <div class="flex flex-col space-y-2 mb-3">
-            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">ID Transaksi :
-                {{ substr($detailTransaction[0]['transactions_id'], -8) }}</div>
-            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Nama Customer :
-                {{ $detailTransaction[0]['transaction']['user']['name'] }}
+
+        <div class="flex gap-3">
+            <div class="flex flex-col bg-white border rounded-md p-3 space-y-2 mb-3">
+                <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">ID Transaksi :
+                    <span class="font-medium">{{ substr($detailTransaction[0]['transactions_id'], -8) }}</span>
+                </div>
+                <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">Nama Customer :
+                    <span class="font-medium">{{ $detailTransaction[0]['transaction']['user']['name'] }}</span>
+                </div>
             </div>
-            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Kurir :
-                {{ $detailTransaction[0]['transaction']['courier'] }}
-            </div>
-            <div class="w-fit bg-green-100 text-green-800 text-md font-medium px-2.5 py-1 rounded">Biaya Kirim :
-                Rp. {{ number_format($detailTransaction[0]['transaction']['shipping_costs'], 0, ',', '.') }}
+            <div class="flex flex-col bg-white border rounded-md p-3 space-y-2 mb-3">
+                <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">Kurir :
+                    <span class="font-medium">{{ $detailTransaction[0]['transaction']['courier'] }}</span>
+                </div>
+                <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">Biaya Kirim :
+                    <span class="font-medium">Rp. {{ number_format($detailTransaction[0]['transaction']['shipping_costs'], 0, ',', '.') }}</span>
+                </div>
             </div>
         </div>
         
