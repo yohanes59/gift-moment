@@ -54,10 +54,15 @@ class CheckoutController extends Controller
     public function payNow(Request $request)
     {
         $data = $request->session()->get('checkout_data');
+        $total = 0;
+
+        foreach ($data['checkout_data'] as $productID => $productData) {
+            $total += $productData['sub_total'];
+        }
 
         $transaction = Transaction::create([
             'users_id' => auth()->id(),
-            'total' => $data['total'],
+            'total' => $total,
             'courier' => $data['shipping']['courier_code'] . ' - ' . $data['shipping']['service'],
             'shipping_costs' => $data['shipping']['shipping_costs'],
             'payment_status' => 'UNPAID',
