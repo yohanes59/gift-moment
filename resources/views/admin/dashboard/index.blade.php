@@ -87,8 +87,10 @@
                                 <td scope="col" class="py-3 px-6">
                                     {{ number_format($item->total, 0, ',', '.') }}
                                 </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $item->payment_status }}
+                                <td scope="col" class="py-3 px-6 text-center">
+                                    <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+                                        {{ $item->payment_status }}
+                                    </span>
                                 </td>
                                 <td scope="col" class="py-3 px-6">
                                     {{ $item->order_status }}
