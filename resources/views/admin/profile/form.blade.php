@@ -49,6 +49,17 @@
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
+
+                        <div>
+                            <label for="account_number" class="block mb-3 text-sm font-medium text-slate-900">Nomor
+                                Rekening</label>
+                            <input type="text" name="account_number" id="account_number"
+                                class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
+                                value="{{ isset($item) ? $item->account_number : '' }}">
+                            @error('account_number')
+                                <span class="text-xs text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="space-y-2">
@@ -78,10 +89,6 @@
                                 id="city_id" required onchange="updatePostalCode()">
                                 <option disabled selected>Pilih kabupaten/kota</option>
                                 @foreach ($cities as $city)
-                                    {{-- <option value="{{ $province['province_id'] }}"
-                                        {{ isset($item) ? ($province['province_id'] == $item->provinces_id ? 'selected' : '') : '' }}>
-                                        {{ $province['province'] }}
-                                    </option> --}}
                                     <option value="{{ $city['city_id'] }}" data-postal-code="{{ $city['postal_code'] }}"
                                         data-province-id="{{ $city['province_id'] }}"
                                         {{ isset($item) ? ($city['city_id'] == $item->city_id ? 'selected' : '') : '' }}>
