@@ -11,18 +11,19 @@
         <div class="flex gap-3">
             <div class="w-fit mb-3">
                 <div class="flex flex-col bg-white py-2 pl-2 pr-6 space-y-2">
-                    <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">ID Transaksi :
+                    <div class="w-fit text-indigo-800 text-md px-2.5 py-1 rounded">ID Transaksi :
                         <span class="font-medium">{{ substr($paymentData->transactions_id, -8) }}</span>
                     </div>
-                    <div class="w-fit text-green-800 text-md px-2.5 py-1 rounded">Jumlah Bayar :
+                    <div class="w-fit text-indigo-800 text-md px-2.5 py-1 rounded">Jumlah Bayar :
                         <span class="font-medium">Rp. {{ number_format($paymentData->pay_amount, 0, ',', '.') }}</span>
                     </div>
                 </div>
             </div>
             <div>
-                <div class="w-fit bg-white text-green-800 text-md font-medium px-2.5 py-1 rounded">Bukti Bayar :
-                    <div class="w-52 mt-2 cursor-pointer hover:brightness-50 duration-300" data-modal-target="buktiPembayaran" data-modal-toggle="buktiPembayaran" data-tooltip-target="bukti-bayar">
-                        <img src="{{ Storage::url($paymentData->image) }}" alt="">
+                <div class="w-fit bg-white text-indigo-800 text-md font-medium px-2.5 py-2 rounded cursor-pointer hover:brightness-50 duration-300" data-modal-target="buktiPembayaran" data-modal-toggle="buktiPembayaran" data-tooltip-target="bukti-bayar">
+                    Lihat Bukti Bayar
+                    <div class="w-fit h-fit mt-2 cursor-pointer hover:brightness-50 duration-300" data-modal-target="buktiPembayaran" data-modal-toggle="buktiPembayaran">
+                        <img class="h-20" src="{{ Storage::url($paymentData->image) }}" alt="">
                     </div>
                 </div>
             </div>
