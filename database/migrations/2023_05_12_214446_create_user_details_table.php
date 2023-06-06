@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('postal_code')->unsigned();
             $table->string('phone_number');
+            $table->string('account_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
