@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InStockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OutStockController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
@@ -71,6 +72,8 @@ Route::middleware('auth', 'OnlyAdmin')->group(function () {
         Route::get('/transaction/{id}/update-status', [TransactionController::class, 'updateStatus']);
         Route::get('/transaction/{id}/cancel-order', [TransactionController::class, 'cancelOrderNotPay']);
 
+        // Customers
+        Route::get('/customers', [CustomerController::class, 'index']);
         // FAQ
         Route::resource('/faq', FaqController::class);
     });
@@ -103,6 +106,7 @@ Route::middleware('CheckRole')->group(function () {
         Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
 
         Route::view('/success-order', 'customer.cart.success-order');
+        // Route::get('/success-order', [CheckoutController::class, 'successOrder']);
 
         // Profile User
         Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);
