@@ -110,6 +110,13 @@
                         <div>
                             <a href="/history/detail/{{ $item->id }}" class="text-indigo-500 font-bold hover:opacity-80">Detail Pesanan</a>
                         </div>
+                        @if ($payment->where('transactions_id', $item->id)->first() == null)
+                            @if ($item->order_status !== 'CANCELLED')
+                                <div>
+                                    <a href="/success-order" class="px-6 py-3 text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Bayar Sekarang</a>
+                                </div>    
+                            @endif
+                        @endif
                         <div>
                             @if ($item->payment_status == 'UNPAID')
                                 @if ($payment->where('transactions_id', $item->id)->first() !== null)
