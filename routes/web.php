@@ -105,8 +105,7 @@ Route::middleware('CheckRole')->group(function () {
         // Address
         Route::get('/checkout/address/{id}', [ProfileController::class, 'address']); //pinjem function dari controller profile dulu
 
-        Route::view('/success-order', 'customer.cart.success-order');
-        // Route::get('/success-order', [CheckoutController::class, 'successOrder']);
+        Route::get('/success-order/{id}', [CheckoutController::class, 'successOrder']);
 
         // Profile User
         Route::get('/profile/{id}', [ProfileController::class, 'editProfile']);

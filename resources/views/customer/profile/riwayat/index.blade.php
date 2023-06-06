@@ -113,7 +113,7 @@
                         @if ($payment->where('transactions_id', $item->id)->first() == null)
                             @if ($item->order_status !== 'CANCELLED')
                                 <div>
-                                    <a href="/success-order" class="px-6 py-3 text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Bayar Sekarang</a>
+                                    <a href="/success-order/{{ $item->id }}" class="px-6 py-3 text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Bayar Sekarang</a>
                                 </div>    
                             @endif
                         @endif

@@ -43,13 +43,20 @@
                                 </div>
                                 <div class="font-medium">{{ number_format($item->shipping_costs, 0, ',', '.') }}</div>
                             </div>
+                            <div class="flex text-slate-600 justify-between">
+                                <div class="w-28 flex justify-between mr-3">
+                                    <span>Kode Unik</span>
+                                    <span>: <span class="font-medium">Rp </span></span>
+                                </div>
+                                <div class="font-medium">{{ number_format($item->unique_payment_code, 0, ',', '.') }}</div>
+                            </div>
                             <div class="w-full h-[1px] bg-slate-700 my-1.5"></div>
                             <div class="flex text-slate-600">
                                 <div class="w-28 flex justify-between mr-3">
                                     <span>Subtotal</span>
                                     <span>: <span class="font-medium">Rp </span></span>
                                 </div>
-                                <div class="font-medium">{{ number_format($item->total + $item->shipping_costs, 0, ',', '.') }}</div>
+                                <div class="font-medium">{{ number_format($item->total + $item->shipping_costs + $item->unique_payment_code, 0, ',', '.') }}</div>
                             </div>
                         @endforeach
                     </div>

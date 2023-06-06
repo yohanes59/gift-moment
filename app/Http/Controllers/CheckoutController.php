@@ -60,11 +60,13 @@ class CheckoutController extends Controller
             $total += $productData['sub_total'];
         }
 
+        $unique_code = rand(100, 999);
         $transaction = Transaction::create([
             'users_id' => auth()->id(),
             'total' => $total,
             'courier' => $data['shipping']['courier_code'] . ' - ' . $data['shipping']['service'],
             'shipping_costs' => $data['shipping']['shipping_costs'],
+            'unique_payment_code' => $unique_code,
             'payment_status' => 'UNPAID',
             'order_status' => null
         ]);
@@ -87,6 +89,16 @@ class CheckoutController extends Controller
         $cart = Cart::where('users_id', auth()->id());
         $cart->delete();
         $request->session()->forget('checkout_data');
-        return redirect('/success-order');
+
+        return redirect('/success-order/' . $transaction->id);
+    }
+
+    public function successOrder($id)
+    {
+        $data = Transaction::where('id', $id)->firstOrFail();
+        $adminData = UserDetail::whereHas('user', function ($query) {
+            $query->where('roles', 'Admin');
+        })->first();
+        return view('customer.cart.success-order', compact('data', 'adminData'));
     }
 }
