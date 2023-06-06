@@ -112,7 +112,11 @@
                         </div>
                         <div>
                             @if ($item->payment_status == 'UNPAID')
-                                <a href="/history/upload/{{ $item->id }}" class="px-6 py-3 border border-indigo-500 text-indigo-500 font-medium hover:bg-indigo-500 hover:text-white duration-300 rounded-md">Upload Bukti Pembayaran</a>
+                                @if ($payment->where('transactions_id', $item->id)->first() !== null)
+                                    <div class="hidden"></div>
+                                @else
+                                    <a href="/history/upload/{{ $item->id }}" class="px-6 py-3 border border-indigo-500 text-indigo-500 font-medium hover:bg-indigo-500 hover:text-white duration-300 rounded-md">Upload Bukti Pembayaran</a>
+                                @endif
                             @elseif ($item->order_status == 'SHIPPED')
                                 <a href="/history/confirmOrderStatus/{{ $item->id }}" class="px-6 py-3 text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi Pesanan</a>
                             @endif

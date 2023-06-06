@@ -11,8 +11,9 @@ class PaymentController extends Controller
 {
     public function index($id)
     {
+        $data = Transaction::where('id', $id)->get();
         $transactionID = $id;
-        return view('customer.profile.riwayat.upload-payment', compact('transactionID'));
+        return view('customer.profile.riwayat.upload-payment', compact('transactionID', 'data'));
     }
 
     public function upload(Request $request, $id)
