@@ -20,7 +20,20 @@ class TransactionController extends Controller
                 ->whereNull('order_status')
                 ->orWhereIn('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED', 'COMPLETED'])
                 ->get();
+
             return DataTables::of($query)
+                ->addColumn('order_status', function ($item) {
+                    $payment = Payment::where('transactions_id', $item->id)->first();
+                    if ($item->order_status === 'CANCELLED') {
+                        return 'Pesanan Tidak Dibayar';
+                    } elseif ($item->order_status == null && isset($payment)) {
+                        return 'Menunggu Konfirmasi Pembayaran';
+                    } elseif ($item->order_status == null && !isset($payment)) {
+                        return 'Menunggu Pembayaran Customer';
+                    } else {
+                        return $item->order_status;
+                    }
+                })
                 ->addColumn('action', function ($item) {
                     $payment = Payment::where('transactions_id', $item->id)->first();
                     if ($item->payment_status == 'CANCELLED') {
@@ -115,7 +128,7 @@ class TransactionController extends Controller
                         ';
                     }
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['order_status', 'action'])
                 ->make();
         }
         return view('admin.transaction.index');

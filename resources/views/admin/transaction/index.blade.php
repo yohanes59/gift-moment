@@ -133,15 +133,6 @@
                     name: 'order_status',
                     className: 'py-3 px-6',
                     width: '20%',
-                    render: function(data, type, row) {
-                        if (data === null) {
-                            return 'Menunggu Konfirmasi Pembayaran';
-                        } else if (data === 'CANCELLED') {
-                            return 'Pesanan Tidak Dibayar';
-                        } else {
-                            return data;
-                        }
-                    }
                 },
                 {
                     data: 'action',
