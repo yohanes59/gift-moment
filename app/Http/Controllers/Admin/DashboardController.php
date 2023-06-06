@@ -11,6 +11,7 @@ use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Stock;
 
 class DashboardController extends Controller
 {
@@ -35,11 +36,19 @@ class DashboardController extends Controller
             ->whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
             ->sum('profit');
+        $bestSellingProducts = Stock::with('product')
+            ->selectRaw('products_id, sum(outcoming_stock) as total_outcoming_stock')
+            ->where('outcoming_stock', '>', 0)
+            ->groupBy('products_id')
+            ->orderByDesc('total_outcoming_stock')
+            ->take(5)
+            ->get();
         $stockAlerts = Product::with('category')->where('stock_amount', '<=', 10)->paginate(5);
         $transactionShortcut = Transaction::with('user')->whereNull('order_status')
             ->orWhereIn('order_status', ['NEW_ORDER', 'PACKED', 'SHIPPED'])
+            ->orderByDesc('created_at')
             ->paginate(5);
-        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts', 'transactionShortcut'));
+        return view('admin.dashboard.index', compact('transactions', 'sales', 'profits', 'stockAlerts', 'transactionShortcut', 'bestSellingProducts'));
     }
 
     public function editProfile()
