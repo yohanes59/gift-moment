@@ -13,7 +13,9 @@ class HistoryController extends Controller
 {
     public function index()
     {
-        $data = Transaction::where('users_id', auth()->id())->get();
+        $data = Transaction::where('users_id', auth()->id())
+            ->orderByDesc('created_at')
+            ->paginate(5);
         $payment = Payment::whereIn('transactions_id', $data->pluck('id'))->get();
 
         return view('customer.profile.riwayat.index', compact('data', 'payment'));

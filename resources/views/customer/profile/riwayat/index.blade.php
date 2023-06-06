@@ -57,7 +57,7 @@
                 <div class="flex justify-between items-center">
                     <div class="text-sm font-medium">
                         <i class="fa-solid fa-bag-shopping mr-1 text-indigo-500"></i>
-                        Transaksi : <span class="font-normal">{{ $item->created_at->format('d M Y') }}</span>
+                        Transaksi : <span class="font-normal">{{ $item->created_at->format('d M Y - H:i') }}</span>
                     </div>
     
                     <div>
@@ -132,5 +132,6 @@
                 </div>
             </div>    
         @endforeach
+        {{ $data->links() }}
     </div>
 @endsection
