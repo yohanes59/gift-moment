@@ -78,29 +78,57 @@
 
             <div class="flex flex-wrap gap-5 mt-3 mb-8">
                 @foreach ($products as $item)
-                    <a href="{{ url('/product/' . $item->slug) }}"
-                        class="w-full max-w-[150px] md:max-w-[220px] lg:max-w-[290px] xl:max-w-[276px] flex flex-col gap-2 pb-2 border border-indigo-50 shadow-lg shadow-indigo-100 overflow-hidden rounded-md {{ $item->stock_amount == 0 ? 'pointer-events-none opacity-50' : '' }}">
-                        <div class="w-full h-48 md:h-72 lg:h-80">
-                            @if ($item->image != '')
-                                <img src="{{ asset(Storage::url($item->image)) }}"
-                                    class="object-cover w-full h-48 md:h-72 lg:h-80"
-                                    alt="Gambar Produk {{ $item->name }}">
-                                @if ($item->stock_amount == 0)
-                                    stok habis
-                                @endif
-                            @else
-                                <img src="{{ asset('assets/img/img-product.png') }}"
-                                    class="object-cover w-full h-48 md:h-72 lg:h-80" alt="...">
-                            @endif
-                        </div>
-                        <div class="flex flex-col p-3">
-                            <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
-                                {{ $item->category->name }}</div>
-                            <div class="text-slate-900 line-clamp-2">{{ $item->name }}</div>
-                            <div class="text-slate-900 font-bold">Rp{{ number_format($item->price, 0, ',', '.') }}
+                    @if ($item->stock_amount == 0)
+                        <a href="{{ url('/product/' . $item->slug) }}"
+                            class="w-full max-w-[150px] md:max-w-[220px] lg:max-w-[290px] xl:max-w-[276px] flex flex-col gap-2 pb-2 border border-indigo-50 shadow-lg shadow-indigo-100 overflow-hidden rounded-md {{ $item->stock_amount == 0 ? 'pointer-events-none' : '' }}">
+                            <div class="relative">
+                                <div class="absolute top-12 left-6 md:top-24 md:left-[52px] lg:left-20 z-10">
+                                    <div class="w-24 sm:w-28 h-24 sm:h-28 bg-indigo-950 rounded-full flex flex-col justify-center items-center text-white">
+                                        <i class="fa-regular fa-face-sad-cry text-2xl sm:text-3xl"></i>
+                                        <div class="font-medium text-sm">Stok Habis</div>
+                                    </div>
+                                </div>
+                                <div class="w-full h-48 md:h-72 lg:h-80 {{ $item->stock_amount == 0 ? 'opacity-50' : '' }}">
+                                    @if ($item->image != '')
+                                        <img src="{{ asset(Storage::url($item->image)) }}"
+                                            class="object-cover w-full h-48 md:h-72 lg:h-80"
+                                            alt="Gambar Produk {{ $item->name }}">
+                                    @else
+                                        <img src="{{ asset('assets/img/img-product.png') }}"
+                                            class="object-cover w-full h-48 md:h-72 lg:h-80" alt="...">
+                                    @endif
+                                </div>
+                                <div class="flex flex-col p-3 {{ $item->stock_amount == 0 ? 'opacity-50' : '' }}">
+                                    <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
+                                        {{ $item->category->name }}</div>
+                                    <div class="text-slate-900 line-clamp-1 sm:line-clamp-2">{{ $item->name }}</div>
+                                    <div class="text-slate-900 font-bold">Rp{{ number_format($item->price, 0, ',', '.') }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    @else
+                        <a href="{{ url('/product/' . $item->slug) }}"
+                            class="w-full max-w-[150px] md:max-w-[220px] lg:max-w-[290px] xl:max-w-[276px] flex flex-col gap-2 pb-2 border border-indigo-50 shadow-lg shadow-indigo-100 overflow-hidden rounded-md {{ $item->stock_amount == 0 ? 'pointer-events-none opacity-50' : '' }}">
+                            <div class="w-full h-48 md:h-72 lg:h-80">
+                                @if ($item->image != '')
+                                    <img src="{{ asset(Storage::url($item->image)) }}"
+                                        class="object-cover w-full h-48 md:h-72 lg:h-80"
+                                        alt="Gambar Produk {{ $item->name }}">
+                                @else
+                                    <img src="{{ asset('assets/img/img-product.png') }}"
+                                        class="object-cover w-full h-48 md:h-72 lg:h-80" alt="...">
+                                @endif
+                            </div>
+                            <div class="flex flex-col p-3">
+                                <div class="w-fit bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
+                                    {{ $item->category->name }}</div>
+                                <div class="text-slate-900 line-clamp-1 sm:line-clamp-2">{{ $item->name }}</div>
+                                <div class="text-slate-900 font-bold">Rp{{ number_format($item->price, 0, ',', '.') }}
+                                </div>
+                            </div>
+                        </a>
+                    @endif
                 @endforeach
             </div>
             <div>

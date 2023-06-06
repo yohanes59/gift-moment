@@ -30,7 +30,7 @@
                         @csrf
                         @foreach ($cart as $item)
                             <div
-                                class="flex items-center hover:bg-slate-100 py-5 bg-white border border-indigo-200 mb-3 shadow-md shadow-indigo-100">
+                                class="flex items-center py-5 bg-white border border-indigo-200 mb-3 shadow-md shadow-indigo-100">
                                 <div class="flex w-2/5 gap-3 pl-6">
                                     <!-- product -->
                                     <input type="hidden" value="{{ $item->product->id }}" name="products_id[]">
@@ -49,17 +49,17 @@
                                 </div>
                                 <div class="flex justify-center w-1/5">
                                     <button type="button" class="quantity-btn minus">
-                                        <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
+                                        <svg class="fill-current text-indigo-600 w-3" viewBox="0 0 448 512">
                                             <path
                                                 d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                                         </svg>
                                     </button>
                                     <input type="hidden" id="minimum_order" value="{{ $item->product->minimum_order }}">
                                     <input type="hidden" id="stock" value="{{ $item->product->stock_amount }}">
-                                    <input type="number" name="qty[]" class="mx-2 text-center w-20 quantity"
+                                    <input type="number" name="qty[]" class="mx-2 text-center w-20 border border-indigo-300 rounded-md quantity"
                                         value="{{ $item->qty }}">
                                     <button type="button" class="quantity-btn plus">
-                                        <svg class="fill-current text-slate-600 w-3" viewBox="0 0 448 512">
+                                        <svg class="fill-current text-indigo-600 w-3" viewBox="0 0 448 512">
                                             <path
                                                 d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                                         </svg>
@@ -72,7 +72,7 @@
                             </div>
                         @endforeach
 
-                        <a href="{{ url('/') }}" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                        <a href="{{ url('/') }}" class="flex font-semibold text-indigo-600 w-fit text-sm mt-10">
                             <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
                                 <path
                                     d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
