@@ -103,7 +103,7 @@
                             <span class="font-medium">{{ substr($item->id, -8) }}</span>
                         </div>
                         <div>Total</div>
-                        <div class="font-bold">Rp {{ number_format($item->total + $item->shipping_costs, 0, ',', '.') }}</div>
+                        <div class="font-bold">Rp {{ number_format($item->total + $item->shipping_costs + $item->unique_payment_code, 0, ',', '.') }}</div>
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-end gap-4 text-sm">

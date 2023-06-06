@@ -75,7 +75,7 @@ class TransactionController extends Controller
                                 <i class="fa-solid fa-receipt"></i>
                                 </a>
                                 <a href="/admin/transaction/' . $item->id . '/update-status"
-                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Bukti pembayaran sudah valid? ubah status pesanan untuk diproses&quot;)">
                                     <i class="fa-solid fa-check"></i>
                                 </a>
                                 <a href="/admin/transaction/' . $item->id . '/cancel-order"
@@ -94,7 +94,7 @@ class TransactionController extends Controller
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                             <a href="/admin/transaction/' . $item->id . '/update-status"
-                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Paket sudah siap dikemas? Ubah status menjadi dikemas&quot;)">
                                 <i class="fa-solid fa-box"></i>
                             </a>
                         </div>
@@ -109,7 +109,7 @@ class TransactionController extends Controller
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                             <a href="/admin/transaction/' . $item->id . '/update-status"
-                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
+                            class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600" data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan" onclick="return confirm(&quot;Paket sudah selesai dikemas dan sudah diambil kurir? Ubah status menjadi dikirim&quot;)">
                                 <i class="fa-solid fa-truck-fast"></i>
                             </a>
                         </div>

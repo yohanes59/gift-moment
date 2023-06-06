@@ -13,7 +13,7 @@
                 <img class="object-cover" src="{{ asset('assets/img/cart/order-success.svg') }}" alt="">
             </div>
             <div>
-                <div class="text-xl text-center font-bold">Silahkan Transfer ke {{ $adminData->account_number }} sebesar Rp.
+                <div class="text-xl text-center font-bold">Silahkan Transfer ke {{ $adminData->account_number }} sebesar Rp
                     {{ number_format($data->total + $data->shipping_costs + $data->unique_payment_code, 0, ',', '.') }}</div>
                 <div class="text-base text-center text-slate-500">Agar orderanmu dapat segera di kirim ke tempatmu</div>
             </div>
