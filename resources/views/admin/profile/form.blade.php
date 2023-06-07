@@ -126,20 +126,40 @@
 @push('addon-script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        const originSelect = document.getElementById("city_id");
-        const originProvinceSelect = document.getElementById("provinces_id");
+        @push('addon-script')
+            <
+            script src = "https://cdn.jsdelivr.net/npm/sweetalert2@11" >
+    </>
+    <script>
+        const provincesSelect = document.getElementById("provinces_id");
+        const citiesSelect = document.getElementById("city_id");
 
-        originProvinceSelect.addEventListener("change", () => {
-            const selectedProvinceId = originProvinceSelect.value;
-
-            // hide all options that don't match the selected province
-            Array.from(originSelect.options).forEach(option => {
-                const cityProvinceId = option.dataset.provinceId;
-                option.hidden = (selectedProvinceId !== "" && selectedProvinceId !== cityProvinceId);
+        function hideCities() {
+            Array.from(citiesSelect.options).forEach(option => {
+                option.hidden = true;
             });
+        }
 
-            // reset the selected city
-            originSelect.value = "";
+        hideCities(); // hide cities on page load
+
+        provincesSelect.addEventListener("change", () => {
+            const selectedProvinceId = provincesSelect.value;
+
+            if (selectedProvinceId === "") {
+                hideCities(); // hide cities if no province is selected
+            } else {
+                // show options that match the selected province
+                Array.from(citiesSelect.options).forEach(option => {
+                    const cityProvinceId = option.dataset.provinceId;
+                    option.hidden = (selectedProvinceId !== cityProvinceId);
+                });
+
+                // reset the selected city if it's not in the new options
+                if (!Array.from(citiesSelect.options).some(option => !option.hidden && option.value === citiesSelect
+                        .value)) {
+                    citiesSelect.value = "";
+                }
+            }
         });
 
         function updatePostalCode() {
@@ -149,4 +169,6 @@
             postalCodeInput.value = selectedOption.getAttribute("data-postal-code");
         }
     </script>
+@endpush
+</script>
 @endpush
