@@ -18,7 +18,7 @@ return new class extends Migration
             $table->uuid('categories_id')->nullable();
             $table->foreign('categories_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('price')->unsigned()->default(0);
             $table->integer('capital_price')->unsigned()->default(0);
             $table->text('description');
