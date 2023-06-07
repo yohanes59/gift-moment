@@ -112,130 +112,10 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y">
-                        @foreach ($transactionShortcut as $item)
-                            @php
-                                $payment = App\Models\Payment::where('transactions_id', $item->id)->first();
-                            @endphp
-                            <tr>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ substr($item->id, -8) }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ date('j F Y - H.i', strtotime($item->created_at)) }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $item->user->name }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ number_format($item->total, 0, ',', '.') }}
-                                </td>
-                                <td scope="col" class="py-3 px-6 text-center">
-                                    <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
-                                        {{ $item->payment_status }}
-                                    </span>
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    @if ($item->order_status == null && isset($payment))
-                                        Menunggu Konfirmasi Pembayaran
-                                    @elseif ($item->order_status == null && !isset($payment))
-                                        Menunggu Pembayaran Customer
-                                    @else
-                                        {{ $item->order_status }}
-                                    @endif
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    @if ($item->payment_status == 'CANCELLED')
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                        </div>
-                                    @elseif ($item->payment_status == 'UNPAID' && !isset($payment))
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/cancel-order"
-                                                class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"
-                                                onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </div>
-                                    @elseif ($item->payment_status == 'UNPAID' && isset($payment))
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/show-payment"
-                                                class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Cek Bukti Pembayaran">
-                                                <i class="fa-solid fa-receipt"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/update-status"
-                                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan"
-                                                onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                                <i class="fa-solid fa-check"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/cancel-order"
-                                                class="py-2 px-3 rounded-md text-white bg-red-500 hover:bg-red-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Batalkan Pesanan"
-                                                onclick="return confirm(&quot;Yakin Ingin Membatalkan Pesanan Ini?&quot;)">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </div>
-                                    @elseif ($item->order_status == 'NEW_ORDER')
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/update-status"
-                                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan"
-                                                onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                                <i class="fa-solid fa-box"></i>
-                                            </a>
-                                        </div>
-                                    @elseif ($item->order_status == 'PACKED')
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                            <a href="/admin/transaction/{{ $item->id }}/update-status"
-                                                class="py-2 px-3 rounded-md text-white bg-green-500 hover:bg-green-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Ubah Status Pesanan"
-                                                onclick="return confirm(&quot;Yakin Ingin Mengubah Status Pesanan Ini?&quot;)">
-                                                <i class="fa-solid fa-truck-fast"></i>
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="flex items-center space-x-2">
-                                            <a href="/admin/transaction/{{ $item->id }}/show"
-                                                class="py-2 px-3 rounded-md text-white bg-blue-500 hover:bg-blue-600"
-                                                data-bs-toggle="tooltip-detail" data-bs-title="Lihat detail transaksi">
-                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </a>
-                                        </div>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        {{ $transactionShortcut->links() }}
 
         <div class="mt-5 mb-3">
             <div class="text-xl font-medium mb-3">Stock Warning</div>
@@ -281,3 +161,85 @@
         {{ $stockAlerts->links() }}
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var datatable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: true,
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id',
+                    className: 'py-3 px-6 text-center whitespace-nowrap',
+                    width: '5%',
+                    render: function(data, type, row) {
+                        return data.substr(data.length - 8);
+                    }
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                    className: 'py-4 px-6 whitespace-nowrap',
+                    width: '10%',
+                    render: function(data, type, row) {
+                        const date = new Date(data);
+                        const formattedDate = date.toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric',
+                        });
+                        return formattedDate.replace('pukul', '-');
+                    }
+                },
+                {
+                    data: 'user.name',
+                    name: 'user.name',
+                    className: 'py-3 px-6',
+                    width: '20%'
+                },
+                {
+                    data: 'total',
+                    name: 'total',
+                    className: 'py-3 px-6',
+                    width: '15%',
+                    render: function(data, type, row) {
+                        return 'Rp ' + new Intl.NumberFormat('id-ID', {
+                            minimumFractionDigits: 0
+                        }).format(data);
+                    }
+                },
+                {
+                    data: 'payment_status',
+                    name: 'payment_status',
+                    className: 'py-3 px-6 text-center',
+                    width: '20%',
+                },
+                {
+                    data: 'order_status',
+                    name: 'order_status',
+                    className: 'py-3 px-6',
+                    width: '20%',
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'py-3 px-6',
+                    orderable: false,
+                    searchable: false,
+                    width: '15%'
+                },
+            ]
+        })
+
+        $('table').on('draw.dt', function() {
+            $('[data-bs-toggle="tooltip-detail"]').tooltip();
+        })
+    </script>
+@endpush
