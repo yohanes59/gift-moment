@@ -41,7 +41,7 @@ class CategoryController extends Controller
                 ';
                 })
                 ->editColumn('image', function ($item) {
-                    return $item->image ? '<img src="' . Storage::url($item->image) . '" style="height: 60px; width: 60px;"/>' : '';
+                    return $item->image ? '<img src="' . Storage::url($item->image) . '" style="height: 60px; width: 60px;"/>' : '<img src="' . asset("assets/img/no-image.jpg") . '" style="height: 60px; width: 60px;"/>';
                 })
                 ->rawColumns(['action', 'image'])
                 ->make();
