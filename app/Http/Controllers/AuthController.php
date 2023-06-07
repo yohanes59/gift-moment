@@ -8,8 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Unique;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -30,7 +28,7 @@ class AuthController extends Controller
 			'roles' => 'User'
 		]);
 
-		return redirect('/login')->with('alert', 'Sucsess create account');
+		return redirect('/login')->withSuccess('Registrasi Akun Berhasil!');
 	}
 
     public function login()
@@ -53,11 +51,6 @@ class AuthController extends Controller
 		} else {
 			return redirect('/');
 		}
-    }
-
-    public function editUserAccount()
-    {
-
     }
 
     public function logout(Request $request)
