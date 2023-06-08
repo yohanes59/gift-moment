@@ -16,6 +16,9 @@
                 <li class="{{ request()->is('about') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
                     <a href="/about" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
                 </li>
+                <li class="{{ request()->is('about-dev') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
+                    <a href="/about-dev" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Pengembang</a>
+                </li>
 
                 @guest
                     <li>

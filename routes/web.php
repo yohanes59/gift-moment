@@ -120,5 +120,8 @@ Route::middleware('CheckRole')->group(function () {
     });
 
     // About Us
-    Route::view('/about', 'customer.about.index');
+    Route::view('/about', 'customer.about.store.index');
+    
+    // About Dev
+    Route::view('/about-dev', 'customer.about.dev.index');
 });
