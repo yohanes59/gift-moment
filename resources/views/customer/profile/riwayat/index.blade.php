@@ -141,11 +141,10 @@
                 </div>
                 <div>
                     <div class="text-xl text-center font-bold">Kamu belum pernah melakukan transaksi</div>
-                    <div class="text-base text-center text-slate-500">Banyak produk menarik menantimu</div>
+                    <div class="text-base text-center text-slate-500">Temukan produk kebutuhanmu bersama kami</div>
                 </div>
                 <a href="{{ url('/') }}"
-                    class="px-8 py-3 text-center text-white font-semibold bg-indigo-500 rounded-md hover:opacity-80 duration-300">Ayo
-                    Belanja Sekarang</a>
+                    class="px-8 py-3 text-center text-white font-semibold bg-indigo-500 rounded-md hover:opacity-80 duration-300">Jelajahi Sekarang</a>
             </div>
         @endif
         
