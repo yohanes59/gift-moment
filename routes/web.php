@@ -123,5 +123,5 @@ Route::middleware('CheckRole')->group(function () {
     Route::view('/about', 'customer.about.store.index');
     
     // About Dev
-    Route::view('/about-dev', 'customer.about.dev.index');
+    Route::get('/about-dev', [HomeController::class, 'showTeam']);
 });
