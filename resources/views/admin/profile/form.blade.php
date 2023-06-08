@@ -17,9 +17,9 @@
                     @method('PUT')
                 @endif
                 <div class="grid md:grid-cols-2 md:gap-6">
-                    <div class="space-y-2">
+                    <div class="space-y-4">
                         <div>
-                            <label for="address" class="block mb-3 text-sm font-medium text-slate-900">Alamat</label>
+                            <label for="address" class="block mb-1 text-sm font-medium text-slate-900">Alamat</label>
                             <input type="text" name="address" id="address"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->address : '' }}">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div>
-                            <label for="address_detail" class="block mb-3 text-sm font-medium text-slate-900">Detail
+                            <label for="address_detail" class="block mb-1 text-sm font-medium text-slate-900">Detail
                                 Alamat</label>
                             <input type="text" name="address_detail" id="address_detail"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
@@ -40,7 +40,7 @@
                         </div>
 
                         <div>
-                            <label for="phone_number" class="block mb-3 text-sm font-medium text-slate-900">Nomor
+                            <label for="phone_number" class="block mb-1 text-sm font-medium text-slate-900">Nomor
                                 Telepon</label>
                             <input type="text" name="phone_number" id="phone_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
@@ -51,8 +51,9 @@
                         </div>
 
                         <div>
-                            <label for="account_number" class="block mb-3 text-sm font-medium text-slate-900">Nomor
+                            <label for="account_number" class="block text-sm font-medium text-slate-900">Nomor
                                 Rekening</label>
+                            <span class="text-sm font-medium italic text-slate-600"><span class="text-red-500">**</span>BCA 1234567890 a/n Nama Pemilik</span>
                             <input type="text" name="account_number" id="account_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->account_number : '' }}">
@@ -62,9 +63,9 @@
                         </div>
                     </div>
 
-                    <div class="space-y-2">
+                    <div class="space-y-4">
                         <div>
-                            <label for="provinces_id" class="block mb-3 text-sm font-medium text-slate-900">Provinsi</label>
+                            <label for="provinces_id" class="block mb-1 text-sm font-medium text-slate-900">Provinsi</label>
                             <select name="provinces_id"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 id="provinces_id" required>
@@ -83,7 +84,7 @@
 
                         <div>
                             <label for="city_id"
-                                class="block mb-3 text-sm font-medium text-slate-900">Kabupaten/Kota</label>
+                                class="block mb-1 text-sm font-medium text-slate-900">Kabupaten/Kota</label>
                             <select name="city_id"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 id="city_id" required onchange="updatePostalCode()">
@@ -102,7 +103,7 @@
                         </div>
 
                         <div>
-                            <label for="postal_code" class="block mb-3 text-sm font-medium text-slate-900">Kode Pos</label>
+                            <label for="postal_code" class="block mb-1 text-sm font-medium text-slate-900">Kode Pos</label>
                             <input type="text" name="postal_code" id="postal_code"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 readonly value="{{ isset($item) ? $item->postal_code : '' }}">
@@ -116,6 +117,7 @@
 
                 <button type="submit"
                     class="w-full text-white font-medium rounded-lg text-sm px-5 py-3 text-center bg-blue-500 hover:opacity-80">
+                    <i class="fa-solid fa-check mr-1"></i>
                     Simpan
                 </button>
             </form>

@@ -52,14 +52,15 @@
             </nav>
         </div>
 
-        @foreach ($data as $item)
+        @if ($data->count() > 0)
+            @foreach ($data as $item)
             <div class="w-full p-4 border border-indigo-200 rounded-md mb-4">
                 <div class="flex justify-between items-center">
                     <div class="text-sm font-medium">
                         <i class="fa-solid fa-bag-shopping mr-1 text-indigo-500"></i>
                         Transaksi : <span class="font-normal">{{ $item->created_at->format('d M Y - H:i') }}</span>
                     </div>
-    
+
                     <div>
                         @if ($item->payment_status == 'UNPAID')
                             @if ($payment->where('transactions_id', $item->id)->first() !== null)
@@ -133,5 +134,20 @@
             </div>    
         @endforeach
         {{ $data->links() }}
+        @else
+            <div class="flex flex-col justify-center items-center gap-4">
+                <div class="flex items-center w-72 h-72 rounded-lg rounded-tr-[60px] rounded-bl-[60px] overflow-hidden">
+                    <img class="object-cover" src="{{ asset('assets/img/cart/no-order.svg') }}" alt="">
+                </div>
+                <div>
+                    <div class="text-xl text-center font-bold">Kamu belum pernah melakukan transaksi</div>
+                    <div class="text-base text-center text-slate-500">Banyak produk menarik menantimu</div>
+                </div>
+                <a href="{{ url('/') }}"
+                    class="px-8 py-3 text-center text-white font-semibold bg-indigo-500 rounded-md hover:opacity-80 duration-300">Ayo
+                    Belanja Sekarang</a>
+            </div>
+        @endif
+        
     </div>
 @endsection
