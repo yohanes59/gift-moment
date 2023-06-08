@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Faq;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,7 @@ class HomeController extends Controller
         $products = Product::paginate(8);
         $faq = Faq::get();
 
-        return view('customer.home.index', compact('categories', 'products','faq'));
+        return view('customer.home.index', compact('categories', 'products', 'faq'));
     }
 
     public function showProductByCategory(Request $request, $slug)
@@ -24,7 +26,7 @@ class HomeController extends Controller
         $products = Product::where('categories_id', $category->id)->paginate(8);
         $faq = Faq::get();
 
-        return view('customer.home.index', compact('categories', 'products','faq'));
+        return view('customer.home.index', compact('categories', 'products', 'faq'));
     }
 
     public function search(Request $request)
@@ -34,9 +36,16 @@ class HomeController extends Controller
 
         $search = $request->search;
 
-        $products = Product::where('name','LIKE','%'.$search.'%')->paginate(8);
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')->paginate(8);
 
-        return view('customer.home.index', compact('categories', 'products','faq'));
+        return view('customer.home.index', compact('categories', 'products', 'faq'));
     }
-    
+
+    public function showTeam()
+    {
+        $mentorData = Team::where('role', 'mentor')->get();
+        $menteeData = Team::whereNotIn('role', ['mentor'])->get();
+        
+        return view('customer.about.dev.index', compact('mentorData', 'menteeData'));
+    }
 }
