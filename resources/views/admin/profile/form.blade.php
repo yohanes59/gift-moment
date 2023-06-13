@@ -42,6 +42,7 @@
                         <div>
                             <label for="phone_number" class="block mb-1 text-sm font-medium text-slate-900">Nomor
                                 Telepon</label>
+                            <span class="text-sm font-medium italic text-slate-600"><span class="text-red-500">**</span>628123456789</span>
                             <input type="text" name="phone_number" id="phone_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->phone_number : '' }}">
