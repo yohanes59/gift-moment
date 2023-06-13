@@ -38,85 +38,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="mt-5 mb-3">
-            <div class="text-xl font-medium mb-3">Produk Terlaris Bulan Ini</div>
-            <div class="overflow-x-auto relative">
-                <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-white uppercase bg-indigo-500">
-                        <tr class="divide-x divide-y">
-                            <th scope="col" class="py-3 px-6">
-                                No
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Kategori Produk
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Nama Produk
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Jumlah Terjual
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y">
-                        @foreach ($bestSellingProducts as $item)
-                            <tr class="divide-x divide-y">
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $item->product->category->name }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $item->product->name }}
-                                </td>
-                                <td scope="col" class="py-3 px-6">
-                                    {{ $item->total_outcoming_stock }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="mt-5 mb-3">
-            <div class="text-xl font-medium mb-3">Transaction Shortcut</div>
-            {{-- Table --}}
-            <div class="overflow-x-auto relative">
-                <table class="w-full text-sm text-left text-gray-500" id="crudTable">
-                    <thead class="text-xs text-white uppercase bg-indigo-500">
-                        <tr class="divide-x divide-y">
-                            <th scope="col" class="w-16 py-3 px-6">
-                                ID
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Tanggal Transaksi
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Nama
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Total
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Status Pembayaran
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Status Pesanan
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Aksi
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
         <div class="mt-5 mb-3">
             <div class="text-xl font-medium mb-3">Stock Warning</div>
             <div class="overflow-x-auto relative">
@@ -159,6 +80,85 @@
             </div>
         </div>
         {{ $stockAlerts->links() }}
+
+
+        <div class="mt-5 mb-3">
+            <div class="text-xl font-medium mb-3">Transaction Shortcut</div>
+            {{-- Table --}}
+            <div class="overflow-x-auto relative">
+                <table class="w-full text-sm text-left text-gray-500" id="crudTable">
+                    <thead class="text-xs text-white uppercase bg-indigo-500">
+                        <tr class="divide-x divide-y">
+                            <th scope="col" class="w-16 py-3 px-6">
+                                ID
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Tanggal Transaksi
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Nama
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Total
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Status Pembayaran
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Status Pesanan
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-3">
+            <div class="text-xl font-medium mb-3">Produk Terlaris Bulan Ini</div>
+            <div class="overflow-x-auto relative">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-white uppercase bg-indigo-500">
+                        <tr class="divide-x divide-y">
+                            <th scope="col" class="py-3 px-6">
+                                No
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Kategori Produk
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Nama Produk
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Jumlah Terjual
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y">
+                        @foreach ($bestSellingProducts as $item)
+                            <tr class="divide-x divide-y">
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->product->category->name }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->product->name }}
+                                </td>
+                                <td scope="col" class="py-3 px-6">
+                                    {{ $item->total_outcoming_stock }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
 
