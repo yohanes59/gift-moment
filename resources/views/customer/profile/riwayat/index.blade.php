@@ -127,7 +127,10 @@
                                 @endif
                             @elseif ($item->order_status == 'SHIPPED')
                                 <a href="/history/confirmOrderStatus/{{ $item->id }}" class="px-6 py-3 text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi Pesanan</a>
-                            @endif
+                                @endif
+                            <a href="https://api.whatsapp.com/send?phone=6289677464708&text=Hallo%20admin,%20saya%20mau%20tanya" target="_blank" data-tooltip-target="tooltip-chat" class="px-4 py-3 border border-indigo-500 text-indigo-500 hover:opacity-80 duration-300 rounded-md">
+                                <i class="fa-solid fa-comment-dots"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -148,5 +151,10 @@
             </div>
         @endif
         
+    </div>
+
+    <div id="tooltip-chat" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+        Tanya Penjual
+        <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 @endsection
