@@ -22,7 +22,7 @@ class AdminDetailSeeder extends Seeder
             [
                 'address' => 'Jl. Raya Danyang-Kuwu KM.05 Desa Kandangan RT.03/04',
                 'address_detail' => 'Timur Jembatan Pertigaan Jolotundo',
-                'phone_number' => '+6285656424170',
+                'phone_number' => '6285656424170',
                 'provinces_id' => 9,
                 'city_id' => 22,
                 'postal_code' => 40311
