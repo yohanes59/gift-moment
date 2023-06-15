@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="w-full max-w-sm">
                     @if (isset($item) && $item->image)
                         <img id="image-preview" src="{{ Storage::url($item->image) }}">
                     @else
@@ -115,7 +115,7 @@
 
                 <div>
                     <label for="description" class="block mb-3 text-sm font-medium text-slate-900">Deskripsi</label>
-                    <textarea name="description" id="editor">{{ isset($item) ? $item->answer : '' }}</textarea>
+                    <textarea name="description" id="editor">{{ isset($item) ? $item->description : '' }}</textarea>
                     @error('description')
                         <span class="text-xs text-red-500">{{ $message }}</span>
                     @enderror
