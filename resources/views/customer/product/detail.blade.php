@@ -54,15 +54,15 @@
 
         <form action="{{ url('/product/add-to-cart/' . $product->id) }}" method="POST">
             @csrf
-            <div class="w-full mt-6 flex flex-col lg:flex-row gap-10">
+            <div class="w-full mt-3 lg:mt-6 flex flex-col lg:flex-row gap-4 lg:gap-10">
                 <div class="w-full lg:w-1/3 h-96">
                     <img class="rounded-xl w-full h-full object-cover" src="{{ asset(Storage::url($product->image)) }}"
                         alt="">
                 </div>
-                <div class="w-full lg:w-2/5 flex flex-col py-8 pr-6 divide-y">
+                <div class="w-full lg:w-2/5 flex flex-col pt-0 pb-8 md:pb-8 md:pt-8 pr-0 md:pr-6 divide-y">
                     <div>
                         <div class="text-xl font-bold text-gray-900">{{ $product->name }}</div>
-                        <div id="product-price" class="text-3xl font-bold text-gray-900 mt-5 mb-5">Rp
+                        <div id="product-price" class="text-3xl font-bold text-gray-900 mt-1 mb-5">Rp
                             {{ number_format($product->price, 0, ',', '.') }}</div>
                     </div>
                     <div class="pt-5 px-4">
