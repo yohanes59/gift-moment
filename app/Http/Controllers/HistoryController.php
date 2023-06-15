@@ -16,6 +16,7 @@ class HistoryController extends Controller
             ->orderByDesc('created_at')
             ->paginate(5);
         $payment = Payment::whereIn('transactions_id', $data->pluck('id'))->get();
+        // dd($payment);
         $userData = UserDetail::whereHas('user', function ($query) {
             $query->where('roles', 'Admin');
         })->first();
