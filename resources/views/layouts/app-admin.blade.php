@@ -14,7 +14,7 @@
     @include('include.admin.navbar')
     @include('include.admin.sidebar')
 
-    <div class="px-6 pt-20 pb-6 sm:ml-64 bg-slate-100 min-h-screen">
+    <div class="px-6 pt-20 pb-6 lg:ml-64 bg-slate-100 min-h-screen">
         @yield('admin')
     </div>
 

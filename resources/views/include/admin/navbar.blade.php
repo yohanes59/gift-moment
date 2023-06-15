@@ -2,9 +2,9 @@
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start">
-                <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+                <button data-drawer-target="sidebarAdmin" data-drawer-toggle="sidebarAdmin" aria-controls="sidebarAdmin"
                     type="button"
-                    class="inline-flex items-center p-2 text-sm text-slate-100 rounded-lg sm:hidden focus:outline-none focus:ring-1 focus:ring-indigo-900">
+                    class="inline-flex items-center p-2 text-sm text-slate-100 rounded-lg lg:hidden focus:outline-none focus:ring-1 focus:ring-indigo-900">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">

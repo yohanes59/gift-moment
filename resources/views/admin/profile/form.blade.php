@@ -11,12 +11,12 @@
         </div>
 
         <div class="max-w-4xl mt-3 p-4 bg-white shadow-md rounded-md">
-            <form class="space-y-2" action="{{ route('admin.profile') }}" method="POST" enctype="multipart/form-data">
+            <form class="space-y-4" action="{{ route('admin.profile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if (isset($item))
                     @method('PUT')
                 @endif
-                <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="grid md:grid-cols-2 gap-3 md:gap-6">
                     <div class="space-y-4">
                         <div>
                             <label for="address" class="block mb-1 text-sm font-medium text-slate-900">Alamat</label>

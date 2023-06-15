@@ -23,7 +23,7 @@ class FaqController extends Controller
                 ->addColumn('action', function ($item) {
                     return '
                     <td class="w-32 py-4 px-6">
-                        <div class="flex items-center space-x-2">
+                        <div class="flex gap-2">
                             <a href="/admin/faq/' . $item->id . '/edit"
                                 class="py-2 px-3 rounded-md text-white bg-yellow-500 hover:bg-yellow-600" data-bs-toggle="tooltip-edit" data-bs-title="Edit Pertanyaan">
                                 <i class="fa-solid fa-edit"></i>

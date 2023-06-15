@@ -81,6 +81,7 @@ php artisan serve
 * [Sweet Alert](https://sweetalert.js.org/)
 * [Flowbite](https://flowbite.com/)
 * [Font Awesome](https://fontawesome.com/)
+* [Freepik](https://freepik.com/)
 * [CKEditor](https://ckeditor.com/)
 
 ## 📌 Creator
