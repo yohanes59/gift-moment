@@ -25,7 +25,8 @@ class AdminDetailSeeder extends Seeder
                 'phone_number' => '6285656424170',
                 'provinces_id' => 9,
                 'city_id' => 22,
-                'postal_code' => 40311
+                'postal_code' => 40311,
+                'account_number' => 'BRI 007601012890531 a/n Erni Riyaningsih'
             ],
         ];
 
@@ -41,6 +42,7 @@ class AdminDetailSeeder extends Seeder
                 'provinces_id' => $item['provinces_id'],
                 'city_id' => $item['city_id'],
                 'postal_code' => $item['postal_code'],
+                'account_number' => $item['account_number'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
