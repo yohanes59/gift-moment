@@ -3,7 +3,6 @@
 @section('title', 'Checkout')
 
 @section('content')
-    {{-- {{ var_dump($data) }} --}}
     <div class="px-4 lg:px-10 pb-14 mx-auto w-full max-w-screen-xl">
         @if ($userDetailData == null)
             <div class="flex flex-col pt-24 justify-center items-center gap-4">

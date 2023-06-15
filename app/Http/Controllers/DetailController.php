@@ -29,13 +29,10 @@ class DetailController extends Controller
             'qty' => $request->product_qty,
         ];
 
-        // dd($data);
-
         // kalau sudah ada data di cart, maka update data
         $cart = Cart::where('products_id', $id)
             ->where('users_id', auth()->id())
             ->first();
-        // dd($cart);
         if ($cart) {
             $data['qty'] = $cart->qty + $request->product_qty;
             $cart->update($data);

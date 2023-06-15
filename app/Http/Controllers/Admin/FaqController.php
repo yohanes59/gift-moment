@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Faq;
-use Illuminate\Http\Request;
 use App\Http\Requests\FaqRequest;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;

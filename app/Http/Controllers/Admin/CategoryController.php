@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Route;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;

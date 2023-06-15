@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Stock;
 use App\Models\Transaction;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Product;

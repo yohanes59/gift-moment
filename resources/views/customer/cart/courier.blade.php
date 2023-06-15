@@ -24,10 +24,6 @@
                         }
                     @endphp
                     <h3 class="mb-3 font-medium text-slate-900">Rincian Berat</h3>
-                    {{-- <div class="text-slate-500">
-                        Jumlah barang :
-                        <span class="text-slate-800 font-semibold">21</span>
-                    </div> --}}
 
                     <div class="text-slate-500">
                         Berat total :

@@ -159,11 +159,6 @@
                                             Pesanan</a>
                                     @endif
                                 @endif
-                                {{-- <a href="https://api.whatsapp.com/send?phone=6289677464708&text=Hallo%20admin,%20saya%20mau%20tanya"
-                                    target="_blank" data-tooltip-target="tooltip-chat"
-                                    class="px-4 py-3 border border-indigo-500 text-indigo-500 hover:opacity-80 duration-300 rounded-md">
-                                    <i class="fa-solid fa-comment-dots"></i>
-                                </a> --}}
                             </div>
                         </div>
                     </div>
