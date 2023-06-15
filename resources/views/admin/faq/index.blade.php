@@ -27,7 +27,9 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y"></tbody>
+                <tbody class="bg-white divide-y">
+
+                </tbody>
             </table>
         </div>
     </div>
@@ -46,17 +48,17 @@
             columns: [{
                     data: 'question',
                     name: 'question',
-                    className: 'py-4 px-6',
+                    className: 'py-4 px-6 align-top text-left',
                 },
                 {
                     data: 'answer',
                     name: 'answer',
-                    className: 'py-4 px-6',
+                    className: 'py-4 px-6 line-clamp-6',
                 },
                 {
                     data: 'action',
                     name: 'action',
-                    className: 'py-4 px-6',
+                    className: 'py-4 px-6 align-top text-left',
                     orderable: false,
                     searchable: false,
                     width: '15%'

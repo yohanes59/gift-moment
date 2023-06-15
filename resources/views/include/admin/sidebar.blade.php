@@ -1,4 +1,4 @@
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 transition-transform -translate-x-full bg-white shadow-lg sm:translate-x-0" aria-label="Sidebar">
+<aside id="sidebarAdmin" class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 transition-transform -translate-x-full bg-white shadow-lg lg:translate-x-0" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-white">
         <ul class="mt-5 space-y-2 font-medium">
             <li class="{{ request()->is('admin/dashboard') ? 'bg-indigo-100 rounded-lg' : '' }}">
