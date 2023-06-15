@@ -155,20 +155,19 @@
                                 @endif
                             @elseif($item->payment_status == 'PAID')
                                 @if ($item->order_status == 'NEW_ORDER' || $item->order_status == 'PACKED')
-                                <div class="w-full sm:w-fit text-center border border-indigo-500 text-indigo-500 hover:opacity-80 duration-300 rounded-md">
-                                    <a class="block w-full px-4 py-3" href="https://api.whatsapp.com/send?phone={{ $userData['phone_number'] }}&text=Hallo%20admin,%20saya%20mau%20tanya"
-                                        target="_blank" data-tooltip-target="tooltip-chat">
-                                        <i class="fa-solid fa-comment-dots mr-1 sm:mr-0"></i>
-                                        <span class="sm:hidden">Tanya Penjual</span>
-                                    </a>
-                                </div>
+                                    <div class="w-full sm:w-fit text-center border border-indigo-500 text-indigo-500 hover:opacity-80 duration-300 rounded-md">
+                                        <a class="block w-full px-4 py-3" href="https://api.whatsapp.com/send?phone={{ $userData['phone_number'] }}&text=Hallo%20admin,%20saya%20mau%20tanya"
+                                            target="_blank" data-tooltip-target="tooltip-chat">
+                                            <i class="fa-solid fa-comment-dots mr-1 sm:mr-0"></i>
+                                            <span class="sm:hidden">Tanya Penjual</span>
+                                        </a>
+                                    </div>
                                 @elseif ($item->order_status == 'SHIPPED')
                                     <a class="block w-full px-4 py-3" href="/history/confirmOrderStatus/{{ $item->id }}"
                                         class="text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi
                                         Pesanan</a>
                                 @endif
                             @endif
-                            </div>
                         </div>
                     </div>
                 </div>
