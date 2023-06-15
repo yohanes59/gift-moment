@@ -14,10 +14,7 @@
     
     @yield('content')
 
-    <!-- Back to Top -->
-    <a id="back-to-top" onclick="toTop()" class="fixed z-[9999] bottom-6 right-6 cursor-pointer hidden items-center justify-center w-14 h-14 bg-indigo-500 text-white text-xl rounded-full p-4">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
+    @yield('backTop')
     
     @include('include.script')
     @stack('addon-script')
