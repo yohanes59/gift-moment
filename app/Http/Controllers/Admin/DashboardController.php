@@ -8,7 +8,6 @@ use App\Models\Payment;
 use App\Models\Product;
 use App\Models\UserDetail;
 use App\Models\Transaction;
-use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;

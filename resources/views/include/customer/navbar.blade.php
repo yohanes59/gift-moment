@@ -41,8 +41,7 @@
                                 data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
                                 <div class="flex items-center gap-2 group">
-                                    <div class="block py-2 pl-3 pr-4 text-slate-900 rounded group-hover:bg-slate-100 lg:group-hover:bg-transparent lg:border-0 lg:group-hover:text-blue-700 lg:p-0">Hello, {{ Auth::user()->name }}</div>
-                                    
+                                    <div class="block py-2 pl-3 pr-4 text-slate-900 rounded group-hover:bg-slate-100 md:group-hover:bg-transparent md:border-0 md:group-hover:text-blue-700 md:p-0">Hello, {{ ucfirst(substr(Auth::user()->name, 0, strpos(Auth::user()->name, ' '))) }}</div>         
                                     <div class="text-slate-900 group-hover:bg-slate-100 lg:group-hover:bg-transparent lg:group-hover:text-blue-700">
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>

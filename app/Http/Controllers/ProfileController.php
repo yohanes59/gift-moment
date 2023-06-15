@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserDetail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
-    // numpang dulu buat nampilin data
     public function address($id)
     {
         $data = UserDetail::where('users_id', $id)->first();

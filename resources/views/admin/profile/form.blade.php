@@ -42,7 +42,8 @@
                         <div>
                             <label for="phone_number" class="block mb-1 text-sm font-medium text-slate-900">Nomor
                                 Telepon</label>
-                            <span class="text-sm font-medium italic text-slate-600"><span class="text-red-500">**</span>628123456789</span>
+                            <span class="text-sm font-medium italic text-slate-600"><span
+                                    class="text-red-500">**</span>628123456789</span>
                             <input type="text" name="phone_number" id="phone_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->phone_number : '' }}">
@@ -54,7 +55,8 @@
                         <div>
                             <label for="account_number" class="block text-sm font-medium text-slate-900">Nomor
                                 Rekening</label>
-                            <span class="text-sm font-medium italic text-slate-600"><span class="text-red-500">**</span>BCA 1234567890 a/n Nama Pemilik</span>
+                            <span class="text-sm font-medium italic text-slate-600"><span class="text-red-500">**</span>BCA
+                                1234567890 a/n Nama Pemilik</span>
                             <input type="text" name="account_number" id="account_number"
                                 class="bg-slate-100 border border-slate-400 text-slate-900 text-sm rounded-md block w-full p-2.5"
                                 value="{{ isset($item) ? $item->account_number : '' }}">
@@ -129,11 +131,6 @@
 @push('addon-script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        @push('addon-script')
-            <
-            script src = "https://cdn.jsdelivr.net/npm/sweetalert2@11" >
-    </>
-    <script>
         const provincesSelect = document.getElementById("provinces_id");
         const citiesSelect = document.getElementById("city_id");
 
@@ -172,6 +169,4 @@
             postalCodeInput.value = selectedOption.getAttribute("data-postal-code");
         }
     </script>
-@endpush
-</script>
 @endpush

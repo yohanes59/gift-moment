@@ -34,7 +34,7 @@ class ProductRequest extends FormRequest
             'price' => ['required', 'numeric', 'min_digits:4'],
             'description' => ['required', 'string', 'max:1000'],
             'weight' => ['required', 'numeric', 'min_digits:2'],
-            'minimum_order' => ['required', 'numeric', 'min:0']
+            'minimum_order' => ['required', 'numeric', 'min:1']
         ];
     }
 }

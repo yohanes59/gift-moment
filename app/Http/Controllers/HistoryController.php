@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\UserDetail;
-use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\Http;
 

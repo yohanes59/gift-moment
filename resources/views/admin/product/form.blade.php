@@ -115,8 +115,6 @@
 
                 <div>
                     <label for="description" class="block mb-3 text-sm font-medium text-slate-900">Deskripsi</label>
-                    {{-- <textarea id="description" name="description" rows="4"
-                        class="block p-2.5 w-full text-sm text-slate-900 bg-slate-100 rounded-md border border-slate-400">{{ isset($item) ? $item->description : '' }}</textarea> --}}
                     <textarea name="description" id="editor">{{ isset($item) ? $item->answer : '' }}</textarea>
                     @error('description')
                         <span class="text-xs text-red-500">{{ $message }}</span>

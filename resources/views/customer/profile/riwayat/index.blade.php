@@ -153,7 +153,6 @@
                                         <a class="block w-full px-4 py-3" href="/history/upload/{{ $item->id }}">Upload Bukti Pembayaran</a>
                                     </div>
                                 @endif
-
                             @elseif($item->payment_status == 'PAID')
                                 @if ($item->order_status == 'NEW_ORDER' || $item->order_status == 'PACKED')
                                 <div class="w-full sm:w-fit text-center border border-indigo-500 text-indigo-500 hover:opacity-80 duration-300 rounded-md">
@@ -169,6 +168,7 @@
                                         Pesanan</a>
                                 @endif
                             @endif
+                            </div>
                         </div>
                     </div>
                 </div>

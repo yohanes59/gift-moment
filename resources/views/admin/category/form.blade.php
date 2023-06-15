@@ -5,9 +5,6 @@
 @section('admin')
     <div class="lg:ml-5 mt-3">
         <div class="flex gap-3 items-center">
-            {{-- <a href="{{ url('admin/category') }}" class="py-3 px-5 text-white rounded-xl bg-blue-500 hover:bg-blue-600">
-                <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
-            </a> --}}
             <x-link to="{{ url('admin/category') }}" size="lg" icon="fa-chevron-left mr-1" text="Kembali" padding="py-2 px-4"
                 color="blue" />
             <div class="text-lg font-medium">Form {{ isset($item) ? 'Edit Kategori' : 'Tambah Kategori' }}</div>
