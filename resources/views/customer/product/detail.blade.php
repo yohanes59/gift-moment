@@ -10,7 +10,7 @@
 @section('content')
     <div class="px-4 lg:px-10 mx-auto w-full max-w-screen-xl">
         <!-- Breadcrumb -->
-        <div class="pt-10 px-0 md:px-10">
+        <div class="pt-4 sm:pt-10">
             <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-white shadow-md"
                 aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -45,7 +45,7 @@
                                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">{{ $product->name }}</span>
+                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 line-clamp-1">{{ $product->name }}</span>
                         </div>
                     </li>
                 </ol>
@@ -54,12 +54,12 @@
 
         <form action="{{ url('/product/add-to-cart/' . $product->id) }}" method="POST">
             @csrf
-            <div class="w-full mt-6 flex gap-10">
-                <div class="w-1/3 h-96">
+            <div class="w-full mt-6 flex flex-col lg:flex-row gap-10">
+                <div class="w-full lg:w-1/3 h-96">
                     <img class="rounded-xl w-full h-full object-cover" src="{{ asset(Storage::url($product->image)) }}"
                         alt="">
                 </div>
-                <div class="w-2/5 flex flex-col py-8 pr-6 divide-y">
+                <div class="w-full lg:w-2/5 flex flex-col py-8 pr-6 divide-y">
                     <div>
                         <div class="text-xl font-bold text-gray-900">{{ $product->name }}</div>
                         <div id="product-price" class="text-3xl font-bold text-gray-900 mt-5 mb-5">Rp
@@ -69,12 +69,13 @@
                         <div class="font-bold text-lg text-indigo-400">Kategori Produk</div>
                         <div class="mt-3 mb-5 font-semibold">{{ $product->category->name }}</div>
                     </div>
-                    <div class="pt-5 px-4">
+                    <div class="pt-5 px-4 pb-64 md:pb-72 lg:pb-0">
                         <div class="font-bold text-lg text-indigo-400">Deskripsi Produk</div>
-                        <div class="mt-3">{!! $product->description !!}</div>
+                        <div id="descText" class="mt-3 line-clamp-5">{!! $product->description !!}</div>
+                        <div id="btnShowLess" onclick="showLess()" class="font-semibold cursor-pointer mt-2 text-indigo-900 bg-indigo-100 w-fit py-2 px-4 text-sm rounded-full hover:opacity-80 duration-300">Selengkapnya</div>
                     </div>
                 </div>
-                <div class="w-1/4 py-8">
+                <div class="w-full fixed lg:relative bottom-0 left-0 lg:left-auto lg:bottom-auto bg-white px-4 py-2 border-t border-indigo-200 lg:w-1/4 lg:px-0 lg:py-8 md:py-6">
                     <div class="text-md font-bold mb-3">Pilih jumlah</div>
                     <div class="sp-quantity flex justify-between h-14 divide-x p-1 border border-gray-300 rounded-md">
                         <div class="w-full">
@@ -97,9 +98,9 @@
                     <div class="mt-3 text-md">Stok tersedia : <span id="stock-amount">{{ $product->stock_amount }}</span>
                     </div>
 
-                    <div class="mt-4">
+                    <div class="mt-4 flex flex-row lg:flex-col justify-between items-center lg:items-start">
                         <div class="text-sm">Subtotal</div>
-                        <div id="subtotal" class="text-md font-bold flex gap-1"></div>
+                        <div id="subtotal" class="text-xl font-bold"></div>
                     </div>
                     <div class="mt-5">
                         <button type="submit"
@@ -174,6 +175,21 @@
                 calculateSubtotal();
             }
         });
+    </script>
+
+    <script>
+        const content = document.querySelector('#descText');
+        const btnShowLess = document.querySelector('#btnShowLess');
+
+        function showLess() {
+            if (content.classList.contains('line-clamp-5')) {
+                btnShowLess.innerHTML = "Lebih sedikit";
+                content.classList.remove('line-clamp-5');
+            } else {
+                btnShowLess.innerHTML = "Selengkapnya";
+                content.classList.add('line-clamp-5');
+            }
+        }
     </script>
 @endpush
 

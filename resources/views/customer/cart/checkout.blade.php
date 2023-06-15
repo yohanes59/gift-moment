@@ -32,8 +32,8 @@
 
             <div class="font-bold text-2xl my-4">Checkout</div>
 
-            <div class="flex">
-                <div class="w-3/4 pr-5">
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-0">
+                <div class="w-full lg:w-3/4 lg:pr-5">
                     <div class="flex flex-col gap-4">
                         {{-- Alamat --}}
                         <div class="flex flex-col gap-3 border-b-2 border-indigo-200">
@@ -61,7 +61,7 @@
                             <div class="font-bold">Pesanan</div>
 
                             <div class="flex border-b-2 border-indigo-50 py-5">
-                                <h3 class="font-semibold text-slate-600 text-xs uppercase w-2/5 px-6">Nama Produk</h3>
+                                <h3 class="font-semibold text-slate-600 text-xs uppercase w-2/5 sm:pl-4">Nama Produk</h3>
                                 <h3 class="font-semibold text-center text-slate-600 text-xs uppercase w-1/5 text-center">
                                     Quantity
                                 </h3>
@@ -79,7 +79,7 @@
                                 @endphp
                                 @foreach ($data['checkout_data'] as $product_id => $item_data)
                                     <div class="flex items-center py-5 bg-white">
-                                        <div class="flex w-2/5 gap-3 pl-6">
+                                        <div class="flex w-2/5 gap-3 sm:pl-4">
                                             <div class="w-fit">
                                                 <div class="w-16 md:w-24 h-16 md:h-24 rounded-md overflow-hidden">
                                                     <img class="w-full h-full object-cover"
@@ -132,7 +132,7 @@
                     </div>
                 </div>
 
-                <div class="w-1/4">
+                <div class="w-full lg:w-1/4 pb-20 lg:pb-0">
                     <div class="px-4 lg:px-6 py-4 border border-indigo-100 rounded-md shadow-lg shadow-indigo-100">
 
                         <div class="flex justify-between font-semibold text-lg">
@@ -153,20 +153,43 @@
                                 <span>{{ isset($data['shipping']['shipping_costs']) ? 'Rp ' . number_format($data['shipping']['shipping_costs'], 0, ',', '.') : '-' }}</span>
                             </div>
 
-                            <div class="py-4 border-t-2 border-indigo-300 flex flex-col gap-4">
-                                <div class="flex justify-between font-bold">
-                                    <span>Total Belanja</span>
-                                    <span>Rp
-                                        {{ isset($data['shipping']) ? number_format($subtotal + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($subtotal, 0, ',', '.') }}</span>
+                            {{-- lg-xl --}}
+                            <div class="hidden lg:block py-4 border-t-2 border-indigo-300">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex justify-between font-bold">
+                                        <span class="font-sm">Total Belanja</span>
+                                        <span>Rp
+                                            {{ isset($data['shipping']) ? number_format($subtotal + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($subtotal, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div>
+                                        <form action="{{ url('/checkout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
+                                                Bayar Sekarang
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div>
-                                    <form action="{{ url('/checkout') }}" method="POST">
-                                        @csrf
-                                        <button type="submit"
-                                            class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
-                                            Bayar Sekarang
-                                        </button>
-                                    </form>
+                            </div>
+
+                            {{-- sm-md --}}
+                            <div class="block lg:hidden w-full fixed bottom-0 left-0 bg-white p-4 border-t border-indigo-300">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex justify-between font-bold">
+                                        <span class="font-sm">Total Belanja</span>
+                                        <span>Rp
+                                            {{ isset($data['shipping']) ? number_format($subtotal + $data['shipping']['shipping_costs'], 0, ',', '.') : number_format($subtotal, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div>
+                                        <form action="{{ url('/checkout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="bg-indigo-500 font-bold hover:bg-indigo-600 py-3 text-sm text-white rounded-md w-full {{ !isset($data['shipping']) ? 'pointer-events-none opacity-50' : '' }}">
+                                                Bayar Sekarang
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

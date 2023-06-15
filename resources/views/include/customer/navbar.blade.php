@@ -4,30 +4,30 @@
             <img src="{{ asset('assets/img/logo_GiftMoment.png') }}" class="h-8 mr-3" alt="Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap">GiftMoment</span>
         </a>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-slate-500 rounded-lg md:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200" aria-controls="navbar-default" aria-expanded="false">
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-slate-500 rounded-lg lg:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 border border-slate-100 rounded-lg bg-slate-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-                <li class="{{ request()->is('/') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
-                    <a href="{{ url('/') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Beranda</a>
+        <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+            <ul class="flex flex-col p-4 lg:p-0 mt-4 border border-slate-100 rounded-lg bg-slate-50 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white">
+                <li class="{{ request()->is('/') ? 'font-bold lg:border-b-2 lg:border-indigo-500 bg-indigo-100 lg:bg-transparent' : '' }}">
+                    <a href="{{ url('/') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0">Beranda</a>
                 </li>
-                <li class="{{ request()->is('about') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
-                    <a href="/about" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Kami</a>
+                <li class="{{ request()->is('about') ? 'font-bold lg:border-b-2 lg:border-indigo-500 bg-indigo-100 lg:bg-transparent' : '' }}">
+                    <a href="/about" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0">Tentang Kami</a>
                 </li>
-                <li class="{{ request()->is('about-dev') ? 'font-bold md:border-b-2 md:border-indigo-500 bg-indigo-100 md:bg-transparent' : '' }}">
-                    <a href="/about-dev" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Tentang Pengembang</a>
+                <li class="{{ request()->is('about-dev') ? 'font-bold lg:border-b-2 lg:border-indigo-500 bg-indigo-100 lg:bg-transparent' : '' }}">
+                    <a href="/about-dev" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0">Tentang Pengembang</a>
                 </li>
 
                 @guest
                     <li>
-                        <div class="flex items-center md:space-x-3">
-                            <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
+                        <div class="flex items-center lg:space-x-3">
+                            <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0">
                                 Masuk
                             </a>
                             <div class="block w-0.5 h-5 bg-slate-500"></div>
-                            <a href="{{ route('register') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
+                            <a href="{{ route('register') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0">
                                 Daftar
                             </a>
                         </div>
@@ -41,9 +41,9 @@
                                 data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
                                 <div class="flex items-center gap-2 group">
-                                    <div class="block py-2 pl-3 pr-4 text-slate-900 rounded group-hover:bg-slate-100 md:group-hover:bg-transparent md:border-0 md:group-hover:text-blue-700 md:p-0">Hello, {{ Auth::user()->name }}</div>
+                                    <div class="block py-2 pl-3 pr-4 text-slate-900 rounded group-hover:bg-slate-100 lg:group-hover:bg-transparent lg:border-0 lg:group-hover:text-blue-700 lg:p-0">Hello, {{ Auth::user()->name }}</div>
                                     
-                                    <div class="text-slate-900 group-hover:bg-slate-100 md:group-hover:bg-transparent md:group-hover:text-blue-700">
+                                    <div class="text-slate-900 group-hover:bg-slate-100 lg:group-hover:bg-transparent lg:group-hover:text-blue-700">
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
@@ -78,8 +78,8 @@
                     </div>
                 @endauth
                 <li>
-                    <a href="{{ url('cart') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
-                        <i class="fa-solid fa-cart-shopping"></i> <span class="md:hidden ml-1 text-slate-900">Keranjang</span>
+                    <a href="{{ url('cart') }}" class="block py-2 pl-3 pr-4 text-slate-900 rounded hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
+                        <i class="fa-solid fa-cart-shopping"></i> <span class="lg:hidden ml-1 text-slate-900">Keranjang</span>
                     </a>
                 </li>
             </ul>

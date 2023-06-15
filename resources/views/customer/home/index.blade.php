@@ -15,31 +15,37 @@
         {{-- Kategori --}}
         <section class="py-4 px-4">
             <div class="text-xl md:text-2xl font-bold text-slate-900">Kategori</div>
-            <div class="overflow-x-auto flex items-center space-x-3 mt-3">
-                <a href="{{ url('/') }}"
-                    class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
-                    <svg aria-hidden="true" class="w-6 h-6 text-indigo-400 transition duration-75" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                        </path>
-                    </svg>
-                    <div class="text-slate-900">Semua</div>
-                </a>
-                @foreach ($categories as $item)
-                    <a href="{{ url('/category/' . $item->slug) }}"
-                        class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer">
-                        <div class="w-7 h-7 overflow-hidden rounded-md">
-                            @if ($item->image != '')
-                                <img src="{{ asset(Storage::url($item->image)) }}" class="object-cover"
-                                    alt="Gambar Produk {{ $item->name }}">
-                            @else
-                                <img src="{{ asset('assets/img/img-kategori.png') }}" class="object-cover" alt="...">
-                            @endif
+            <div class="relative overflow-x-auto mt-3">
+                <div class="w-full flex items-center space-x-3">
+                    <div>
+                        <a href="{{ url('/') }}"
+                            class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer rounded-md">
+                            <svg aria-hidden="true" class="w-6 h-6 text-indigo-400 transition duration-75" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                                </path>
+                            </svg>
+                            <div class="text-slate-900">Semua</div>
+                        </a>
+                    </div>
+                    @foreach ($categories as $item)
+                        <div>
+                            <a href="{{ url('/category/' . $item->slug) }}"
+                                class="py-3 px-5 flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 duration-300 cursor-pointer">
+                                <div class="w-7 h-7 overflow-hidden rounded-md">
+                                    @if ($item->image != '')
+                                        <img src="{{ asset(Storage::url($item->image)) }}" class="object-cover"
+                                            alt="Gambar Produk {{ $item->name }}">
+                                    @else
+                                        <img src="{{ asset('assets/img/img-kategori.png') }}" class="object-cover" alt="...">
+                                    @endif
+                                </div>
+                                <div class="text-slate-900">{{ $item->name }}</div>
+                            </a>
                         </div>
-                        <div class="text-slate-900">{{ $item->name }}</div>
-                    </a>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </section>
 
@@ -178,4 +184,11 @@
 
     {{-- Footer --}}
     @include('include.customer.footer')
+@endsection
+
+@section('backTop')
+    <!-- Back to Top -->
+    <a id="back-to-top" onclick="toTop()" class="fixed z-[9999] bottom-6 right-6 cursor-pointer hidden items-center justify-center w-14 h-14 bg-indigo-500 text-white text-xl rounded-full p-4">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
 @endsection
