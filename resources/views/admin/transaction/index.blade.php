@@ -77,7 +77,7 @@
             serverSide: true,
             ordering: true,
             ajax: {
-                url: '{!! url()->current() !!}',
+                url: 'https://' + '{!! request()->getHttpHost().request()->getRequestUri() !!}',
             },
             columns: [{
                     data: 'id',
