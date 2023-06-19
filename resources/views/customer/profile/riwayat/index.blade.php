@@ -127,7 +127,7 @@
                         </div>
 
                         {{-- button --}}
-                        <div class="mt-4 sm:mt-0 flex flex-col sm:flex-row items-start sm:items-end gap-2 text-sm">
+                        <div class="mt-4 sm:mt-0 flex flex-col sm:flex-row items-start sm:items-end gap-2 text-sm border">
                             <div class="w-full sm:w-fit text-center text-indigo-500 bg-indigo-50 rounded-md font-bold hover:opacity-80">
                                 <a class="block w-full p-3" href="/history/detail/{{ $item->id }}">Detail Pesanan</a>
                             </div>
@@ -163,9 +163,11 @@
                                         </a>
                                     </div>
                                 @elseif ($item->order_status == 'SHIPPED')
-                                    <a class="block w-full px-4 py-3" href="/history/confirmOrderStatus/{{ $item->id }}"
-                                        class="text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi
-                                        Pesanan</a>
+                                    <div class="w-full sm:w-fit text-center text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">
+                                        <a class="block w-full px-4 py-3" href="/history/confirmOrderStatus/{{ $item->id }}"
+                                            class="text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi Pesanan
+                                        </a>
+                                    </div>
                                 @endif
                             @endif
                         </div>
