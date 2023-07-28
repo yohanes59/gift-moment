@@ -85,7 +85,7 @@ php artisan serve
 * [Freepik](https://freepik.com/)
 * [CKEditor](https://ckeditor.com/)
 
-## 📌 Creator
+## 📌 Creator (Kelompok 11 - Landak)
 * [Yohanes Cahyadi](https://github.com/yohanes59)
 * [Aqil Jawadal Furqon](https://github.com/awaqo)
 * [Yoga Aditya Nugraha](https://github.com/yoga-nditya)
@@ -94,3 +94,6 @@ php artisan serve
 
 ## 📌 Demo
 [![Alt Text](https://img.youtube.com/vi/PojYiP5WAco/0.jpg)](https://www.youtube.com/watch?v=PojYiP5WAco)
+
+## 📌 Achievement
+<img src="https://github.com/yohanes59/gift-moment/assets/80000614/fda9d0a1-4c68-4c78-8f90-5132dcd58e62" width="480" height="300">
