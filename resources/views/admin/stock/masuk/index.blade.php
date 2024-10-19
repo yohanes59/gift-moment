@@ -48,7 +48,7 @@
             serverSide: true,
             ordering: true,
             ajax: {
-                url: '{!! url()->current() !!}',
+                url: 'https://' + '{!! request()->getHttpHost().request()->getRequestUri() !!}',
             },
             columns: [{
                     data: 'created_at',
@@ -115,7 +115,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    let url = '{{ url('admin/stock/masuk') }}/' + itemId;
+                    let url = '{{ secure_url('admin/stock/masuk') }}/' + itemId;
 
                     $.ajax({
                         type: 'POST',

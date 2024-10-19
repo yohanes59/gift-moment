@@ -163,9 +163,11 @@
                                         </a>
                                     </div>
                                 @elseif ($item->order_status == 'SHIPPED')
-                                    <a class="block w-full px-4 py-3" href="/history/confirmOrderStatus/{{ $item->id }}"
-                                        class="text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi
-                                        Pesanan</a>
+                                    <div class="w-full sm:w-fit text-center text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">
+                                        <a class="block w-full px-4 py-3" href="/history/confirmOrderStatus/{{ $item->id }}"
+                                            class="text-white font-bold bg-indigo-500 hover:opacity-80 duration-300 rounded-md">Konfirmasi Pesanan
+                                        </a>
+                                    </div>
                                 @endif
                             @endif
                         </div>

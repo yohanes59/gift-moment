@@ -43,7 +43,7 @@
             serverSide: true,
             ordering: true,
             ajax: {
-                url: '{!! url()->current() !!}',
+                url: 'https://' + '{!! request()->getHttpHost().request()->getRequestUri() !!}',
             },
             columns: [{
                     data: 'question',
@@ -83,7 +83,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    let url = '{{ url('admin/faq') }}/' + itemId;
+                    let url = '{{ secure_url('admin/faq') }}/' + itemId;
 
                     $.ajax({
                         type: 'POST',

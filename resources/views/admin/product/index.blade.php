@@ -87,7 +87,7 @@
             serverSide: true,
             ordering: true,
             ajax: {
-                url: '{!! url()->current() !!}',
+                url: 'https://' + '{!! request()->getHttpHost().request()->getRequestUri() !!}',
             },
             columns: [{
                     data: 'id',
@@ -172,7 +172,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    let url = '{{ url('admin/product') }}/' + itemId;
+                    let url = '{{ secure_url('admin/product') }}/' + itemId;
 
                     $.ajax({
                         type: 'POST',
